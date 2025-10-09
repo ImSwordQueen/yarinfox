@@ -27,17 +27,17 @@ Rinfox is a Mozilla Firefox theme that mimicks the look and feel of Internet Exp
 
 (This will be reworked later to utilize the Native Controls Patch instead.)
 
-~~2.	Download and install [Resource Hacker](https://angusj.com/resourcehacker/) (if your OS is NOT Windows Vista/7) - this is to enable glass in navigation pane
+~~2.	Download and install [Resource Hacker](https://angusj.com/resourcehacker/) (if your OS is NOT Windows Vista/7) - this is to enable glass in navigation pane~~
 
-2.1.	Run as administrator
+~~2.1.	Run as administrator~~
 
-2.2.	File > Open > find `firefox.exe` > Manifest > delete/comment these lines:
+~~2.2.	File > Open > find `firefox.exe` > Manifest > delete/comment these lines:~~
 ```xml
 <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
 <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}"/>
 <supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"/>
 ```
-2.3.	Restart your computer.~~
+~~2.3.	Restart your computer.~~
 
 3. Open Firefox and follow the instructions of the wizard that appears on-screen.
 
