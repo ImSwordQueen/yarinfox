@@ -16,7 +16,6 @@ function executeFunctions() {
 	changeFirefoxButtonText();
 	changeUnifiedExtensionsText();
 	changeSearchBarPlaceholder();
-	createHelpButton();
 	createFavoritesSidebarButton();
 	createAddToBookmarks();
 	disableHistoryButton();

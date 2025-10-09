@@ -1,0 +1,575 @@
+/* IE Menu Items Styling for rinFox */
+/* menuitems.uc.js needs to be in JS folder and all icons mentioned */
+
+/* Create icons, chevrons and shorcut commands for items */
+
+#hp-button::after
+{
+  display: inline-block !important;
+  content: '\75';
+  color: transparent !important;
+  font-family: 'Marlett' !important;
+  background-image: url('images/chevron-vista.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  transform: translateX(-1px) !important;
+  margin-top: 2px;
+  
+}
+
+#newprint-button::after
+{
+  display: inline-block !important;
+  content: '\75';
+  color: transparent !important;
+  font-family: 'Marlett' !important;
+  background-image: url('images/chevron-vista.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  transform: translateX(-1px) !important;
+  margin-top: 2px;
+  margin-left: 7px;
+  
+}
+
+#tools-button::after,
+#safety-button::after,
+#pagemenu-button::after
+{
+  display: inline-block !important;
+  content: '\75';
+  color: transparent !important;
+  font-family: 'Marlett' !important;
+  background-image: url('images/chevron-vista.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  transform: translateX(-1px) !important;
+  margin-left: -3px;
+  margin-top: 2px;
+  
+}
+
+#newprint-button {
+  list-style-image: url('images/print.png') !important;
+}
+
+#hp-button {
+  list-style-image: url('images/help.png');
+}
+
+.item1,
+.item2,
+.item3,
+.item4,
+.item5,
+.item6,
+.item7,
+.item8,
+.item9,
+.item10,
+.item11,
+.item12,
+.item14,
+.safety-item1,
+.safety-item2,
+.safety-item3,
+.safety-item4,
+.safety-item5,
+.tools-item1, 
+.tools-item2, 
+.tools-item3, 
+.tools-item4, 
+.tools-item5, 
+.tools-item6, 
+.tools-item7, 
+.tools-item8, 
+.tools-item9, 
+.tools-item10,
+.hp-item1,
+.hp-item2,
+.hp-item3,
+.hp-item4,
+.print-item1,
+.print-item2,
+.print-item3,
+.print-item4 {
+  position: relative;
+  
+}
+
+.item1::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/page/newwindow.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.item1::after {
+  content: "Ctrl+N";
+  margin-right: 25px;
+  padding-left: 40px;
+}
+
+.item2::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/page/cut.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.item2::after {
+  content: "Ctrl+X";
+  margin-right: 25px;
+}
+
+.safety-item2::after {
+  content: "Ctrl+Shift+P";
+  margin-right: 20px;
+  padding-left: 40px;
+}
+
+.item3::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/page/copy.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.item3::after {
+  content: "Ctrl+C";
+  margin-right: 25px;
+}
+
+.item4::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/page/paste.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.item4::after {
+  content: "Ctrl+V";
+  margin-right: 25px;
+}
+
+.item12::after {
+  content: "F7";
+  margin-right: 47px;
+}
+
+
+
+.item5::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/page/saveas.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.item6::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/page/sendpageemail.png');
+  background-size: contain; /* Adjust the size as needed */
+  background-repeat: no-repeat;
+}
+
+
+.item8::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/page/findinpage.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.item9::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/page/zoom.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.item11::before {
+  content: "";
+  position: absolute;
+  left: 7px; 
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/page/workoffline.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+
+.item14::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/page/viewsource.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.safety-item1::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/safety/deletebrowsing.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.safety-item2::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/safety/inprivate.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.safety-item3::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/safety/troubleshooting.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.safety-item5::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/safety/reportwebsite.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.tools-item1::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/tools/diagnose.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.tools-item2::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/tools/reopen.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.tools-item3::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/tools/popup.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.tools-item4::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/tools/addons.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.tools-item6::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/tools/fullscreen.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.tools-item6::after {
+  content: "F11";
+  margin-right: 20px;
+  padding-left: 100px;
+}
+
+.tools-item9::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/tools/taskmanager.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.tools-item10::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/tools/internetoptions.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+
+/* Depending on mode, About Internet Explore will have 7 or 8 text */
+@supports (-moz-bool-pref("RinFox.Appearance.IE8")) {
+.hp-item2::after {
+  content: "8";
+  position: absolute;
+  right: 16px;
+} 
+}
+
+@supports not (-moz-bool-pref("RinFox.Appearance.IE8")) {
+.hp-item2::after {
+  content: "7";
+  position: absolute;
+  right: 16px;
+} 
+}
+
+
+.hp-item3::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/others/onlinesupport.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.print-item1::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/others/print.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.print-item1::after {
+  content: "Ctrl+P";
+  margin-right: 15px;
+  padding-left: 30px;
+}
+
+.print-item2::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/others/printpreview.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.print-item3::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('images/menucontext/others/pagesetup.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Hide context menu icons in IE7 mode */
+@supports not (-moz-bool-pref("RinFox.Appearance.IE8")) {
+.item1::before,
+.item2::before,
+.item3::before,
+.item4::before,
+.item5::before,
+.item6::before,
+.item7::before,
+.item8::before,
+.item9::before,
+.item10::before,
+.item11::before,
+.item12::before,
+.item14::before,
+.safety-item1::before,
+.safety-item2::before,
+.safety-item3::before,
+.safety-item4::before,
+.safety-item5::before,
+.tools-item1::before, 
+.tools-item2::before, 
+.tools-item3::before, 
+.tools-item4::before, 
+.tools-item5::before, 
+.tools-item6::before, 
+.tools-item7::before, 
+.tools-item8::before, 
+.tools-item9::before, 
+.tools-item10::before,
+.hp-item1::before,
+.hp-item2::before,
+.hp-item3::before,
+.hp-item4::before,
+.print-item1::before,
+.print-item2::before,
+.print-item3::before,
+.print-item4::before {
+  background-image: url('images/blank.png');
+  
+}
+
+@supports not -moz-bool-pref("RinFox.Appearance.IE8") {
+	
+#pagemenu-button::before {
+ content: "";
+ width: 16px;
+ height: 16px;
+ background-image: url('images/menucontext/menuicons/page.png');
+ background-size: contain;
+ background-repeat: no-repeat;
+ }
+
+#safety-button::before {
+ content: "";
+ width: 16px;
+ height: 16px;
+ background-image: url('images/menucontext/menuicons/security.png');
+ background-size: contain;
+ background-repeat: no-repeat;
+ }
+
+#tools-button::before {
+ content: "";
+ width: 16px;
+ height: 16px;
+ background-image: url('images/menucontext/menuicons/tools.png');
+ background-size: contain;
+ background-repeat: no-repeat;
+ }
+
+}
+
+    
+}
+
