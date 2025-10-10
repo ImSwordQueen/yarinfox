@@ -1,6 +1,4 @@
-![rinFox Logo](images/logo_dark.png#gh-light-mode-only)
-![rinFox Logo](images/logo_light.png#gh-dark-mode-only)
-
+![rinFox Logo](images/logo_dark.png#gh-light-mode-only) ![rinFox Logo](images/logo_light.png#gh-dark-mode-only)
 # YaRinFox - Yet Another RinFox fork
 
 ## This is only meant for 115 ESR users.
