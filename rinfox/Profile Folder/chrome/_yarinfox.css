@@ -9,7 +9,7 @@ menubar > menu:-moz-window-inactive {
 
 
 .internet-options {
-    color: window !important;
+    color: menutext !important;
 }
 
 #main-menubar:not(:-moz-window-inactive) {
