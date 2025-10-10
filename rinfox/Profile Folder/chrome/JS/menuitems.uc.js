@@ -67,14 +67,6 @@ window.addEventListener("load", function () {
 if (printitem1) {
   const openGoogleSearch = function (event) {
     PrintUtils.startPrintWindow(gBrowser.selectedBrowser.browsingContext);
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   printitem1.addEventListener("command", openGoogleSearch);
@@ -83,14 +75,6 @@ if (printitem1) {
 if (printitem2) {
   const openGoogleSearch = function (event) {
     PrintUtils.togglePrintPreview(gBrowser.selectedBrowser.browsingContext);
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   printitem2.addEventListener("command", openGoogleSearch);
@@ -99,14 +83,6 @@ if (printitem2) {
 if (printitem3) {
   const openGoogleSearch = function (event) {
     PrintUtils.showPageSetup();
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   printitem3.addEventListener("command", openGoogleSearch);
@@ -307,7 +283,6 @@ if (item1) {
       item1.removeEventListener("command", openBrowserOnce);
     }
   };
-
   item1.addEventListener("command", openBrowserOnce);
 }
 
@@ -315,32 +290,14 @@ if (item1) {
 if (item2) {
   const openGoogleSearch = function (event) {
     goDoCommand('cmd_cut');
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   item2.addEventListener("command", openGoogleSearch);
 }
 
 if (item3) {
   const openGoogleSearch = function (event) {
     goDoCommand('cmd_copy');
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   item3.addEventListener("command", openGoogleSearch);
 }
 
@@ -348,16 +305,7 @@ if (item3) {
 if (item4) {
   const openGoogleSearch = function (event) {
     goDoCommand('cmd_paste');
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   item4.addEventListener("command", openGoogleSearch);
 }
 
@@ -365,32 +313,14 @@ if (item4) {
 if (item5) {
   const openGoogleSearch = function (event) {
     saveBrowser(gBrowser.selectedBrowser);
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   item5.addEventListener("command", openGoogleSearch);
 }
 
 if (item6) {
   const openGoogleSearch = function (event) {
     MailIntegration.sendLinkForBrowser(gBrowser.selectedBrowser);
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   item6.addEventListener("command", openGoogleSearch);
 }
 
@@ -399,46 +329,21 @@ if (item7) {
     PictureInPicture.onCommand(event);
 
     const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   item7.addEventListener("command", openGoogleSearch);
 }
 
 if (item8) {
   const openGoogleSearch = function (event) {
     gLazyFindCommand('onFindCommand');
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   item8.addEventListener("command", openGoogleSearch);
 }
 
 if (subitem1) {
   const openGoogleSearch = function (event) {
     FullZoom.enlarge();
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   subitem1.addEventListener("command", openGoogleSearch);
 }
 
@@ -446,14 +351,6 @@ if (subitem1) {
 if (subitem2) {
   const openGoogleSearch = function (event) {
     FullZoom.reduce();
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   subitem2.addEventListener("command", openGoogleSearch);
@@ -547,23 +444,12 @@ if (subitem10) {
   const executeMultipleFunctions = function (event) {
     FullZoom.reset();
   };
-
   subitem10.addEventListener("command", executeMultipleFunctions);
 }
-
-
 
 if (subitem11) {
   const openGoogleSearch = function (event) {
     gPageStyleMenu.disableStyle();
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   subitem11.addEventListener("command", openGoogleSearch);
@@ -572,14 +458,6 @@ if (subitem11) {
 if (subitem12) {
   const openGoogleSearch = function (event) {
    gPageStyleMenu.switchStyleSheet(null);
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   subitem12.addEventListener("command", openGoogleSearch);
@@ -589,14 +467,6 @@ if (subitem12) {
 if (item11) {
   const openGoogleSearch = function (event) {
    BrowserOffline.toggleOfflineStatus();
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   item11.addEventListener("command", openGoogleSearch);
@@ -607,14 +477,6 @@ if (item11) {
 if (item12) {
   const openGoogleSearch = function (event) {
    gBrowser.toggleCaretBrowsing();
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   item12.addEventListener("command", openGoogleSearch);
@@ -623,14 +485,6 @@ if (item12) {
 if (item13) {
   const openGoogleSearch = function (event) {
    BrowserPageInfo();
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   item13.addEventListener("command", openGoogleSearch);
@@ -640,14 +494,6 @@ if (item13) {
 if (item14) {
   const openGoogleSearch = function (event) {
    BrowserViewSource(window.gBrowser.selectedBrowser);
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   item14.addEventListener("command", openGoogleSearch);
@@ -734,14 +580,6 @@ window.addEventListener("load", function () {
 if (safetyitem1) {
   const openGoogleSearch = function (event) {
    PlacesCommandHook.showPlacesOrganizer('History'); CustomizableUI.hidePanelForNode(this);
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   safetyitem1.addEventListener("command", openGoogleSearch);
@@ -750,14 +588,6 @@ if (safetyitem1) {
 if (safetyitem2) {
   const openGoogleSearch = function (event) {
    OpenBrowserWindow({private: true});
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   safetyitem2.addEventListener("command", openGoogleSearch);
@@ -767,14 +597,6 @@ if (safetyitem2) {
 if (safetyitem3) {
   const openGoogleSearch = function (event) {
    openTroubleshootingPage();
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   safetyitem3.addEventListener("command", openGoogleSearch);
@@ -783,16 +605,7 @@ if (safetyitem3) {
 if (safetyitem4) {
   const openGoogleSearch = function (event) {
    gBrowser.toggleMuteAudioOnMultiSelectedTabs(gBrowser.selectedTab);
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   safetyitem4.addEventListener("command", openGoogleSearch);
 }
 
@@ -800,16 +613,7 @@ if (safetyitem4) {
 if (safetyitem5) {
   const openGoogleSearch = function (event) {
    openUILink(gSafeBrowsing.getReportURL('Phish'), event, {triggeringPrincipal: Services.scriptSecurityManager.createNullPrincipal({})});
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   safetyitem5.addEventListener("command", openGoogleSearch);
 }
   
@@ -972,90 +776,39 @@ window.addEventListener("load", function () {
   const toolsubitem7 = document.querySelector(".tools-subitem7");
   const toolsubitem8 = document.querySelector(".tools-subitem8");
   
-  
-
-
 if (toolsitem1) {
   const openGoogleSearch = function (event) {
    safeModeRestart();
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsitem1.addEventListener("command", openGoogleSearch);
 }  
 
 if (toolsitem2) {
   const openGoogleSearch = function (event) {
    SessionStore.restoreLastSession();
-
-    const paste = readFromClipboard();
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsitem2.addEventListener("command", openGoogleSearch);
 }  
-
 
 if (toolsubitem1) {
   const openGoogleSearch = function (event) {
    gBrowser.selectedBrowser.popupBlocker.unblockAllPopups();
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   toolsubitem1.addEventListener("command", openGoogleSearch);
 }
 
-
-
 if (toolsubitem2) {
   const openGoogleSearch = function (event) {
    openPreferences("privacy-permissions-block-popups");
-
-    const paste = readFromClipboard();
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   toolsubitem2.addEventListener("command", openGoogleSearch);
 }
 
-
 if (toolsitem4) {
   const openGoogleSearch = function (event) {
    gUnifiedExtensions.togglePanel(event);
-
-    const paste = readFromClipboard();
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
 
   toolsitem4.addEventListener("command", openGoogleSearch);
@@ -1064,38 +817,16 @@ if (toolsitem4) {
 if (toolsitem5) {
   const openGoogleSearch = function (event) {
    AboutReaderParent.toggleReaderMode(event);
-
-    const paste = readFromClipboard();
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsitem5.addEventListener("command", openGoogleSearch);
 }
  
-
 if (toolsitem6) {
   const openGoogleSearch = function (event) {
    BrowserFullScreen();
-
-    const paste = readFromClipboard();
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsitem6.addEventListener("command", openGoogleSearch);
 }
-
 
 if (toolsubitem3) {
   const toggleMenuBar = function (event) {
@@ -1109,138 +840,55 @@ if (toolsubitem3) {
       }
     }
   };
-
   toolsubitem3.addEventListener("command", toggleMenuBar);
 }
-
-
 
 if (toolsubitem4) {
   const openGoogleSearch = function (event) {
    SidebarUI.toggle('viewBookmarksSidebar');
-
-    const paste = readFromClipboard();
-
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsubitem4.addEventListener("command", openGoogleSearch);
 }
 
 if (toolsubitem5) {
   const openGoogleSearch = function (event) {
    BookmarkingUI.toggleBookmarksToolbar('shortcut');
-
-    const paste = readFromClipboard();
-
-	
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsubitem5.addEventListener("command", openGoogleSearch);
 }
-
-
 
 if (toolsubitem6) {
   const openGoogleSearch = function (event) {
    gCustomizeMode.enter();
-
-    const paste = readFromClipboard();
-
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsubitem6.addEventListener("command", openGoogleSearch);
 }
-
 
 if (toolsubitem7) {
   const openGoogleSearch = function (event) {
    SidebarUI.toggle('viewBookmarksSidebar');
-
-    const paste = readFromClipboard();
-
-	
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsubitem7.addEventListener("command", openGoogleSearch);
 }
-
 
 if (toolsubitem8) {
   const openGoogleSearch = function (event) {
    PlacesCommandHook.showPlacesOrganizer('History'); CustomizableUI.hidePanelForNode(this);
-
-    const paste = readFromClipboard();
-
-	
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsubitem8.addEventListener("command", openGoogleSearch);
 }
-
-
 
 if (toolsitem9) {
   const openGoogleSearch = function (event) {
    switchToTabHavingURI('about:processes', true);
-
-    const paste = readFromClipboard();
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsitem9.addEventListener("command", openGoogleSearch);
 }
-
-
 
 if (toolsitem10) {
   const openGoogleSearch = function (event) {
    openPreferences();
-
-    const paste = readFromClipboard();
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
   };
-
   toolsitem10.addEventListener("command", openGoogleSearch);
 }
  
@@ -1309,86 +957,37 @@ window.addEventListener("load", function () {
   const hpitem3 = document.querySelector(".hp-item3");
   const hpitem4 = document.querySelector(".hp-item4");
   
-  
-  
-  
 if (hpitem1) {
-  const openGoogleSearch = function (event) {
-   openHelpLink('firefox-help');
-
-    const paste = readFromClipboard();
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
-  };
-
-  hpitem1.addEventListener("command", openGoogleSearch);
-}
-   
-  
-if (hpitem2) {
-  const openGoogleSearch = function (event) {
-   window.open("https://www.mozilla.org/", "mozillaTab");
-
-    const paste = readFromClipboard();
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
-  };
-
-  hpitem1.addEventListener("command", openGoogleSearch);
+  hpitem1.addEventListener("command", function () {
+    openHelpLink('firefox-help');
+  });
 }
 
-
- 
 if (hpitem2) {
-  const openSpaceHey = function (event) {
-    const spaceHeyURL = "https://github.com/florinsdistortedvision/rinfox_updated/commits/main";
+  hpitem2.addEventListener("command", function () {
+    const newURL = Services.prefs.getBoolPref("RinFox.Appearance.IE8")
+      ? "https://web.archive.org/web/20110322221930id_/http://windows.microsoft.com/en-US/internet-explorer/products/ie-8/welcome"
+      : "https://web.archive.org/web/20090101033733id_/http://www.microsoft.com/windows/ie/ie7/tour/fre/default.mspx";
     
-    const newTab = window.gBrowser.addTrustedTab(spaceHeyURL);
-
+    const newTab = window.gBrowser.addTrustedTab(newURL);
     window.gBrowser.selectedTab = newTab;
-  };
-
-  hpitem2.addEventListener("command", openSpaceHey);
+  });
 }
 
 if (hpitem3) {
-  const openSpaceHey = function (event) {
-    const spaceHeyURL = "https://github.com/florinsdistortedvision/rinfox_updated/issues";
-    
-    const newTab = window.gBrowser.addTrustedTab(spaceHeyURL);
-
+  hpitem3.addEventListener("command", function () {
+    const supportLink = "https://web.archive.org/web/20100901073034id_/http://support.microsoft.com/default.aspx";
+    const newTab = window.gBrowser.addTrustedTab(supportLink);
     window.gBrowser.selectedTab = newTab;
-  };
-
-  hpitem3.addEventListener("command", openSpaceHey);
+  });
 }
 
-
 if (hpitem4) {
-  const openGoogleSearch = function (event) {
    openAboutDialog();
 
-    const paste = readFromClipboard();
-	
-
-    if (paste) {
-      const searchURL = 'https://www.google.com/search?q=' + encodeURIComponent(paste);
-
-      gBrowser.selectedTab = gBrowser.addTab(searchURL);
-    }
-  };
-
-  hpitem4.addEventListener("command", openGoogleSearch);
+  hpitem4.addEventListener("command", function () {
+    openAboutDialog();
+  });
 }
 });
 
