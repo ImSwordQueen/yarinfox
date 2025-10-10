@@ -1,8 +1,8 @@
 // IE7&8 Menu Context Menus for rinfox
 // Unoptimized/copy pasted code
-// About IE will point to rinFox site when it is completed
+// About IE will point to rinFox site when it is completed (Not going to happen.)
 
-// Print Menu
+/* // Print Menu (Unmovable and kinda useless when it uses the same things as firefox)
 window.addEventListener("load", function () {
   const tabsToolbar = document.getElementById("TabsToolbar");
   if (!tabsToolbar) return;
@@ -45,7 +45,7 @@ window.addEventListener("load", function () {
     Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
     return element;
   }
-});
+}); */
 
 // Page Menu
 window.addEventListener("load", function () {
