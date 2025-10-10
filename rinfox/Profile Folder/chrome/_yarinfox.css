@@ -1,0 +1,18 @@
+.bookmark-item,
+.tabbrowser-tab:is([selected], [multiselected]):-moz-lwtheme {
+	color: inherit !important;
+}
+
+menubar > menu:-moz-window-inactive {
+	color: ThreeDShadow !important;
+}
+
+
+.internet-options {
+    color: window !important;
+}
+
+#main-menubar:not(:-moz-window-inactive) {
+  background-color: rgba(0,0,0,0) !important;
+  color: black !important;
+  }

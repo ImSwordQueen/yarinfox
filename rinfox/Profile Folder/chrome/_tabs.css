@@ -127,7 +127,8 @@
 #tabs-newtab-button,
 #alltabs-button,
 #TabsToolbar #tiptab_william_wong-BAP,
-#scrollbutton-up, #scrollbutton-down
+#scrollbutton-up, #scrollbutton-down,
+#new-tab-button
 {
   background-image: linear-gradient(to bottom, #F2F5FA 0%, #E5EAF5 25%, #CFD7EB 25%, #ECEEFC 100%) !important;
   box-shadow: inset 1px 0 0 #F6FAFF, inset -1px 0 0 #F6FAFF, inset 0 1px 0 #F6FAFF !important;
@@ -144,7 +145,8 @@
 #tabs-newtab-button:hover,
 #alltabs-button:hover,
 #TabsToolbar #tiptab_william_wong-BAP:hover,
-#scrollbutton-up:hover, #scrollbutton-down:hover
+#scrollbutton-up:hover, #scrollbutton-down:hover,
+#new-tab-button:hover
 {
   background-image: linear-gradient(to bottom, #EDF3FC 0%, #C6DDF7 25%, #99C6EE 25%, #B0D3F0 75%, #D9E9F9 100%) !important;
 }
@@ -258,7 +260,7 @@
   list-style-image: none !important;
 }
 
-#tabs-newtab-button:hover {
+#tabs-newtab-button:hover, #new-tab-button:hover {
   list-style-image: url('images/newtab.png') !important;
 }
 

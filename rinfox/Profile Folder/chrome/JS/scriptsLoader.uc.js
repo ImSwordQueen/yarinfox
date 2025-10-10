@@ -16,9 +16,14 @@ function executeFunctions() {
 	changeFirefoxButtonText();
 	changeUnifiedExtensionsText();
 	changeSearchBarPlaceholder();
+	createHelpButton();
 	createFavoritesSidebarButton();
 	createAddToBookmarks();
 	disableHistoryButton();
+	createCBHomeButton();
+	moveExtensionsBtn();
+	createCBReadMailButton();
+	loadLocale();
 	convertCheckboxesToNativeLook()
 	openRinFoxWizardWindow(true);
     console.info("Functions executed.");

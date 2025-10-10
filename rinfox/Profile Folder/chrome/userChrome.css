@@ -2,9 +2,668 @@
 @import url("_main.css");
 @import url("_menuBar.css");
 @import url("_navBar.css");
+@import url("_private.css");
 @import url("_tabs.css");
 @import url("_customizeUI.css");
 @import url("_urlBar.css");
 @import url("_misc.css");
 @import url("_tweaks.css");
 @import url("_aboutBox.css");
+@import url("_statusbar.css");
+@import url("_menuitems.css");
+@import url("_yarinfox.css");
+
+#identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button,
+#identity-box[class][pageproxystate] > #notification-popup-box.anchor-root {
+  background-color: transparent !important;
+  color: transparent !important;
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+  z-index: 0 !important;
+}
+
+/* Left border for identity box button for chromeUI? */
+#identity-box[pageproxystate="valid"].unknownIdentity .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+/* Left border for identity box button when verified domain icon is present (broader) */
+#identity-box[pageproxystate="valid"].verifiedDomain .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].verifiedDomain .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].weakCipher .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].mixedDisplayContent .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].mixedDisplayContentLoadedActiveBlocked .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].certUserOverriden .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].certErrorPage .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].notSecure .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].mixedActiveContent .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].httpsOnlyErrorPage .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].extensionPage .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+.identity-box-button:hover {
+  border-left-color: blue !important;
+}
+
+#identity-box[pageproxystate="valid"].localResource .identity-box-button {
+  border-left-color: #696A6B !important; 
+  border-left-style: solid !important;
+  border-left-width: 1px !important;
+}
+
+#identity-box[pageproxystate="valid"].notSecureText > .identity-box-button, #identity-box[pageproxystate="valid"].chromeUI > .identity-box-button {
+  list-style-image: url('images/unsecure.png') !important;
+}
+
+#identity-box[pageproxystate="valid"].extensionPage #identity-icon {
+  list-style-image: url('images/addons.png') !important;
+}
+
+#password-notification-icon {
+  list-style-image: url('images/login.png') !important;
+}
+
+#logins-button {
+  list-style-image: url('images/login.png') !important;
+}
+
+#privatebrowsing-button {
+  list-style-image: url('images/InPrivate.png') !important;
+}
+
+#page-action-buttons {
+  display: flex !important;
+  background-color: transparent !important;
+  order: 999 !important;
+}
+
+#star-button-box {
+  display: none !important;
+}
+
+.urlbar-page-action:not([disabled]), #identity-permission-box {
+  background-color: transparent !important;
+}
+
+#permissions-granted-icon {
+  list-style-image: url('images/permissions-granted.png') !important;
+}
+
+#page-action-buttons > #reader-mode-button, #page-action-buttons > #translations-button {
+  width: 25px !important;
+  height: 22px !important;
+  justify-content: center !important;
+  order: 999 !important;
+}
+
+#reader-mode-button[readeractive] {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-image: linear-gradient(to bottom, #D3EDFB 0%, #C6E9FA 50%, #A2DAF7 50%, #89D0F5 100%) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+#reader-mode-button > .urlbar-icon {
+  list-style-image: url('images/reader-mode.png') !important;
+  transform: translateY(2px) !important;
+}
+
+#reader-mode-button:active > #reader-mode-button-icon {
+  transform: translate(1px, 3px) !important;
+}
+
+#translations-button-icon {
+  list-style-image: url('images/translate.png') !important;
+  transform: translateY(2px) !important;
+}
+
+#translations-button:active > #translations-button-icon {
+  transform: translate(1px, 3px) !important;
+}
+   
+#new-tab-button.toolbarbutton-1:not(:empty), 
+#new-tab-button.toolbarbutton-1:hover, 
+#new-tab-button.toolbarbutton-1:active, 
+#new-tab-button.toolbarbutton-1:focus {
+  width: 29px !important; 
+  height: 28px !important; 
+  min-width: 0 !important;
+  min-height: 0 !important; 
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-top: 2px !important;
+  outline: none !important;
+  -moz-box-pack: center !important;
+  -moz-box-align: center !important;
+  border-top: 1px solid #A3A7AC !important;
+  border-left: 0 !important;
+  border-right: 1px solid #A3A7AC !important;
+  border-bottom: 0 !important;
+  border-top-left-radius: 3px !important;
+  border-top-right-radius: 4px !important;
+  box-shadow: inset 1px 0 0 #FEFEFE, inset -1px 0 0 #FEFEFE, inset 0 1px 0 #FEFEFE !important;
+  display: -moz-box !important;
+  justify-content: center !important;
+  align-items: center !important;
+  appearance: none !important;
+  outline: none !important;
+}
+ 
+#new-tab-button.toolbarbutton-1 {
+  background-image: none !important;
+  background-color: transparent !important;
+  list-style-image: none !important;
+}
+
+#new-tab-button.toolbarbutton-1:hover, 
+#new-tab-button.toolbarbutton-1:active, 
+#new-tab-button.toolbarbutton-1:focus {
+  appearance: none !important;
+  background-image: linear-gradient(to bottom, #A3C9F8 0%, #EEF3FA 100%) !important;
+  list-style-image: url('images/newtab.png') !important;
+}
+
+#downloads-button > .toolbarbutton-badge-stack > #downloads-indicator-progress-outer {
+  visibility: hidden;
+  top: calc(50% - -1px) !important;
+  left: calc(50% - 8px) !important;
+  width: 16px !important;
+  height: 7px !important;
+  border-radius: 3px !important;
+  border: 1px solid #656b75 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#downloads-indicator-progress-inner {
+  width: 18px !important;
+  height: 5px !improtant;
+  background: linear-gradient(to right,var(--toolbarbutton-icon-fill-attention), #02ed49 var(--download-progress-pcent), white var(--download-progress-pcent)) !important;
+  border-radius: 0% !important;
+}
+
+#downloads-button[progress] > .toolbarbutton-badge-stack > #downloads-indicator-anchor > #downloads-indicator-icon, #downloads-button[animate][notification] > .toolbarbutton-badge-stack > #downloads-indicator-anchor > #downloads-indicator-icon {
+  visibility: visible !important;
+}
+
+#urlbar-container {
+    flex-grow: 1 !important;
+}
+
+#identity-box[pageproxystate="invalid"] {
+    visibility: collapse !important;
+}
+
+:root:is([privatebrowsingmode="temporary"]) #urlbar-input-container {
+  background: url(images/InPrivate.svg) no-repeat center left 2px !important;
+  background-size: 75px 20px !important;
+}
+
+#urlbar-input::placeholder {
+  opacity: 100 !important;
+  /* font-style: inherit !important; */
+  /* color: black !important; */
+}
+
+:root:is([privatebrowsingmode="temporary"]) #urlbar-input::placeholder {
+  opacity: 100 !important;
+  font-style: inherit !important;
+  color: black !important;
+}
+
+.close-icon.findbar-closebutton {
+  margin: 6px 8px !important;
+  width: 17px !important;
+  height: 16px !important;
+  padding: 0 !important;
+  list-style-image: none !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  background-image: url("file:///C:/Users/Ivan/AppData/Roaming/Mozilla/Firefox/Profiles/oauoguec.default-esr-1746582853515/chrome/images/close-tab.png");
+}
+
+.close-icon.findbar-closebutton:hover {
+  background-position-x: -17px !important;
+}
+
+.close-icon.findbar-closebutton:active {
+  background-position-x: -34px !important;
+}
+
+.status-text {
+  flex-grow: 1;
+  flex-shrink: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* -moz-appearance: statusbarpanel !important; */
+  line-height: 9px;
+  padding-left: 5px;
+  padding-top: 6px;
+}
+
+.separator-1 {
+  margin-left: auto !important;
+}
+
+#addonbar > div:not(.status-text),
+#addonbar > customtoolbarbutton {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+#nav-bar-overflow-button {
+   transform: translateY(-1px) !important;
+   width: 24px !important;
+}
+
+#PlacesChevron > .toolbarbutton-icon, 
+#nav-bar-overflow-button > .toolbarbutton-icon {
+   background-image: url('images/overflow.png') !important;
+   width: 16px !important;
+   height: 16px !important;
+   transform: scaleX(-1) !important;
+   background-repeat: no-repeat !important;
+   list-style-image: none !important;
+   transform: translateX(-3px) translateY(-5px) rotateZ(180deg) !important;
+}
+
+#main-window:not([chromehidden~="toolbar"]) {
+  min-width: 418px !important;
+  min-height: 124px !important;
+}
+
+.searchbar-search-icon, 
+.searchbar-search-icon:hover, 
+.searchbar-search-button:active > .searchbar-search-icon {
+  background-repeat: no-repeat !important;
+  background-position: 0 !important;
+  margin-top: 1px !important;
+}
+
+.urlbar-input-box {
+  background-image: url('images/chevron-vista.png') !important;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 4px) 11px !important;
+}
+
+/* .urlbar-input-box:hover {
+  background-image: url('images/urlbar-chevron-hover.png') !important;
+  background-repeat: no-repeat;
+  background-position: 100% 1px !important; 
+} */
+
+.urlbar-input-box.expanded {
+  background-image: url('images/urlbar-chevron-active.png') !important;
+  background-repeat: no-repeat;
+  background-position: 100% 1px !important;
+}
+
+#urlbar-input {
+  max-width: calc(100% - 18px) !important;
+}
+
+/* REFRESH, STOP, IDENTITY, AND NOTIFICATION FADE */
+
+#reload-button, 
+#stop-button, 
+#identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button,
+#identity-box[class][pageproxystate] > #notification-popup-box.anchor-root,
+#identity-box[class][pageproxystate] > #identity-permission-box,
+#page-action-buttons > #reader-mode-button,
+#page-action-buttons > #translations-button,
+#identity-permission-box {
+  position: relative !important;
+}
+
+#reload-button::after, 
+#stop-button::after, 
+#identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button::after,
+#identity-box[class][pageproxystate] > #notification-popup-box.anchor-root::after,
+#identity-box[class][pageproxystate] > #identity-permission-box::after,
+#page-action-buttons > #reader-mode-button::after,
+#page-action-buttons > #translations-button::after,
+#identity-permission-box::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  background-image: linear-gradient(to bottom, #D3EDFB 0%, #C6E9FA 50%, #A2DAF7 50%, #89D0F5 100%) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  opacity: 0 !important;
+  transition: opacity 0.3s linear !important;
+}
+
+#reload-button:hover, 
+#stop-button:hover,
+#identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button:hover,
+#identity-box[class][pageproxystate] > #notification-popup-box.anchor-root:hover,
+#identity-box[class][pageproxystate] > #identity-permission-box:hover,
+#page-action-buttons > #reader-mode-button:hover,
+#page-action-buttons > #reader-mode-button[readeractive],
+#page-action-buttons > #translations-button:hover,
+#identity-permission-box:hover {
+  border-color: #16588B !important;
+}
+
+#reload-button:hover::after, 
+#stop-button:hover::after,
+#identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button:hover:not(:active):not(:focus):not([open="true"])::after,
+#identity-box[class][pageproxystate] > #notification-popup-box.anchor-root:hover:not(:active):not(:focus):not([open="true"])::after,
+#identity-box[class][pageproxystate] > #identity-permission-box:hover:not(:active):not(:focus):not([open="true"])::after,
+#page-action-buttons > #reader-mode-button:hover::after,
+#page-action-buttons > #translations-button:hover::after,
+#identity-permission-box:hover::after,
+#translations-button:hover::after {
+  opacity: 1 !important;
+}
+
+/* URLBAR-CHEVRON FADE */
+
+.urlbar-input-box {
+position: relative !important;
+}
+
+.urlbar-input-box::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  background-image: url('images/urlbar-chevron-hover.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: calc(100%) 1px !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s linear !important;
+}
+
+.urlbar-input-box:hover {
+  /* opacity: 1 !important; */
+}
+
+.urlbar-input-box:hover::after {
+  opacity: 1 !important;
+}
+
+/* SEARCH-GO-BUTTON FADE */
+
+.search-go-button.urlbar-icon {
+  z-index: 1 !important;
+}
+
+.search-go-container {
+  position: relative !important;
+}
+
+.search-go-container::after {
+content: "" !important;
+position: absolute !important;
+top: 0 !important;
+left: 0 !important;
+right: 0 !important;
+bottom: 0 !important;
+z-index: 0 !important;
+pointer-events: none !important;
+border-left: 1px solid transparent !important;
+border-right: 1px solid transparent !important;
+background-image: linear-gradient(to bottom, #D3EDFB 0%, #C6E9FA 50%, #A2DAF7 50%, #89D0F5 100%) !important;
+box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+opacity: 0 !important;
+transition: opacity 0.3s linear, border-color 0.3s linear !important
+}
+
+.search-go-container:hover {
+  /* border-color: #16588B !important; */
+}
+
+.search-go-container:hover::after {
+  border-left: 1px solid #16588B !important;
+  border-right: 1px solid #16588B !important;
+  opacity: 1 !important;
+}
+
+.search-go-container:active::after {
+  transition: none !important;
+  border-left: 1px solid #1D415C !important;
+  border-right: 1px solid #1D415C !important;
+  box-shadow: inset 0 1px 0 #719CB3, inset 0 0 0 1px rgb(255 255 255 / 50%), inset 0 2px 0 #A9C6D6, inset 0 3px 0 #B9D9EC !important;
+  background-image: linear-gradient(to bottom, #C1E3F6 50%, #97D1F0 50%);
+  opacity: 1 !important;
+}
+
+/* SEARCHBAR-SEARCH-BUTTON FADE */
+
+/* .searchbar-search-button.urlbar-icon {
+z-index: 1 !important;
+} */
+
+.searchbar-search-button {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.searchbar-search-button::after {
+content: "" !important;
+position: absolute !important;
+top: 0 !important;
+left: 0 !important;
+right: 0 !important;
+bottom: 0 !important;
+z-index: 0 !important;
+pointer-events: none !important;
+border-left: 1px solid transparent !important;
+background-image: linear-gradient(to bottom, #D3EDFB 0%, #C6E9FA 50%, #A2DAF7 50%, #89D0F5 100%) !important;
+box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+opacity: 0 !important;
+transition: opacity 0.3s linear, border-color 0.3s linear !important
+}
+
+.searchbar-search-button:hover {
+  /* border-color: #16588B !important; */
+}
+
+.searchbar-search-button:hover::after,
+.searchbar-search-button[addengines="true"] > .searchbar-search-iconoverlay:hover::after {
+  border-left: 1px solid #16588B !important;
+  opacity: 1 !important;
+}
+
+.searchbar-search-button:active::after {
+  transition: none !important;
+  border-left: 1px solid #1D415C !important;
+  box-shadow: inset 0 1px 0 #719CB3, inset 0 0 0 1px rgb(255 255 255 / 50%), inset 0 2px 0 #A9C6D6, inset 0 3px 0 #B9D9EC !important;
+  background-image: linear-gradient(to bottom, #C1E3F6 50%, #97D1F0 50%);
+  opacity: 1 !important;
+}
+
+/* ADDENGINES-CHEVRON-FIX */
+.searchbar-search-button[addengines="true"] > .searchbar-search-icon {
+  transform: translateX(5px) !important; /* Adjust this value as needed */
+}
+
+#urlbar-background,
+#urlbar[breakout][breakout-extend] > #urlbar-background {
+  background-image: url('images/urlbar-spritesheet-middle.png') !important;
+  width: calc(100% + 47px) !important;
+  z-index: -1;
+} 
+
+#nav-bar-customization-target:hover > :not(#back-button):not(#forward-button):not(#history-panelmenu):not(#search-container) ~ #stop-reload-button {
+  z-index: 3 !important;
+}
+#nav-bar-customization-target:hover > :not(#back-button):not(#forward-button):not(#history-panelmenu):not(#search-container) ~ #stop-reload-button::before {
+  /* background-image: url('images/urlbar-spritesheet-middle.png') !important; */
+  z-index: -1 !important;
+}
+
+#stop-reload-button {
+  z-index: 3 !important;
+} 
+
+#stop-reload-button::before {
+  z-index: -1 !important;
+}
+
+#urlbar-background.urlbar-hover {
+  background-position-y: -26px !important;
+}
+
+/* NAVIGATION BUTTONS FADE */
+
+.tabbrowser-tab[url="about:blank"] .tab-label {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  color: #000 !important;
+  background-color: transparent !important;
+  content: "Blank Page" !important;
+  visibility: visible !important;
+  font-style: normal !important;
+  -moz-box-flex: 1 !important;
+}
+
+.tabbrowser-tab[url="about:blank"] .tab-text {
+  visibility: hidden !important;
+}
+
+.tabbrowser-tab[url="about:blank"] .tab-icon-image {
+  visibility: hidden !important;
+}
+
+#print-progress {
+  background-image: url('images/spinner.png') !important;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: left center;
+  padding-inline-start: 20px;
+}
+
+#autofill-credit-card-notification-icon {
+  color: transparent !important;
+  background-image: url('images/card.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+#page-action-buttons > #translations-button,
+#page-action-buttons > #picture-in-picture-button,
+#identity-permission-box {
+  display: none !important;
+}
+
+.findbar-find-next.tabbable, .findbar-find-previous.tabbable {
+  appearance: toolbarbutton !important;
+  list-style-image: url('images/chevron-vista.png') !important;
+}
+
+.findbar-find-previous.tabbable > .toolbarbutton-icon {
+  transform: rotateX(180deg) !important;
+}

@@ -96,7 +96,7 @@
       background-image: url('images/urlbar-spritesheet-middle.png') !important;
       width: calc(100% - 3px) !important;
       height: 26px !important;
-      margin-inline-start: 3px !important;
+      margin-inline-start: 2px !important;
       box-shadow: none !important;
       outline: 0 !important;
       appearance: none !important;
@@ -135,7 +135,7 @@
       display: inline-block !important;
       width: calc(100% - 3px) !important;
       height: 100% !important;
-      background-image: url('images/urlbar-spritesheet-middle.png') !important;
+      /* background-image: url('images/urlbar-spritesheet-middle.png') !important; */
       position: absolute !important;
       left: 0 !important;
       z-index: -1 !important;
@@ -152,9 +152,9 @@
       background-image: url('images/urlbar-spritesheet-right.png') !important;
       position: absolute !important;
       right: 0 !important;
-      z-index: -1 !important;
+      z-index: -2 !important;
     }
-    #stop-button, #reload-button, .identity-box-button, #notification-popup-box {
+    #stop-button, #reload-button, .identity-box[pageproxystate][class] > .identity-box-button, #notification-popup-box.anchor-root, #page-action-buttons > #reader-mode-button, #page-action-buttons > #translations-button {
       width: 25px !important;
       border-left: 1px solid #696A6B !important;
     }
@@ -171,21 +171,64 @@
     #stop-button:active > .toolbarbutton-icon, #reload-button:active > .toolbarbutton-icon {
       background-position-y: 0 !important;
     }
-    #stop-button:active > .toolbarbutton-icon, #reload-button:active > .toolbarbutton-icon {
+    #stop-button:active > .toolbarbutton-icon, 
+    #reload-button:active > .toolbarbutton-icon, 
+    .search-go-container:active > .urlbar-icon, 
+    #identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button:active > #identity-icon,
+    #identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button:focus > #identity-icon,
+    #identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button:focus-within > #identity-icon,
+    #identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button[open="true"] > #identity-icon,     
+    #identity-box[class][pageproxystate] > #notification-popup-box.anchor-root:active > .notification-anchor-icon,
+    #identity-box[class][pageproxystate] > #notification-popup-box.anchor-root:focus > .notification-anchor-icon,
+    #identity-box[class][pageproxystate] > #notification-popup-box.anchor-root:focus-within > .notification-anchor-icon,
+    #identity-box[class][pageproxystate] > #notification-popup-box.anchor-root[open] > .notification-anchor-icon,
+    #identity-permission-box:active > #permissions-granted-icon,
+    #identity-permission-box[open="true"] > #permissions-granted-icon {
       transform: translate(1px, 1px) !important;
     }
-    #stop-button:hover, #reload-button:hover, .search-go-container:hover, .searchbar-search-button:hover, .identity-box-button:hover, .identity-box-button:active, .identity-box-button[open="true"], #notification-popup-box:hover:active, #notification-popup-box[open] {
+    /* #stop-button:hover, #reload-button:hover, .search-go-container:hover, .searchbar-search-button:hover, .identity-box-button:hover, .identity-box-button:active, .identity-box-button[open="true"], #notification-popup-box.anchor-root:hover, #notification-popup-box.anchor-root:active, #notification-popup-box[open] {
       border-color: #16588B !important;
       box-shadow: inset 0 0 0 1px rgb(255 255 255 / 50%) !important;
       background-image: linear-gradient(to bottom, #D3EDFB 0%, #C6E9FA 50%, #A2DAF7 50%, #89D0F5 100%)
-    }
-    #stop-button:active, #reload-button:active, .search-go-container:active, .searchbar-search-button:active {
+    }  */
+    #stop-button:active, 
+    #reload-button:active, 
+    .search-go-container:active, 
+    .searchbar-search-button:active,
+    #page-action-buttons > #reader-mode-button:active,
+    #identity-permission-box:active,
+    #identity-permission-box[open="true"],
+    #identity-box[class][pageproxystate] > #identity-permission-box:active,
+    #translations-button:active,
+    #translations-button[open="true"] {
       border-color: #1D415C !important;
       box-shadow: inset 0 1px 0 #719CB3, inset 0 0 0 1px rgb(255 255 255 / 50%), inset 0 2px 0 #A9C6D6, inset 0 3px 0 #B9D9EC !important;
-      background-image: linear-gradient(to bottom, #C1E3F6 50%, #97D1F0 50%)
+      background-image: linear-gradient(to bottom, #C1E3F6 50%, #97D1F0 50%) !important;
     }
+    #identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button:active::after,
+    #identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button:focus::after,
+    #identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button:focus-within::after,
+    #identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button[open="true"]::after,
+    #identity-box[class][pageproxystate] > #notification-popup-box.anchor-root:active::after,
+    #identity-box[class][pageproxystate] > #notification-popup-box.anchor-root:focus::after,
+    #identity-box[class][pageproxystate] > #notification-popup-box.anchor-root:focus-within::after,
+    #identity-box[class][pageproxystate] > #notification-popup-box.anchor-root[open]::after,
+    #identity-box[class][pageproxystate] > #identity-permission-box:active::after,
+    #translations-button:active::after,
+    #translations-button:focus::after,
+    #translations-button:focus-within::after,
+    #translations-button[open="true"]::after {
+      border-color: #1D415C !important;
+      box-shadow: inset 0 1px 0 #719CB3, inset 0 0 0 1px rgb(255 255 255 / 50%), inset 0 2px 0 #A9C6D6, inset 0 3px 0 #B9D9EC !important;
+      background-image: linear-gradient(to bottom, #C1E3F6 50%, #97D1F0 50%) !important;
+      opacity: 1 !important;
+      transition: none !important;
+    }
+
+
     #notification-popup-box {
       margin-block: 1px !important;
+      height: 22px !important;
       justify-content: center !important;
     }
     .browser-toolbar:not(.titlebar-color),
@@ -197,7 +240,7 @@
     #PanelUI-menu-button > .toolbarbutton-badge-stack > .toolbarbutton-badge {
       display: none !important;
     }
-    #TabsToolbar:not(:-moz-lwtheme) {
+    #TabsToolbar {
       background-image: linear-gradient(to bottom, #FFFFFF 0%, #E5EAF5 50%, #CFD7EB 50%, #E9ECFA 100%) !important;
     }
     #TabsToolbar > .toolbar-items {
@@ -208,7 +251,7 @@
       background-color: transparent !important;
       border-radius: 0 !important;
     }
-    #toolbar-menubar:not(:-moz-lwtheme) {
+    #toolbar-menubar {
       margin-top: 0 !important;
       background-image: linear-gradient(to bottom, #FEFEFF 0%, #E5EAF5 25%, #D4DBED 25%, #E1E6F6 100%) !important;
       text-shadow: none !important;
@@ -261,7 +304,8 @@
       height: 26px !important;
       margin-top: 0 !important;
       position: relative !important;
-      padding-inline: 3px !important;
+      padding-inline: 0px !important;
+      margin-right: 2px !important;
       align-items: center !important;
     }
     #search-container::before,
@@ -270,6 +314,7 @@
       display: inline-block;
       width: 3px;
       height: 26px;
+      margin-right: 2px !important;
       top: 0 !important;
       z-index: -1 !important;
       position: absolute !important;
@@ -312,25 +357,27 @@
       font-style: italic !important;
     }
     .search-go-container {
-      border-left: 1px solid transparent !important;
-      border-right: 1px solid transparent !important;
+      /* border-left: 1px solid transparent !important;
+      border-right: 1px solid transparent !important; */
       justify-content: center !important;
       width: 26px !important;
       height: 22px !important;
+      transform: translateX(1px) !important;
     }
     .searchbar-search-icon {
       width: 7px !important;
       height: 4px !important;
       background-position-x: 0 !important;
       background-image: url('images/chevron-vista.png') !important;
+      transform: translateX(0px) !important;
       z-index: 1 !important;
     }
     .searchbar-search-button {
-      width: 15px !important;
+      width: 16px !important;
       height: 22px !important;
       justify-content: center !important;
-      border-left: 1px solid transparent !important;
-      margin-right: -1px !important;
+      /* border-left: 1px solid transparent !important; */
+      margin-right: -2px !important;
     }
     #urlbar-input::placeholder {
       font-style: italic !important;
@@ -376,21 +423,22 @@
       margin-top: 0 !important;
     }
     .searchbar-search-button[addengines="true"] > .searchbar-search-icon-overlay {
-      width: 15px !important;
+      width: 17px !important;
       height: 22px !important;
-      margin-right: -4px !important;
-      background-position-x: 0 !important;
+      margin-right: 0 !important;
       background-image: url('images/search-suggestion-vista-background.png') !important; 
-      z-index: 0 !important;
+      background-repeat: no-repeat !important;
+      background-position: 0 !important;
     }
-    .searchbar-search-button[addengines="true"] > .searchbar-search-icon {
-      transform: translateX(-1px) !important;
+    /* .searchbar-search-button[addengines="true"] > .searchbar-search-icon {
+      transform: translateX(-10px) !important;
     }
     .searchbar-search-button:hover .searchbar-search-icon-overlay {
       display: none !important;
+      transform: translateX(-1px) !important;
     } 
     .searchbar-search-button[addengines="true"]:hover .searchbar-search-icon {
-      transform: translateX(0) !important;
+      /* transform: translateX(-1px) !important; */
     }
     #personal-toolbar-empty-description, toolbarbutton.bookmark-item:not(.subviewbutton) {
       appearance: toolbarbutton !important;
@@ -415,12 +463,12 @@
       box-shadow: inset 0 1px 0 #FFF !important;
     }
     #identity-box {
-      order: 999 !important;
+      order: 998 !important;
       margin-inline-end: 0 !important;
     }
     .identity-box-button {
-      max-width: 27px !important;
-      width: 27px !important;
+      max-width: 25px !important;
+      width: 25px !important;
       padding-inline: 0 !important;
       border-radius: 0 !important;
       justify-content: center !important;
@@ -428,8 +476,8 @@
       margin-block: 1px !important;
     }
     #identity-icon {
-      margin-top: 2px !important;
-      margin-right: 2px !important;
+      margin-top: 0px !important;
+      margin-right: 0px !important;
     }
     #identity-box[pageproxystate="valid"].notSecure,
     #urlbar:not(.searchButton) > #urlbar-input-container > #identity-box[pageproxystate="invalid"] #identity-icon {
@@ -455,18 +503,18 @@
       #titlebar {
         background-color: #F2F6FB !important;
       }
-      #TabsToolbar:not(:-moz-lwtheme) {
+      #TabsToolbar {
         padding-inline: 7px !important;
         background-color: #E3EEFB !important;
         background-image: linear-gradient(to bottom, #F2F7FD 0%, #E9F2FC 25%, #E3EEFB 25%) !important;
       }
-      #PersonalToolbar[collapsed="false"] + #TabsToolbar:not(:-moz-lwtheme) {
+      #PersonalToolbar[collapsed="false"] + #TabsToolbar {
         background-image: none !important;
       }
       #tiptab_william_wong-browser-action {
         margin-left: 0 !important;
       }
-      #toolbar-menubar:not(:-moz-lwtheme) {
+      #toolbar-menubar {
         background-image: linear-gradient(to bottom, #F2F7FD 0%, #E9F2FC 25%, #E3EEFB 25%) !important;
         box-shadow: inset 0 0 0 1px rgb(255 255 255 / 75%) !important;
         border-bottom: 1px solid #9196A2 !important;
@@ -496,7 +544,7 @@
         position: absolute !important;
         pointer-events: none !important;
         left: 5px !important;
-        background-image: url('images/search.png') !important;
+        background-image: url('images/livesearch.png') !important;
       }
       #TabsToolbar #tiptab_william_wong-BAP {
         border-top-right-radius: 0 !important;
@@ -613,7 +661,7 @@
   .tab-content {
     padding: 0 var(--inline-tab-padding) !important;
   }
-  #tabs-newtab-button {
+  #tabs-newtab-button, #new-tab-button {
     margin-inline: 1px !important;
     margin-top: 2px !important;
   }

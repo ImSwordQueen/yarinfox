@@ -52,7 +52,8 @@ Rinfox is a Mozilla Firefox theme that mimicks the look and feel of Internet Exp
 Enjoy!
 
 # Credits 
-* [AngelBruni](https://github.com/angelbruni) - Developer
+* [AngelBruni](https://github.com/angelbruni) - Developer (Taken some stuff from [beautyfox](https://github.com/dominichayesferen/BeautyFox))
 * [Travis](https://github.com/travy-patty) - Original RinFox creator
-* Florin - Some of the code for this.
+* [ivan-the-bio-lover-42](https://github.com/ivan-the-bio-lover-42)- [Rinfox Revived](https://github.com/ivan-the-bio-lover-42/Rinfox-Revived) (Credits to him for CSS and some of JS code)
+* ~~Florin - Some of the code for this.~~
 * All Closed Beta testers

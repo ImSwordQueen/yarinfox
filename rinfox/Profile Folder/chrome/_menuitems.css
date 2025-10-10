@@ -1,575 +1,642 @@
-/* IE Menu Items Styling for rinFox */
-/* menuitems.uc.js needs to be in JS folder and all icons mentioned */
-
-/* Create icons, chevrons and shorcut commands for items */
-
-#hp-button::after
-{
-  display: inline-block !important;
-  content: '\75';
-  color: transparent !important;
-  font-family: 'Marlett' !important;
-  background-image: url('images/chevron-vista.png') !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  transform: translateX(-1px) !important;
-  margin-top: 2px;
-  
+#commandBar toolbarbutton {
+  height: 25px !important;
+}
+@media (-moz-windows-classic) {
+  #commandBar toolbarbutton {
+    padding: 0 1px;
+    border-top: 1px solid transparent !important;
+    border-left: 1px solid transparent !important;
+    border-bottom: 1px solid transparent !important;
+    border-right: 1px solid transparent !important;
+    border-radius: 0 !important;
+  }
+  #commandBar toolbarbutton:hover {
+    border-top: 1px solid ThreeDHighlight !important;
+    border-left: 1px solid ThreeDHighlight !important;
+    border-bottom: 1px solid ThreeDShadow !important;
+    border-right: 1px solid ThreeDShadow !important;
+  }
+  #commandBar toolbarbutton:active, #commandBar toolbarbutton[open=true] {
+    border-top: 1px solid ThreeDShadow !important;
+    border-left: 1px solid ThreeDShadow !important;
+    border-bottom: 1px solid ThreeDHighlight !important;
+    border-right: 1px solid ThreeDHighlight !important;
+  }
+  #commandBar toolbarbutton > .toolbarbutton-text {
+    font-size: 8pt !important;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+  }
+}
+#commandBar #downloads-button {
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+  align-items: center !important;
+  margin-bottom: 2px !important;
+  margin-top: 2px !important;
+  -webkit-appearance: toolbarbutton !important;
+     -moz-appearance: toolbarbutton !important;
+          appearance: toolbarbutton !important;
+}
+#commandBar #downloads-button .toolbarbutton-icon {
+  padding: 0 !important;
+  height: auto !important;
+  width: auto !important;
+}
+#commandBar #downloads-button #downloads-indicator-finish-box {
+  -webkit-mask: unset !important;
+          mask: unset !important;
+}
+#commandBar #downloads-button:active .toolbarbutton-icon,
+#commandBar #downloads-button:active .toolbarbutton-badge-stack,
+#commandBar #downloads-button:active .toolbarbutton-text {
+  transform: translateX(1px) translateY(1px);
+}
+#commandBar[commandbaritem=texticon] #downloads-button .toolbarbutton-text {
+  display: block !important;
 }
 
-#newprint-button::after
-{
-  display: inline-block !important;
-  content: '\75';
-  color: transparent !important;
-  font-family: 'Marlett' !important;
-  background-image: url('images/chevron-vista.png') !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  transform: translateX(-1px) !important;
-  margin-top: 2px;
-  margin-left: 7px;
-  
+#cBHomeButton,
+#cBPrintButton,
+#cBReadMailButton {
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+  align-items: center !important;
+}
+@media (-moz-windows-classic) {
+  #cBHomeButton,
+  #cBPrintButton,
+  #cBReadMailButton {
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+  }
+}
+#cBHomeButton .toolbarbutton-icon,
+#cBPrintButton .toolbarbutton-icon,
+#cBReadMailButton .toolbarbutton-icon {
+  padding: 0 !important;
+  height: auto !important;
+  width: auto !important;
+}
+#cBHomeButton:active .toolbarbutton-icon,
+#cBHomeButton:active .toolbarbutton-badge-stack,
+#cBHomeButton:active .toolbarbutton-text,
+#cBPrintButton:active .toolbarbutton-icon,
+#cBPrintButton:active .toolbarbutton-badge-stack,
+#cBPrintButton:active .toolbarbutton-text,
+#cBReadMailButton:active .toolbarbutton-icon,
+#cBReadMailButton:active .toolbarbutton-badge-stack,
+#cBReadMailButton:active .toolbarbutton-text {
+  transform: translateX(1px) translateY(1px);
 }
 
-#tools-button::after,
-#safety-button::after,
-#pagemenu-button::after
-{
-  display: inline-block !important;
-  content: '\75';
-  color: transparent !important;
-  font-family: 'Marlett' !important;
-  background-image: url('images/chevron-vista.png') !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  transform: translateX(-1px) !important;
-  margin-left: -3px;
-  margin-top: 2px;
-  
+#bookmarksSidebarButton {
+  list-style-image: url("chrome://browser/skin/bookmark.svg");
 }
 
-#newprint-button {
-  list-style-image: url('images/print.png') !important;
+#IEMenuButton {
+  list-style-image: url("chrome://browser/skin/menu.svg");
 }
 
-#hp-button {
-  list-style-image: url('images/help.png');
+#cBHomeButton {
+  list-style-image: url("chrome://browser/skin/home.svg");
 }
 
-.item1,
-.item2,
-.item3,
-.item4,
-.item5,
-.item6,
-.item7,
-.item8,
-.item9,
-.item10,
-.item11,
-.item12,
-.item14,
-.safety-item1,
-.safety-item2,
-.safety-item3,
-.safety-item4,
-.safety-item5,
-.tools-item1, 
-.tools-item2, 
-.tools-item3, 
-.tools-item4, 
-.tools-item5, 
-.tools-item6, 
-.tools-item7, 
-.tools-item8, 
-.tools-item9, 
-.tools-item10,
-.hp-item1,
-.hp-item2,
-.hp-item3,
-.hp-item4,
-.print-item1,
-.print-item2,
-.print-item3,
-.print-item4 {
+#cBReadMailButton {
+  list-style-image: url("chrome://browser/skin/mail.svg");
+}
+
+#cBPrintButton {
+  list-style-image: none;
+}
+#cBPrintButton .toolbarbutton-icon {
+  height: 16px !important;
+  width: 16px !important;
+  background-image: url("chrome://userchrome/content/resources/imageres.dll/Icon Group/51.ico");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+#cBHomeButton {
+  list-style-image: none;
+}
+#cBHomeButton .toolbarbutton-icon {
+  height: 16px !important;
+  width: 16px !important;
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Icon Group/100.ico");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+#cBReadMailButton {
+  list-style-image: none;
+}
+#cBReadMailButton .toolbarbutton-icon {
+  height: 16px !important;
+  width: 16px !important;
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Icon Group/31076.ico");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+#cBHelpMenuButton {
+  list-style-image: none !important;
+}
+#cBHelpMenuButton .toolbarbutton-icon {
+  height: 16px !important;
+  width: 16px !important;
+  background-image: url("chrome://userchrome/content/resources/imageres.dll/Icon Group/99.ico");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+#cBPageButton::before {
+  content: attr(label);
+}
+
+#cBPageMenuButton .toolbarbutton-text {
+  display: block;
+}
+
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_newWindow > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_cut > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_copy > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_paste > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_eMailWindowsLive > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_googleTranslate > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_saveAs > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_sendLinkbyEMail > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_zoom > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_viewSource > .menu-iconic-left {
   position: relative;
-  
 }
-
-.item1::before {
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_newWindow > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_cut > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_copy > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_paste > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_eMailWindowsLive > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_googleTranslate > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_saveAs > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_sendLinkbyEMail > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_zoom > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_viewSource > .menu-iconic-left::before {
   content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/page/newwindow.png');
-  background-size: contain;
+  background-size: 16px;
+  background-position: center;
   background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_newWindow > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_cut > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_copy > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_paste > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_eMailWindowsLive > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_googleTranslate > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_saveAs > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_sendLinkbyEMail > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_zoom > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_viewSource > .menu-iconic-left > .menu-iconic-icon {
+  display: none;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_newWindow > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_37.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_cut > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_14.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_copy > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_15.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_paste > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_16.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_eMailWindowsLive > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Icon Group/17363.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_googleTranslate > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Icon Group/17364.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_saveAs > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_33.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_sendLinkbyEMail > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_40.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_zoom > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_18.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_viewSource > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_34.ico") !important;
 }
 
-.item1::after {
-  content: "Ctrl+N";
-  margin-right: 25px;
-  padding-left: 40px;
+#cBSafetyMenuButton .toolbarbutton-text {
+  display: block;
 }
-
-.item2::before {
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_deleteBrowsingHistory > .menu-iconic-left,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_inPrivateBrowsing > .menu-iconic-left,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_smartScreenFilter > .menu-iconic-left {
+  position: relative;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_deleteBrowsingHistory > .menu-iconic-left::before,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_inPrivateBrowsing > .menu-iconic-left::before,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_smartScreenFilter > .menu-iconic-left::before {
   content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/page/cut.png'); 
-  background-size: contain;
+  background-size: 16px;
+  background-position: center;
   background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_deleteBrowsingHistory > .menu-iconic-left > .menu-iconic-icon,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_inPrivateBrowsing > .menu-iconic-left > .menu-iconic-icon,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_smartScreenFilter > .menu-iconic-left > .menu-iconic-icon {
+  display: none;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_deleteBrowsingHistory > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_41.ico") !important;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_inPrivateBrowsing > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_42.ico") !important;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_smartScreenFilter > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_31.ico") !important;
 }
 
-.item2::after {
-  content: "Ctrl+X";
-  margin-right: 25px;
+#cBToolsMenuButton .toolbarbutton-text {
+  display: block;
 }
-
-.safety-item2::after {
-  content: "Ctrl+Shift+P";
-  margin-right: 20px;
-  padding-left: 40px;
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_diagnoseConnectionProblems > .menu-iconic-left,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_reopenLastBrowsingSession > .menu-iconic-left,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_manageAddOns > .menu-iconic-left,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_workOffline > .menu-iconic-left,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_fullScreen > .menu-iconic-left,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_internetOptions > .menu-iconic-left {
+  position: relative;
 }
-
-.item3::before {
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_diagnoseConnectionProblems > .menu-iconic-left::before,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_reopenLastBrowsingSession > .menu-iconic-left::before,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_manageAddOns > .menu-iconic-left::before,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_workOffline > .menu-iconic-left::before,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_fullScreen > .menu-iconic-left::before,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_internetOptions > .menu-iconic-left::before {
   content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/page/copy.png');
-  background-size: contain;
+  background-size: 16px;
+  background-position: center;
   background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_diagnoseConnectionProblems > .menu-iconic-left > .menu-iconic-icon,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_reopenLastBrowsingSession > .menu-iconic-left > .menu-iconic-icon,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_manageAddOns > .menu-iconic-left > .menu-iconic-icon,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_workOffline > .menu-iconic-left > .menu-iconic-icon,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_fullScreen > .menu-iconic-left > .menu-iconic-icon,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_internetOptions > .menu-iconic-left > .menu-iconic-icon {
+  display: none;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_diagnoseConnectionProblems > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_48.ico") !important;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_reopenLastBrowsingSession > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_49.ico") !important;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_manageAddOns > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_30.ico") !important;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_workOffline > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_39.ico") !important;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_fullScreen > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_17.ico") !important;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_internetOptions > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_38.ico") !important;
 }
 
-.item3::after {
-  content: "Ctrl+C";
-  margin-right: 25px;
+#cBHelpMenuButton > #cBHelpMenuPopUp > #cBHelp_onlineSupport > .menu-iconic-left {
+  position: relative;
 }
-
-.item4::before {
+#cBHelpMenuButton > #cBHelpMenuPopUp > #cBHelp_onlineSupport > .menu-iconic-left::before {
   content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/page/paste.png');
-  background-size: contain;
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_26.ico") !important;
+  background-size: 16px;
+  background-position: center;
   background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+}
+#cBHelpMenuButton > #cBHelpMenuPopUp > #cBHelp_onlineSupport > .menu-iconic-left > .menu-iconic-icon {
+  display: none;
 }
 
-.item4::after {
-  content: "Ctrl+V";
-  margin-right: 25px;
+#downloads-button .toolbarbutton-badge-stack {
+  padding: 0 !important;
+}
+#downloads-button #downloads-indicator-anchor {
+  list-style-image: none !important;
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Icon Group/113.ico") !important;
+  background-size: 16px !important;
 }
 
-.item12::after {
-  content: "F7";
-  margin-right: 47px;
+#cBPageMenuButton,
+#cBSafetyMenuButton,
+#cBToolsMenuButton {
+  padding-right: 4px !important;
+}
+@media (-moz-windows-classic) {
+  #cBPageMenuButton,
+  #cBSafetyMenuButton,
+  #cBToolsMenuButton {
+    padding-right: 2px !important;
+  }
+}
+#cBPageMenuButton .toolbarbutton-icon,
+#cBSafetyMenuButton .toolbarbutton-icon,
+#cBToolsMenuButton .toolbarbutton-icon {
+  height: 16px !important;
+  width: 16px !important;
+}
+#cBPageMenuButton[open=true] .toolbarbutton-icon, #cBPageMenuButton:active .toolbarbutton-icon,
+#cBSafetyMenuButton[open=true] .toolbarbutton-icon,
+#cBSafetyMenuButton:active .toolbarbutton-icon,
+#cBToolsMenuButton[open=true] .toolbarbutton-icon,
+#cBToolsMenuButton:active .toolbarbutton-icon {
+  transform: translateX(1px) translateY(1px);
+}
+#cBPageMenuButton[open=true] .toolbarbutton-text, #cBPageMenuButton[open=true]::after, #cBPageMenuButton:active .toolbarbutton-text, #cBPageMenuButton:active::after,
+#cBSafetyMenuButton[open=true] .toolbarbutton-text,
+#cBSafetyMenuButton[open=true]::after,
+#cBSafetyMenuButton:active .toolbarbutton-text,
+#cBSafetyMenuButton:active::after,
+#cBToolsMenuButton[open=true] .toolbarbutton-text,
+#cBToolsMenuButton[open=true]::after,
+#cBToolsMenuButton:active .toolbarbutton-text,
+#cBToolsMenuButton:active::after {
+  transform: translateX(1px) translateY(1px);
 }
 
+#cBPageMenuButton,
+#cBSafetyMenuButton {
+  padding-left: 8px !important;
+}
 
+@media (-moz-windows-classic) {
+  #cBPageMenuButton {
+    padding-left: 5px !important;
+  }
+}
 
-.item5::before {
+@media (-moz-windows-classic) {
+  #cBSafetyMenuButton {
+    padding-left: 7px !important;
+  }
+}
+
+#cBToolsMenuButton {
+  padding-left: 9px !important;
+}
+@media (-moz-windows-classic) {
+  #cBToolsMenuButton {
+    padding-left: 3px !important;
+  }
+}
+
+#commandBar[commandbaritem=icons] #cBPageMenuButton .toolbarbutton-icon {
+  list-style-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_7.ico") !important;
+}
+#commandBar[commandbaritem=icons] #cBSafetyMenuButton .toolbarbutton-icon {
+  list-style-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_50.ico") !important;
+}
+#commandBar[commandbaritem=icons] #cBToolsMenuButton .toolbarbutton-icon {
+  list-style-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_8.ico") !important;
+}
+#commandBar[commandbaritem=icons] #cBPageMenuButton,
+#commandBar[commandbaritem=icons] #cBSafetyMenuButton,
+#commandBar[commandbaritem=icons] #cBToolsMenuButton {
+  padding-left: 4px !important;
+}
+#commandBar[commandbaritem=icons] #cBPageMenuButton .toolbarbutton-text,
+#commandBar[commandbaritem=icons] #cBSafetyMenuButton .toolbarbutton-text,
+#commandBar[commandbaritem=icons] #cBToolsMenuButton .toolbarbutton-text {
+  display: none !important;
+}
+#commandBar[commandbaritem=icons] #cBPageMenuButton::after,
+#commandBar[commandbaritem=icons] #cBSafetyMenuButton::after,
+#commandBar[commandbaritem=icons] #cBToolsMenuButton::after {
+  margin-left: 2px !important;
+}
+#commandBar:not([commandbaritem=icons]) #cBPageMenuButton[open=true] .toolbarbutton-text, #commandBar:not([commandbaritem=icons]) #cBPageMenuButton[open=true]::after, #commandBar:not([commandbaritem=icons]) #cBPageMenuButton:active .toolbarbutton-text, #commandBar:not([commandbaritem=icons]) #cBPageMenuButton:active::after,
+#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton[open=true] .toolbarbutton-text,
+#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton[open=true]::after,
+#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton:active .toolbarbutton-text,
+#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton:active::after,
+#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton[open=true] .toolbarbutton-text,
+#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton[open=true]::after,
+#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton:active .toolbarbutton-text,
+#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton:active::after {
+  transform: translateX(0) translateY(0) !important;
+}
+#commandBar:not([commandbaritem=icons]) #cBPageMenuButton .toolbarbutton-icon,
+#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton .toolbarbutton-icon,
+#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton .toolbarbutton-icon {
+  display: none !important;
+}
+
+#cBHomeButton,
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP,
+#cBPrintButton,
+#cBReadMailButton,
+#cBPageButton,
+#cBPageMenuButton,
+#cBSafetyMenuButton,
+#cBToolsMenuButton,
+#cBHelpMenuButton {
+  -webkit-appearance: auto !important;
+     -moz-appearance: auto !important;
+          appearance: auto !important;
+  margin-block: 0 !important;
+  margin-bottom: 2px !important;
+  margin-top: 2px !important;
+}
+#cBHomeButton[type=menu]::after,
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP[type=menu]::after,
+#cBPrintButton[type=menu]::after,
+#cBReadMailButton[type=menu]::after,
+#cBPageButton[type=menu]::after,
+#cBPageMenuButton[type=menu]::after,
+#cBSafetyMenuButton[type=menu]::after,
+#cBToolsMenuButton[type=menu]::after,
+#cBHelpMenuButton[type=menu]::after {
   content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/page/saveas.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+  margin-left: 4px;
+  margin-right: 1px;
+  width: 7px;
+  height: 4px;
+  background-image: url(images/dropdown.png);
+  background-position: center;
+  background-size: cover;
+}
+@media (-moz-windows-classic) {
+  #cBHomeButton[type=menu]::after,
+  #_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP[type=menu]::after,
+  #cBPrintButton[type=menu]::after,
+  #cBReadMailButton[type=menu]::after,
+  #cBPageButton[type=menu]::after,
+  #cBPageMenuButton[type=menu]::after,
+  #cBSafetyMenuButton[type=menu]::after,
+  #cBToolsMenuButton[type=menu]::after,
+  #cBHelpMenuButton[type=menu]::after {
+    width: 5px;
+    height: 3px;
+  }
+}
+#cBHomeButton[type=menu] .toolbarbutton-text,
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP[type=menu] .toolbarbutton-text,
+#cBPrintButton[type=menu] .toolbarbutton-text,
+#cBReadMailButton[type=menu] .toolbarbutton-text,
+#cBPageButton[type=menu] .toolbarbutton-text,
+#cBPageMenuButton[type=menu] .toolbarbutton-text,
+#cBSafetyMenuButton[type=menu] .toolbarbutton-text,
+#cBToolsMenuButton[type=menu] .toolbarbutton-text,
+#cBHelpMenuButton[type=menu] .toolbarbutton-text {
+  margin-bottom: 2px !important;
 }
 
-.item6::before {
+#commandBar[commandbaritem=texticon] #cBHelpMenuButton .toolbarbutton-text {
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+#commandBar[commandbaritem=texticon] #cBHomeButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBPrintButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBReadMailButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBPageButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBPageMenuButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBSafetyMenuButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBToolsMenuButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBHelpMenuButton .toolbarbutton-text {
+  display: block !important;
+}
+
+#addToBookmarksBarButton {
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+}
+#addToBookmarksBarButton .toolbarbutton-icon {
+  height: 16px !important;
+  width: 16px !important;
+  padding: 0 !important;
+  background-size: 16px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_23.ico") !important;
+}
+
+#cBHelpMenuButton {
+  padding-left: 4px !important;
+  margin-right: 9px !important;
+}
+@media (-moz-windows-classic) {
+  #cBHelpMenuButton {
+    padding-left: 3px !important;
+    padding-right: 2px !important;
+  }
+}
+#cBHelpMenuButton[type=menu]::after {
+  margin-left: 2px;
+}
+#cBHelpMenuButton[open=true] .toolbarbutton-icon,
+#cBHelpMenuButton[open=true] .toolbarbutton-text, #cBHelpMenuButton:active .toolbarbutton-icon,
+#cBHelpMenuButton:active .toolbarbutton-text {
+  transform: translateX(1px) translateY(1px);
+}
+
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP {
+  padding-left: 8px !important;
+  padding-right: 4px !important;
+  list-style-image: none !important;
+  align-items: center !important;
+}
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP::after {
   content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/page/sendpageemail.png');
-  background-size: contain; /* Adjust the size as needed */
+  margin-left: 10px;
+  width: 7px;
+  height: 4px;
+  background-image: url(images/dropdown.png);
+  background-position: center;
+  background-size: cover;
+}
+@media (-moz-windows-classic) {
+  #_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP::after {
+    width: 5px;
+    height: 3px;
+  }
+}
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP[open=true] .toolbarbutton-badge-stack,
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP[open=true] .toolbarbutton-text, #_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP:active .toolbarbutton-badge-stack,
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP:active .toolbarbutton-text {
+  transform: translateX(1px) translateY(1px);
+}
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP .toolbarbutton-text::before {
+  content: var(--feeds-label);
+}
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP .toolbarbutton-icon {
+  height: 16px !important;
+  width: 16px !important;
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Icon Group/31064.ico");
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: 16px;
+  filter: grayscale(100%) !important;
+}
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP[badge] .toolbarbutton-icon {
+  filter: grayscale(0%) !important;
+}
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP .toolbarbutton-badge {
+  display: none !important;
+}
+#_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP .toolbarbutton-badge-stack {
+  padding: 0 !important;
 }
 
-
-.item8::before {
+#commandBar[commandbardropdown] #cBHomeButton,
+#commandBar[commandbardropdown] #cBPrintButton {
+  padding-left: 8px !important;
+}
+@media (-moz-windows-classic) {
+  #commandBar[commandbardropdown] #cBHomeButton,
+  #commandBar[commandbardropdown] #cBPrintButton {
+    padding-left: 4px !important;
+  }
+}
+#commandBar[commandbardropdown] #cBHomeButton::after,
+#commandBar[commandbardropdown] #cBPrintButton::after {
   content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/page/findinpage.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+  margin-left: 10px;
+  width: 7px;
+  height: 4px;
+  background-image: url(images/dropdown.png);
+  background-position: center;
+  background-size: cover;
+}
+@media (-moz-windows-classic) {
+  #commandBar[commandbardropdown] #cBHomeButton::after,
+  #commandBar[commandbardropdown] #cBPrintButton::after {
+    width: 5px;
+    height: 3px;
+  }
 }
 
-.item9::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/page/zoom.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+/* TODO: Add a proper check to remove the icons here as right now the only real option is labels only with no icons in IE8.*/
+@supports -moz-bool-pref("RinFox.Appearance.IE8") {
+#cBToolsMenuButton > .toolbarbutton-icon,
+#cBPageMenuButton  > .toolbarbutton-icon,
+#cBSafetyMenuButton  > .toolbarbutton-icon {
+	display: none !important;
 }
-
-.item11::before {
-  content: "";
-  position: absolute;
-  left: 7px; 
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/page/workoffline.png'); 
-  background-size: contain;
-  background-repeat: no-repeat;
 }
-
-
-
-.item14::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/page/viewsource.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-
-.safety-item1::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/safety/deletebrowsing.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-
-.safety-item2::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/safety/inprivate.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.safety-item3::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/safety/troubleshooting.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-
-.safety-item5::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/safety/reportwebsite.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-
-.tools-item1::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/tools/diagnose.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-
-.tools-item2::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/tools/reopen.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.tools-item3::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/tools/popup.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.tools-item4::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/tools/addons.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.tools-item6::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/tools/fullscreen.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.tools-item6::after {
-  content: "F11";
-  margin-right: 20px;
-  padding-left: 100px;
-}
-
-.tools-item9::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/tools/taskmanager.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.tools-item10::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/tools/internetoptions.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-
-
-/* Depending on mode, About Internet Explore will have 7 or 8 text */
-@supports (-moz-bool-pref("RinFox.Appearance.IE8")) {
-.hp-item2::after {
-  content: "8";
-  position: absolute;
-  right: 16px;
-} 
-}
-
-@supports not (-moz-bool-pref("RinFox.Appearance.IE8")) {
-.hp-item2::after {
-  content: "7";
-  position: absolute;
-  right: 16px;
-} 
-}
-
-
-.hp-item3::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/others/onlinesupport.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-
-.print-item1::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/others/print.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.print-item1::after {
-  content: "Ctrl+P";
-  margin-right: 15px;
-  padding-left: 30px;
-}
-
-.print-item2::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/others/printpreview.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.print-item3::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background-image: url('images/menucontext/others/pagesetup.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-/* Hide context menu icons in IE7 mode */
-@supports not (-moz-bool-pref("RinFox.Appearance.IE8")) {
-.item1::before,
-.item2::before,
-.item3::before,
-.item4::before,
-.item5::before,
-.item6::before,
-.item7::before,
-.item8::before,
-.item9::before,
-.item10::before,
-.item11::before,
-.item12::before,
-.item14::before,
-.safety-item1::before,
-.safety-item2::before,
-.safety-item3::before,
-.safety-item4::before,
-.safety-item5::before,
-.tools-item1::before, 
-.tools-item2::before, 
-.tools-item3::before, 
-.tools-item4::before, 
-.tools-item5::before, 
-.tools-item6::before, 
-.tools-item7::before, 
-.tools-item8::before, 
-.tools-item9::before, 
-.tools-item10::before,
-.hp-item1::before,
-.hp-item2::before,
-.hp-item3::before,
-.hp-item4::before,
-.print-item1::before,
-.print-item2::before,
-.print-item3::before,
-.print-item4::before {
-  background-image: url('images/blank.png');
-  
-}
-
-@supports not -moz-bool-pref("RinFox.Appearance.IE8") {
-	
-#pagemenu-button::before {
- content: "";
- width: 16px;
- height: 16px;
- background-image: url('images/menucontext/menuicons/page.png');
- background-size: contain;
- background-repeat: no-repeat;
- }
-
-#safety-button::before {
- content: "";
- width: 16px;
- height: 16px;
- background-image: url('images/menucontext/menuicons/security.png');
- background-size: contain;
- background-repeat: no-repeat;
- }
-
-#tools-button::before {
- content: "";
- width: 16px;
- height: 16px;
- background-image: url('images/menucontext/menuicons/tools.png');
- background-size: contain;
- background-repeat: no-repeat;
- }
-
-}
-
-    
-}
-

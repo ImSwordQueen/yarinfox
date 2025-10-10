@@ -28,7 +28,7 @@
 .search-panel-header,
 #page-action-buttons,
 #tracking-protection-icon-container,
-#identity-permission-box,
+/* #identity-permission-box, */
 #urlbar-go-button,
 .urlbarView-row:is([type="switchtab"], [type="remotetab"]) > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action
 {
@@ -364,7 +364,7 @@
 
 #search-container {
   width: 100% !important;
-  max-width: 234px !important;
+  max-width: 300px !important;
   margin-left: 4px !important;
   position: relative !important;
 }
@@ -412,7 +412,7 @@
 
 .search-go-button:hover,
 .searchbar-search-icon:hover,
-.searchbar-search-button[addengines="true"]:hover > .searchbar-search-icon-overlay
+/* .searchbar-search-button[addengines="true"]:hover > .searchbar-search-icon-overlay */
 {
   background-position-y: -22px !important;
 }
@@ -437,8 +437,7 @@
 .searchbar-search-button[addengines="true"] > .searchbar-search-icon-overlay {
   width: 13px !important;
   height: 22px !important;
-  margin-inline: 0 !important;
-  margin-left: -13px !important;
+  margin-left: -7px !important;
   margin-top: 0 !important;
   list-style-image: none !important;
   background-image: url('images/search-button.png') !important;
