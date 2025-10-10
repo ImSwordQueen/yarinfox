@@ -1,3 +1,7 @@
+:root {
+	--toolbarbutton-hover-background: rgba(0, 0, 0, 0) !important;
+}
+
 .bookmark-item,
 .tabbrowser-tab:is([selected], [multiselected]):-moz-lwtheme {
 	color: inherit !important;
