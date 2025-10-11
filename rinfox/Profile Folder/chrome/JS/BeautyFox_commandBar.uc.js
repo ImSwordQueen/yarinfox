@@ -687,21 +687,7 @@ const cBHelpMenu = createMenu({
             command: "openWhatsNewIE();"
         },
         {
-            type: 'app',
-            id: 'cBHelp_onlineSupport',
-            name: 'Online support',
-            locale: 'OnlineSupport',
-            command: "sendFeedbackLink();"
-        },
-        {
             type: 'separator',
-        },
-        {
-            type: 'app',
-            id: 'cBHelp_sendFeedback',
-            name: 'Send Feedback',
-            locale: 'sendFeedback',
-            command: 'sendFeedbackLink();',
         },
         {
             type: 'app',
