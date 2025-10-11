@@ -24,10 +24,6 @@
   list-style-image: url('images/email.png') !important;
 }
 
-#help-button {
-  list-style-image: url('images/help.png') !important;
-}
-
 #bookmarksSidebarButton {
   list-style-image: url('images/favorites.png') !important;
 }

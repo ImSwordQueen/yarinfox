@@ -2,11 +2,6 @@
   Toolbar Buttons
 */
 
-#help-button,
-#wrapper-help-button {
-  order: 3 !important;
-}
-
 #PanelUI-button,
 #wrapper-PanelUI-button {
   order: 2 !important;
@@ -25,7 +20,6 @@
 
 #PanelUI-menu-button::after,
 #unified-extensions-button::after,
-#help-button::after,
 #suggestedsites_bruni_com-BAP::after,
 #home-button::after,
 #print-button::after,
@@ -59,14 +53,6 @@
 #TabsToolbar toolbarbutton:not(#alltabs-button) .toolbarbutton-icon {
   width: 16px !important;
   height: 16px !important;
-}
-
-#help-button .toolbarbutton-icon {
-  transform: translateX(2px) !important;
-}
-
-#help-button::after {
-  transform: translateX(1px) !important;
 }
 
 /*
