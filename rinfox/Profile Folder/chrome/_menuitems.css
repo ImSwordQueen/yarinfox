@@ -172,47 +172,6 @@
   }
 }
 
-#commandBar[commandbaritem=icons] #cBPageMenuButton .toolbarbutton-icon {
-  list-style-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_7.ico") !important;
-}
-#commandBar[commandbaritem=icons] #cBSafetyMenuButton .toolbarbutton-icon {
-  list-style-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_50.ico") !important;
-}
-#commandBar[commandbaritem=icons] #cBToolsMenuButton .toolbarbutton-icon {
-  list-style-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_8.ico") !important;
-}
-#commandBar[commandbaritem=icons] #cBPageMenuButton,
-#commandBar[commandbaritem=icons] #cBSafetyMenuButton,
-#commandBar[commandbaritem=icons] #cBToolsMenuButton {
-  padding-left: 4px !important;
-}
-#commandBar[commandbaritem=icons] #cBPageMenuButton .toolbarbutton-text,
-#commandBar[commandbaritem=icons] #cBSafetyMenuButton .toolbarbutton-text,
-#commandBar[commandbaritem=icons] #cBToolsMenuButton .toolbarbutton-text {
-  display: none !important;
-}
-#commandBar[commandbaritem=icons] #cBPageMenuButton::after,
-#commandBar[commandbaritem=icons] #cBSafetyMenuButton::after,
-#commandBar[commandbaritem=icons] #cBToolsMenuButton::after {
-  margin-left: 2px !important;
-}
-#commandBar:not([commandbaritem=icons]) #cBPageMenuButton[open=true] .toolbarbutton-text, #commandBar:not([commandbaritem=icons]) #cBPageMenuButton[open=true]::after, #commandBar:not([commandbaritem=icons]) #cBPageMenuButton:active .toolbarbutton-text, #commandBar:not([commandbaritem=icons]) #cBPageMenuButton:active::after,
-#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton[open=true] .toolbarbutton-text,
-#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton[open=true]::after,
-#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton:active .toolbarbutton-text,
-#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton:active::after,
-#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton[open=true] .toolbarbutton-text,
-#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton[open=true]::after,
-#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton:active .toolbarbutton-text,
-#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton:active::after {
-  transform: translateX(0) translateY(0) !important;
-}
-#commandBar:not([commandbaritem=icons]) #cBPageMenuButton .toolbarbutton-icon,
-#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton .toolbarbutton-icon,
-#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton .toolbarbutton-icon {
-  display: none !important;
-}
-
 #cBHomeButton,
 #_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP,
 #cBPrintButton,
@@ -271,22 +230,6 @@
 #cBToolsMenuButton[type=menu] .toolbarbutton-text,
 #cBHelpMenuButton[type=menu] .toolbarbutton-text {
   margin-bottom: 2px !important;
-}
-
-#commandBar[commandbaritem=texticon] #cBHelpMenuButton .toolbarbutton-text {
-  padding-left: 4px !important;
-  padding-right: 4px !important;
-}
-#commandBar[commandbaritem=texticon] #cBHomeButton .toolbarbutton-text,
-#commandBar[commandbaritem=texticon] #_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP .toolbarbutton-text,
-#commandBar[commandbaritem=texticon] #cBPrintButton .toolbarbutton-text,
-#commandBar[commandbaritem=texticon] #cBReadMailButton .toolbarbutton-text,
-#commandBar[commandbaritem=texticon] #cBPageButton .toolbarbutton-text,
-#commandBar[commandbaritem=texticon] #cBPageMenuButton .toolbarbutton-text,
-#commandBar[commandbaritem=texticon] #cBSafetyMenuButton .toolbarbutton-text,
-#commandBar[commandbaritem=texticon] #cBToolsMenuButton .toolbarbutton-text,
-#commandBar[commandbaritem=texticon] #cBHelpMenuButton .toolbarbutton-text {
-  display: block !important;
 }
 
 #cBHelpMenuButton {
@@ -391,4 +334,63 @@
 #cBSafetyMenuButton  > .toolbarbutton-icon {
 	display: none !important;
 }
+}
+
+/* TODO: Rework this */
+
+#commandBar[commandbaritem=icons] #cBPageMenuButton .toolbarbutton-icon {
+  list-style-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_7.ico") !important;
+}
+#commandBar[commandbaritem=icons] #cBSafetyMenuButton .toolbarbutton-icon {
+  list-style-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_50.ico") !important;
+}
+#commandBar[commandbaritem=icons] #cBToolsMenuButton .toolbarbutton-icon {
+  list-style-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_8.ico") !important;
+}
+#commandBar[commandbaritem=icons] #cBPageMenuButton,
+#commandBar[commandbaritem=icons] #cBSafetyMenuButton,
+#commandBar[commandbaritem=icons] #cBToolsMenuButton {
+  padding-left: 4px !important;
+}
+#commandBar[commandbaritem=icons] #cBPageMenuButton .toolbarbutton-text,
+#commandBar[commandbaritem=icons] #cBSafetyMenuButton .toolbarbutton-text,
+#commandBar[commandbaritem=icons] #cBToolsMenuButton .toolbarbutton-text {
+  display: none !important;
+}
+#commandBar[commandbaritem=icons] #cBPageMenuButton::after,
+#commandBar[commandbaritem=icons] #cBSafetyMenuButton::after,
+#commandBar[commandbaritem=icons] #cBToolsMenuButton::after {
+  margin-left: 2px !important;
+}
+#commandBar:not([commandbaritem=icons]) #cBPageMenuButton[open=true] .toolbarbutton-text, #commandBar:not([commandbaritem=icons]) #cBPageMenuButton[open=true]::after, #commandBar:not([commandbaritem=icons]) #cBPageMenuButton:active .toolbarbutton-text, #commandBar:not([commandbaritem=icons]) #cBPageMenuButton:active::after,
+#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton[open=true] .toolbarbutton-text,
+#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton[open=true]::after,
+#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton:active .toolbarbutton-text,
+#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton:active::after,
+#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton[open=true] .toolbarbutton-text,
+#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton[open=true]::after,
+#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton:active .toolbarbutton-text,
+#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton:active::after {
+  transform: translateX(0) translateY(0) !important;
+}
+#commandBar:not([commandbaritem=icons]) #cBPageMenuButton .toolbarbutton-icon,
+#commandBar:not([commandbaritem=icons]) #cBSafetyMenuButton .toolbarbutton-icon,
+#commandBar:not([commandbaritem=icons]) #cBToolsMenuButton .toolbarbutton-icon {
+  display: none !important;
+}
+
+#commandBar[commandbaritem=texticon] #cBHelpMenuButton .toolbarbutton-text {
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+#commandBar[commandbaritem=texticon] #cBHomeButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBPrintButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBReadMailButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBPageButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBPageMenuButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBSafetyMenuButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBToolsMenuButton .toolbarbutton-text,
+#commandBar[commandbaritem=texticon] #cBHelpMenuButton .toolbarbutton-text {
+  display: block !important;
 }
