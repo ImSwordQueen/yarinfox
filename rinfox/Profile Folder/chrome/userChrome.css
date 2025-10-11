@@ -12,6 +12,7 @@
 @import url("_statusbar.css");
 @import url("_menuitems.css");
 @import url("_yarinfox.css");
+@import url("_yarinfoxmenubar.css");
 
 #identity-box[class][pageproxystate] > #identity-icon-box.identity-box-button,
 #identity-box[class][pageproxystate] > #notification-popup-box.anchor-root {

@@ -1,0 +1,171 @@
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_newWindow > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_cut > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_copy > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_paste > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_eMailWindowsLive > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_googleTranslate > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_saveAs > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_sendLinkbyEMail > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_zoom > .menu-iconic-left,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_viewSource > .menu-iconic-left {
+  position: relative;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_newWindow > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_cut > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_copy > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_paste > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_eMailWindowsLive > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_googleTranslate > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_saveAs > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_sendLinkbyEMail > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_zoom > .menu-iconic-left::before,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_viewSource > .menu-iconic-left::before {
+  content: "";
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_newWindow > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_cut > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_copy > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_paste > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_eMailWindowsLive > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_googleTranslate > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_saveAs > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_sendLinkbyEMail > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_zoom > .menu-iconic-left > .menu-iconic-icon,
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_viewSource > .menu-iconic-left > .menu-iconic-icon {
+  display: none;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_newWindow > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_37.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_cut > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_14.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_copy > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_15.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_paste > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_16.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_eMailWindowsLive > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Icon Group/17363.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_googleTranslate > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Icon Group/17364.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_saveAs > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_33.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_sendLinkbyEMail > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_40.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_zoom > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_18.ico") !important;
+}
+#cBPageMenuButton > #cBPageMenuPopUp > #cBPage_viewSource > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_34.ico") !important;
+}
+
+#cBSafetyMenuButton .toolbarbutton-text {
+  display: block;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_deleteBrowsingHistory > .menu-iconic-left,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_inPrivateBrowsing > .menu-iconic-left,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_smartScreenFilter > .menu-iconic-left {
+  position: relative;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_deleteBrowsingHistory > .menu-iconic-left::before,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_inPrivateBrowsing > .menu-iconic-left::before,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_smartScreenFilter > .menu-iconic-left::before {
+  content: "";
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_deleteBrowsingHistory > .menu-iconic-left > .menu-iconic-icon,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_inPrivateBrowsing > .menu-iconic-left > .menu-iconic-icon,
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_smartScreenFilter > .menu-iconic-left > .menu-iconic-icon {
+  display: none;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_deleteBrowsingHistory > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_41.ico") !important;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_inPrivateBrowsing > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_42.ico") !important;
+}
+#cBSafetyMenuButton > #cBSafetyMenuPopUp > #cBSafety_smartScreenFilter > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_31.ico") !important;
+}
+
+#cBToolsMenuButton .toolbarbutton-text {
+  display: block;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_diagnoseConnectionProblems > .menu-iconic-left,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_reopenLastBrowsingSession > .menu-iconic-left,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_manageAddOns > .menu-iconic-left,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_workOffline > .menu-iconic-left,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_fullScreen > .menu-iconic-left,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_internetOptions > .menu-iconic-left {
+  position: relative;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_diagnoseConnectionProblems > .menu-iconic-left::before,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_reopenLastBrowsingSession > .menu-iconic-left::before,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_manageAddOns > .menu-iconic-left::before,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_workOffline > .menu-iconic-left::before,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_fullScreen > .menu-iconic-left::before,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_internetOptions > .menu-iconic-left::before {
+  content: "";
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_diagnoseConnectionProblems > .menu-iconic-left > .menu-iconic-icon,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_reopenLastBrowsingSession > .menu-iconic-left > .menu-iconic-icon,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_manageAddOns > .menu-iconic-left > .menu-iconic-icon,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_workOffline > .menu-iconic-left > .menu-iconic-icon,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_fullScreen > .menu-iconic-left > .menu-iconic-icon,
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_internetOptions > .menu-iconic-left > .menu-iconic-icon {
+  display: none;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_diagnoseConnectionProblems > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_48.ico") !important;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_reopenLastBrowsingSession > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_49.ico") !important;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_manageAddOns > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_30.ico") !important;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_workOffline > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_39.ico") !important;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_fullScreen > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_17.ico") !important;
+}
+#cBToolsMenuButton > #cBToolsMenuPopUp > #cBTools_internetOptions > .menu-iconic-left::before {
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_38.ico") !important;
+}
+
+#cBHelpMenuButton > #cBHelpMenuPopUp > #cBHelp_onlineSupport > .menu-iconic-left {
+  position: relative;
+}
+#cBHelpMenuButton > #cBHelpMenuPopUp > #cBHelp_onlineSupport > .menu-iconic-left::before {
+  content: "";
+  background-image: url("chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_26.ico") !important;
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+}
+#cBHelpMenuButton > #cBHelpMenuPopUp > #cBHelp_onlineSupport > .menu-iconic-left > .menu-iconic-icon {
+  display: none;
+}
