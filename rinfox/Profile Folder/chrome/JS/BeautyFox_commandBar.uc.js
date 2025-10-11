@@ -687,6 +687,13 @@ const cBHelpMenu = createMenu({
             command: "openWhatsNewIE();"
         },
         {
+            type: 'app',
+            id: 'cBHelp_onlineSupport',
+            name: 'Online support',
+            locale: 'OnlineSupport',
+            command: "sendFeedbackLink();"
+        },
+        {
             type: 'separator',
         },
         {
@@ -710,4 +717,13 @@ function openWhatsNewIE() {
     })
 }
 
+function sendFeedbackLink() {
+    var SecondFeedBackURL;
+    if (pref('RinFox.Appearance.IE8').tryGet.bool()) { SecondFeedBackURL = 'https://web.archive.org/web/20100901073034id_/http://support.microsoft.com/default.aspx'; }
+    else { SecondFeedBackURL = 'https://web.archive.org/web/20080229025247id_/http://www.microsoft.com/windows/products/winfamily/ie/iefaq.mspx'; }
+    _ucUtils.loadURI(window, {
+        url: SecondFeedBackURL, 
+        where: 'tab'
+    })
+}
 // #endregion
