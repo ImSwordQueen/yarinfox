@@ -3,8 +3,8 @@
   --urlbar-min-height: 22px !important;
 }
 
-#urlbar-container, 
-#search-container 
+#urlbar-container,
+#search-container
 {
   --urlbar-container-height: 22.00px !important;
   height: 22px !important;

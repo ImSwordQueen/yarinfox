@@ -3,13 +3,49 @@
 // @description 	Changes aboutDialog to look like Internet Explorer's
 // @author			Travis
 // @include			chrome://browser/content/aboutDialog.xhtml
-// @exclude			main
 // ==/UserScript==
+
+console.log("AboutBox: Script loaded");
 
 (function () {
 
+console.log("AboutBox: IIFE executing");
+
+// Import Services for preference reading
+// Use a different approach for the about dialog window
+var _isIE8Cached = null;
+function checkIE8Pref() {
+    if (_isIE8Cached !== null) return _isIE8Cached;
+
+    try {
+        // Try to access Services from the opener window (main browser window)
+        if (window.opener && window.opener.Services && window.opener.Services.prefs) {
+            _isIE8Cached = window.opener.Services.prefs.getBoolPref("RinFox.Appearance.IE8", false);
+            console.log("AboutBox: Got IE8 pref from opener window:", _isIE8Cached);
+            return _isIE8Cached;
+        }
+    } catch (e) {
+        console.log("AboutBox: Could not get pref from opener:", e);
+    }
+
+    try {
+        // Try importing Services directly
+        const {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
+        _isIE8Cached = Services.prefs.getBoolPref("RinFox.Appearance.IE8", false);
+        console.log("AboutBox: Got IE8 pref from direct import:", _isIE8Cached);
+        return _isIE8Cached;
+    } catch (e) {
+        console.log("AboutBox: Could not import Services:", e);
+        _isIE8Cached = false;
+        return false;
+    }
+}
+
 var aboutDialog = document.getElementById("aboutDialog");
 var aboutDialogContainer = document.getElementById("aboutDialogContainer");
+
+console.log("AboutBox: aboutDialog element:", aboutDialog);
+console.log("AboutBox: aboutDialogContainer element:", aboutDialogContainer);
 
 function setAttributes(element, attributes) {
 		Object.keys(attributes).forEach(attr => {
@@ -20,23 +56,16 @@ function setAttributes(element, attributes) {
 // Title of About Window
 var aboutDialogTitle = "About Internet Explorer";
 
-// Properly check if the user chose Internet Explorer 7 or Internet Explorer 8 appearance
-//
-// We need to put these "getBool/Int/StringPref" in a try and catch block or
-// Firefox will throw an error if the bool was not yet created by the user (meaning
-// the bool is nonexistent in about:config) causing the code to stop, it's the reason why on
-// fresh installs the aboutDialog would look "half-themed", displaying Firefox icon and
-// information but with a white background. Only userContent was working.
-// - Bruno
-function checkIE8Status() {
-    try {
-        return Services.prefs.getBoolPref("RinFox.Appearance.IE8");
-    } catch (error) {
-        return false;
-    }
-}
+// Check if IE8 mode is enabled
+const isIE8Bool = checkIE8Pref();
 
-const isIE8Bool = checkIE8Status();
+console.log("AboutBox: isIE8Bool =", isIE8Bool);
+
+// Set IE8 attribute on dialog for CSS targeting
+if (isIE8Bool) {
+	aboutDialog.setAttribute("data-rinfox-ie8", "true");
+	console.log("AboutBox: Set data-rinfox-ie8 attribute on aboutDialog");
+}
 
 aboutDialog.setAttribute("title", ""+aboutDialogTitle+"");
 

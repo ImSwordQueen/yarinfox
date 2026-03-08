@@ -1,11 +1,12 @@
   /* Disable "Add-ons" Toolbar Button */
-@supports -moz-bool-pref("RinFox.Option.HideUnifiedExtensions") {
+:root[data-rinfox-hide-extensions] {
   #unified-extensions-button {
     display: none !important;
   }
 }
 
-@supports -moz-bool-pref("RinFox.Appearance.IE8") {
+/* IE8 Appearance */
+:root[data-rinfox-ie8] {
   #navigator-toolbox-background {
     background-color: #F2F6FB !important;
   }
@@ -75,11 +76,13 @@
     toolbar, #navigator-toolbox {
       appearance: none !important;
     }
-    #urlbar-container, 
-    #search-container 
+    #urlbar-container,
+    #search-container
     {
       --urlbar-container-height: 26.00px !important;
       height: 26px !important;
+      position: relative !important;
+      z-index: 0 !important;
     }
     #urlbar {
       top: 0 !important;
@@ -87,8 +90,9 @@
       --urlbar-height: 26.00px !important;
       --urlbar-toolbar-height: 32.00px !important;
     }
-    #urlbar-background, #urlbar[breakout][breakout-extend] #urlbar-background {
+    #urlbar-background {
       top: 0 !important;
+      left: 0 !important;
       display: flex !important;
       border-radius: 0 !important;
       border: 0 !important;
@@ -100,6 +104,12 @@
       box-shadow: none !important;
       outline: 0 !important;
       appearance: none !important;
+      position: absolute !important;
+      z-index: -1 !important;
+      pointer-events: none !important;
+    }
+    #urlbar[breakout][breakout-extend] {
+      width: 100% !important;
     }
     .urlbarView {
       width: calc(100% - 1px) !important;
@@ -114,6 +124,7 @@
       position: absolute !important;
       background-image: url('images/urlbar-spritesheet-left.png') !important;
       left: -3px !important;
+      z-index: -1 !important;
     }
     #urlbar:hover #urlbar-background,
     #urlbar:hover #urlbar-background::before {
@@ -129,6 +140,7 @@
       height: 26px !important;
       position: relative !important;
       padding-right: 2px !important;
+      z-index: 2 !important;
     }
     #stop-reload-button::before {
       content: '' !important;
@@ -286,6 +298,7 @@
     }
     #nav-bar {
       padding: 2px 0 2px 0 !important;
+      isolation: isolate !important;
     }
     #TabsToolbar toolbarbutton:not(#alltabs-button, #tabs-newtab-button, #tiptab_william_wong-BAP, #bookmarks-menu-button, #library-button) {
       min-width: 24px !important;
@@ -488,7 +501,7 @@
     #identity-box[pageproxystate="valid"].notSecure #identity-icon, #identity-box[pageproxystate="valid"].mixedActiveContent #identity-icon, #identity-box[pageproxystate="valid"].httpsOnlyErrorPage #identity-icon, #identity-box[pageproxystate="valid"].weakCipher #identity-icon, #identity-box[pageproxystate="valid"].mixedDisplayContent #identity-icon, #identity-box[pageproxystate="valid"].mixedDisplayContentLoadedActiveBlocked #identity-icon, #identity-box[pageproxystate="valid"].certUserOverridden #identity-icon, #identity-box[pageproxystate="valid"].certErrorPage #identity-icon {
       list-style-image: url('images/unsecure.png') !important;
     }
-    @supports -moz-bool-pref("RinFox.Appearance.IE8") {
+    :root[data-rinfox-ie8] {
       #toolbar-menubar[autohide="true"][inactive="true"]:not([customizing="true"]) {
         margin-top: 0 !important;
       }
@@ -691,12 +704,13 @@
   }
 }
 
-@supports -moz-bool-pref("RinFox.Option.HideFakeDropdownGlyphs") {
+/* Hide Fake Dropdown Glyphs */
+:root[data-rinfox-hide-glyphs] {
   #TabsToolbar toolbarbutton:not(#alltabs-button, #tabs-newtab-button, #tiptab_william_wong-BAP) {
     min-width: 32px !important;
   }
-  #home-button, 
-  #print-button, 
+  #home-button,
+  #print-button,
   #_a9c2ad37-e940-4892-8dce-cd73c6cbbc0c_-BAP {
     width: unset !important;
   }
@@ -708,7 +722,8 @@
   }
 }
 
-@supports -moz-bool-pref("RinFox.Option.HideInnerBorders") {
+/* Hide Inner Borders */
+:root[data-rinfox-hide-inner-borders] {
   @media (-moz-platform: windows-win7), (-moz-platform: windows-win8), (-moz-windows-glass), (-moz-windows-default-theme) {
     @media not (-moz-windows-classic: 1) {
       @media not (-moz-windows-compositor: 0) {

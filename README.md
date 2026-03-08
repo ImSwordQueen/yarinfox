@@ -1,3 +1,10 @@
+# THIS BRANCH IS VERY UNUSABLE. THIS IS AN EXPERIMENT OF PORTING RINFOX TO 140. DO NOT MAIN.
+
+# Notes (Specific for 140)
+* CSS is broken. It could be fixed if someone cares to do it enough.
+* The same issues as stock yarinfox are present. I won't be fixing those.
+* Features are missing. (Favorites won't have a sidebar. I think that got removed after 128?)
+
 ![rinFox Logo](images/logo_dark.png#gh-light-mode-only) ![rinFox Logo](images/logo_light.png#gh-dark-mode-only)
 # YarinFox - Yet Another RinFox fork
 

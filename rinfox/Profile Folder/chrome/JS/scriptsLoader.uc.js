@@ -5,7 +5,7 @@
 // @include			main
 // ==/UserScript==
 
-const { ctypes } = ChromeUtils.import("resource://gre/modules/ctypes.jsm");
+const { ctypes } = ChromeUtils.importESModule("resource://gre/modules/ctypes.sys.mjs");
 
 function executeFunctions() {
 	getAndSetTitleBarHeight();

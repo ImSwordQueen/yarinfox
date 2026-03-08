@@ -135,7 +135,7 @@ window.addEventListener("load", function() {
   });
 
   function isExtensionPinned(extensionID) {
-    var { AddonManager } = Components.utils.import("resource://gre/modules/AddonManager.jsm", {});
+    var { AddonManager } = ChromeUtils.importESModule("resource://gre/modules/AddonManager.sys.mjs");
     return new Promise((resolve) => {
       AddonManager.getAllAddons(addons => {
         for (let addon of addons) {

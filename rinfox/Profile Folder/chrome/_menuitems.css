@@ -327,7 +327,7 @@
 }
 
 /* TODO: Add a proper check to remove the icons here as right now the only real option is labels only with no icons in IE8.*/
-@supports -moz-bool-pref("RinFox.Appearance.IE8") {
+:root[data-rinfox-ie8] {
 #cBToolsMenuButton > .toolbarbutton-icon,
 #cBPageMenuButton  > .toolbarbutton-icon,
 #cBSafetyMenuButton  > .toolbarbutton-icon {

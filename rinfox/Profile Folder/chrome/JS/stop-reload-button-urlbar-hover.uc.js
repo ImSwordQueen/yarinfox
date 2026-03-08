@@ -10,6 +10,6 @@
             stopReloadButton.addEventListener('mouseout', () => {
                 urlbarBackground.classList.remove('urlbar-hover');
             });
-        }*
+        }
     }, { once: true });
 })();

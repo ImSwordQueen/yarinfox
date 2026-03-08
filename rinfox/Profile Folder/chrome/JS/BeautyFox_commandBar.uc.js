@@ -7,6 +7,10 @@
 
 // ATTENTION: Most of this code is TERRIBLE, no worries, Geckium will bring a better one.
 
+if (typeof CustomizableUI === "undefined") {
+    ChromeUtils.import("resource:///modules/CustomizableUI.jsm");
+}
+
 window.addEventListener('close', function() {
 	const commandBarCollapsed = document.getElementById("commandBar").getAttribute("collapsed") === "true";
 	pref('BeautyFox.option.commandBar').set.bool(!commandBarCollapsed);
@@ -28,7 +32,7 @@ function createCBHomeButton() {
             },
         });
     }
-    catch (e) { Components.utils.reportError(e); }
+    catch (e) { console.error(e); }
 }
 
 function createCBReadMailButton() {
@@ -52,7 +56,7 @@ function createCBReadMailButton() {
             },
         });
     }
-    catch (e) { Components.utils.reportError(e); }
+    catch (e) { console.error(e); }
 }
 
 function mailWithWindowsLive() {
@@ -85,7 +89,19 @@ function reportUnsafeWebsite() {
 
 function toggleToolbar(toolbarId) {
 	const toolbar = document.getElementById(toolbarId);
-	setToolbarVisibility(toolbar, !!toolbar.getAttribute("inactive"), true, false);
+	// Firefox 140 compatibility - use setToolbarVisibility if available
+	if (typeof setToolbarVisibility !== 'undefined') {
+		setToolbarVisibility(toolbar, !!toolbar.getAttribute("inactive"), true, false);
+	} else {
+		// Fallback - toggle collapsed attribute
+		if (toolbar.getAttribute("inactive") === "true") {
+			toolbar.removeAttribute("inactive");
+			toolbar.collapsed = false;
+		} else {
+			toolbar.setAttribute("inactive", "true");
+			toolbar.collapsed = true;
+		}
+	}
 }
 
 const cBPageMenu = createMenu({
@@ -178,7 +194,7 @@ const cBPageMenu = createMenu({
                     id: 'cBPage_manageAccelerators',
                     name: 'Manage Accelerators...',
                     locale: 'ManageAccelerators',
-                    command: 'BrowserOpenAddonsMgr();',
+                    command: 'openAddonsManager();',
                 }
             ],
         },
@@ -204,7 +220,7 @@ const cBPageMenu = createMenu({
             name: 'Send link by e-mail...',
             locale: 'SendLinkByEMail',
             image: 'chrome://browser/skin/mail.svg',
-            command: 'MailIntegration.sendLinkForBrowser(gBrowser.selectedBrowser);',
+            command: 'sendLinkByEmail(gBrowser.selectedBrowser);',
         },
         //{
         //    type: 'app',
@@ -350,14 +366,14 @@ const cBPageMenu = createMenu({
             id: 'cBPage_properties',
             name: 'Properties',
             locale: 'Properties',
-            command: 'BrowserPageInfo();',
+            command: 'openPageInfo();',
         },
         {
             type: 'app',
             id: 'cBPage_viewSource',
             name: 'View source',
             locale: 'ViewSource',
-            command: 'BrowserViewSource(window.gBrowser.selectedBrowser)',
+            command: 'openViewSource(window.gBrowser.selectedBrowser)',
         },
     ],
 });
@@ -375,7 +391,7 @@ const cBSafetyMenu = createMenu({
             locale: 'DeleteBrowsingHistory',
             image: 'chrome://devtools/skin/images/clear.svg',
             accelText: 'Ctrl+Shift+Del',
-            command: 'Sanitizer.showUI(window);',
+            command: 'openSanitizerUI();',
         },
         {
             type: 'app',
@@ -391,7 +407,7 @@ const cBSafetyMenu = createMenu({
             id: 'cBSafety_trackingProtection',
             name: 'Tracking Protection...',
             locale: 'TrackingProtection',
-            command: 'gProtectionsHandler.openPreferences()',
+            command: 'openTrackingProtection()',
         },
         //{
         //    type: 'app',
@@ -456,6 +472,151 @@ cBSafetyMenu.init();
 
 function openWindowsUpdate() { runFile("control.exe", "/name Microsoft.WindowsUpdate") };
 
+function openInternetOptions() {
+    openPreferences('paneGeneral');
+}
+
+function openAboutDialog() {
+    // Firefox 140 compatibility - open about dialog
+    window.openDialog('chrome://browser/content/aboutDialog.xhtml', 'About', 'chrome,modal,resizable=no,centerscreen');
+}
+
+function openAddonsManager() {
+    // Firefox 140 compatibility - use the new API
+    if (typeof BrowserAddons !== 'undefined' && BrowserAddons.openAddonsMgr) {
+        BrowserAddons.openAddonsMgr();
+    } else {
+        // Fallback for older versions
+        _ucUtils.loadURI(window, {
+            url: 'about:addons',
+            where: 'tab'
+        });
+    }
+}
+
+function openHelpLink(helpTopic) {
+    // Firefox 140 compatibility - open help in a new tab
+    var helpUrl = 'https://support.mozilla.org/en-US/products/firefox';
+    _ucUtils.loadURI(window, {
+        url: helpUrl,
+        where: 'tab'
+    });
+}
+
+function openPageInfo() {
+    // Firefox 140 compatibility
+    if (typeof BrowserPageInfo !== 'undefined') {
+        BrowserPageInfo();
+    } else {
+        // Fallback - open about:pageinfo in a new window
+        window.openDialog('chrome://browser/content/pageinfo.xhtml', null,
+            'chrome,dialog=no,centerscreen');
+    }
+}
+
+function openViewSource(browser) {
+    // Firefox 140 compatibility
+    if (typeof BrowserViewSource !== 'undefined') {
+        BrowserViewSource(browser);
+    } else {
+        // Fallback - use ViewSource browser
+        _ucUtils.loadURI(window, {
+            url: 'view-source:' + browser.currentURI.spec,
+            where: 'tab'
+        });
+    }
+}
+
+function openDownloadsUI() {
+    // Firefox 140 compatibility
+    if (typeof BrowserDownloadsUI !== 'undefined') {
+        BrowserDownloadsUI();
+    } else {
+        _ucUtils.loadURI(window, {
+            url: 'about:downloads',
+            where: 'tab'
+        });
+    }
+}
+
+function sendLinkByEmail(browser) {
+    // Firefox 140 compatibility
+    if (typeof MailIntegration !== 'undefined' && MailIntegration.sendLinkForBrowser) {
+        MailIntegration.sendLinkForBrowser(browser);
+    } else {
+        // Fallback - open mailto with the page URL
+        var mailtoLink = 'mailto:?subject=' + encodeURIComponent(browser.currentURI.spec) + '&body=' + encodeURIComponent(browser.currentURI.spec);
+        _ucUtils.loadURI(window, {
+            url: mailtoLink,
+            where: 'tab'
+        });
+    }
+}
+
+function openSanitizerUI() {
+    // Firefox 140 compatibility
+    if (typeof Sanitizer !== 'undefined' && Sanitizer.showUI) {
+        Sanitizer.showUI(window);
+    } else {
+        // Fallback - open about:preferences#privacy
+        openPreferences('panePrivacy');
+    }
+}
+
+function openTrackingProtection() {
+    // Firefox 140 compatibility
+    if (typeof gProtectionsHandler !== 'undefined' && gProtectionsHandler.openPreferences) {
+        gProtectionsHandler.openPreferences();
+    } else {
+        // Fallback - open privacy preferences
+        openPreferences('panePrivacy');
+    }
+}
+
+function toggleOfflineStatus() {
+    // Firefox 140 compatibility
+    if (typeof BrowserOffline !== 'undefined' && BrowserOffline.toggleOfflineStatus) {
+        BrowserOffline.toggleOfflineStatus();
+    } else {
+        // Fallback - use Services.io.offline
+        Services.io.offline = !Services.io.offline;
+    }
+}
+
+function toggleBookmarksToolbar() {
+    // Firefox 140 compatibility
+    if (typeof BookmarkingUI !== 'undefined' && BookmarkingUI.toggleBookmarksToolbar) {
+        BookmarkingUI.toggleBookmarksToolbar('shortcut');
+    } else {
+        // Fallback - use command dispatcher
+        var cmd = document.getElementById('cmd_toggleBookmarksToolbar');
+        if (cmd) cmd.doCommand();
+    }
+}
+
+function toggleSidebar(sidebarId) {
+    // Firefox 140 compatibility
+    if (typeof SidebarUI !== 'undefined' && SidebarUI.toggle) {
+        SidebarUI.toggle(sidebarId);
+    } else {
+        // Fallback - use window.openSidebar
+        if (typeof window.openSidebar === 'function') {
+            window.openSidebar(sidebarId);
+        }
+    }
+}
+
+function enterCustomizeMode() {
+    // Firefox 140 compatibility
+    if (typeof gCustomizeMode !== 'undefined' && gCustomizeMode.enter) {
+        gCustomizeMode.enter();
+    } else {
+        // Fallback - use the command
+        var cmd = document.getElementById('cmd_CustomizeToolbars');
+        if (cmd) cmd.doCommand();
+    }
+}
+
 const cBToolsMenu = createMenu({
     id: 'cBToolsMenu',
     name: 'Tools',
@@ -502,7 +663,7 @@ const cBToolsMenu = createMenu({
             name: 'View downloads',
             locale: 'ViewDownloads',
             accelText: 'Ctrl+J',
-            command: 'BrowserDownloadsUI();',
+            command: 'openDownloadsUI();',
         },
         {
             type: 'app',
@@ -510,7 +671,7 @@ const cBToolsMenu = createMenu({
             name: 'Manage add-ons',
             locale: 'ManageAddOns',
             image: 'chrome://devtools/skin/images/debugging-addons.svg',
-            command: 'BrowserOpenAddonsMgr();',
+            command: 'openAddonsManager();',
         },
         {
             type: 'separator',
@@ -520,7 +681,7 @@ const cBToolsMenu = createMenu({
             id: 'cBTools_workOffline',
             name: 'Work offline',
             locale: 'WorkOffline',
-            command: 'BrowserOffline.toggleOfflineStatus();',
+            command: 'toggleOfflineStatus();',
         },
         //{
         //    type: 'app',
@@ -559,7 +720,7 @@ const cBToolsMenu = createMenu({
                     id: 'cBTools_favoritesBar',
                     name: 'Favourites bar',
                     locale: 'FavouritesBar',
-                    command: "BookmarkingUI.toggleBookmarksToolbar('shortcut');",
+                    command: "toggleBookmarksToolbar();",
                 },
 				{
                     type: 'app',
@@ -576,7 +737,7 @@ const cBToolsMenu = createMenu({
                     id: 'cBTools_manageAddOns2',
                     name: 'Manage add-ons',
                     locale: 'ManageAddOns',
-                    command: 'BrowserOpenAddonsMgr();',
+                    command: 'openAddonsManager();',
                 },
                 {
                     type: 'separator',
@@ -586,7 +747,7 @@ const cBToolsMenu = createMenu({
                     id: 'cBTools_customize',
                     name: 'Customize...',
                     locale: 'Customise',
-                    command: 'gCustomizeMode.enter();',
+                    command: 'enterCustomizeMode();',
                 },
             ]
         },
@@ -601,14 +762,14 @@ const cBToolsMenu = createMenu({
                     id: 'cBTools_favorites',
                     name: 'Favourites',
                     locale: 'Favourites',
-                    command: "SidebarUI.toggle('viewBookmarksSidebar');",
+                    command: "toggleSidebar('viewBookmarksSidebar');",
                 },
                 {
                     type: 'app',
                     id: 'cBTools_history',
                     name: 'History',
                     locale: 'History',
-                    command: "SidebarUI.toggle('viewHistorySidebar')",
+                    command: "toggleSidebar('viewHistorySidebar')",
                 },
                 /*{
                     type: 'app',

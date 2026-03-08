@@ -1,3 +1,17 @@
+// Firefox 140 compatibility - use different import methods
+if (typeof Services === "undefined") {
+    try {
+        ChromeUtils.defineESModuleGetters(this, {
+            Services: "resource://gre/modules/Services.sys.mjs",
+        });
+    } catch (e) {
+        try {
+            var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
+        } catch (e2) {
+            console.error("Failed to load Services:", e, e2);
+        }
+    }
+}
 var appversion = parseInt(Services.appinfo.version);
 
 var compact_buttons = false;
@@ -54,11 +68,11 @@ var AddAddonbar = {
     }
 
     // style sheet
-    Components.classes['@mozilla.org/content/style-sheet-service;1'].getService(Components.interfaces.nsIStyleSheetService).loadAndRegisterSheet(
+    Cc['@mozilla.org/content/style-sheet-service;1'].getService(Ci.nsIStyleSheetService).loadAndRegisterSheet(
       Services.io.newURI('data:text/css;charset=utf-8,' + encodeURIComponent(`
         ` + compact_buttons_code + `
       `), null, null),
-      Components.classes['@mozilla.org/content/style-sheet-service;1'].getService(Components.interfaces.nsIStyleSheetService).AGENT_SHEET
+      Cc['@mozilla.org/content/style-sheet-service;1'].getService(Ci.nsIStyleSheetService).AGENT_SHEET
     );
 
     // toolbar

@@ -2,7 +2,7 @@
     --rinfox_tweak_ie8: 0;
 }
 
-@supports -moz-bool-pref("rinfox.tweak.ie8") {
+:root[data-rinfox-ie8-tweak] {
     :root {
         --rinfox_tweak_ie8: 1;
     }

@@ -1,5 +1,5 @@
 function getAndSetTitleBarHeight() {
-    if (Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).OS == "WINNT") {
+    if (Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime).OS == "WINNT") {
         // Load User32.dll library
         const user32 = ctypes.open("user32.dll");
 

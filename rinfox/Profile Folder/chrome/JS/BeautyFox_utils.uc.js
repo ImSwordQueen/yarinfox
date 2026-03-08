@@ -4,6 +4,21 @@
 // @loadorder   1
 // ==/UserScript==
 
+// Firefox 140 compatibility - use different import methods
+if (typeof Services === "undefined") {
+    try {
+        ChromeUtils.defineESModuleGetters(this, {
+            Services: "resource://gre/modules/Services.sys.mjs",
+        });
+    } catch (e) {
+        try {
+            var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
+        } catch (e2) {
+            console.error("Failed to load Services:", e, e2);
+        }
+    }
+}
+
 function setAttributes(element, attributes) { for (var key in attributes) { element.setAttribute(key, attributes[key]); } }
 
 function insertAfter(newNode, existingNode) {
@@ -18,9 +33,9 @@ function pref(prefName) {
             string: function (string) { Services.prefs.setStringPref(prefName, string); }
         },
         tryGet: {
-            bool: function () { try { return Services.prefs.getBoolPref(prefName); } catch (e) { console.log('Setting not found: '+ e) } },
-            int: function () { try { return Services.prefs.getIntPref(prefName); } catch (e) { console.log('Setting not found: '+ e) } },
-            string: function () { try { return Services.prefs.getStringPref(prefName); } catch (e) { console.log('Setting not found: '+ e) } }
+            bool: function () { try { return Services.prefs.getBoolPref(prefName); } catch (e) { /* Silently return undefined for missing prefs */ } },
+            int: function () { try { return Services.prefs.getIntPref(prefName); } catch (e) { /* Silently return undefined for missing prefs */ } },
+            string: function () { try { return Services.prefs.getStringPref(prefName); } catch (e) { /* Silently return undefined for missing prefs */ } }
         }
     }
 };

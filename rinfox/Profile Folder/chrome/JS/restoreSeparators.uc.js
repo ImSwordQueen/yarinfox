@@ -21,8 +21,23 @@
 // [!] Fix for WebExtensions with own windows by 黒仪大螃蟹 (for 1-N scripts)
 
 
-Components.utils.import("resource:///modules/CustomizableUI.jsm");
-var {Services} = Components.utils.import("resource://gre/modules/Services.jsm", {});
+if (typeof CustomizableUI === "undefined") {
+    ChromeUtils.import("resource:///modules/CustomizableUI.jsm");
+}
+// Firefox 140 compatibility - use different import methods
+if (typeof Services === "undefined") {
+    try {
+        ChromeUtils.defineESModuleGetters(this, {
+            Services: "resource://gre/modules/Services.sys.mjs",
+        });
+    } catch (e) {
+        try {
+            var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
+        } catch (e2) {
+            console.error("Failed to load Services:", e, e2);
+        }
+    }
+}
 var appversion = parseInt(Services.appinfo.version);
 
 var AddSeparator = {
@@ -105,7 +120,7 @@ var AddSeparator = {
 	  tb_config.appendChild(tb_spring);
 	    
 	  // CSS
-	  var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"].getService(Components.interfaces.nsIStyleSheetService);
+	  var sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
 
 	  var uri = Services.io.newURI("data:text/css;charset=utf-8," + encodeURIComponent('\
 	  \

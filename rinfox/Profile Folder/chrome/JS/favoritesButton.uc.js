@@ -6,9 +6,24 @@
 // ==/UserScript==
 // 2025 Note: WHY IS IT NAMED HELP BUTTON BUT HAS MORE STUFF INSIDE BRUH???
 
-Components.utils.import("resource:///modules/CustomizableUI.jsm");
-var {Services} = Components.utils.import("resource://gre/modules/Services.jsm", {});
-var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"].getService(Components.interfaces.nsIStyleSheetService);
+if (typeof CustomizableUI === "undefined") {
+    ChromeUtils.import("resource:///modules/CustomizableUI.jsm");
+}
+// Firefox 140 compatibility - use different import methods
+if (typeof Services === "undefined") {
+    try {
+        ChromeUtils.defineESModuleGetters(this, {
+            Services: "resource://gre/modules/Services.sys.mjs",
+        });
+    } catch (e) {
+        try {
+            var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
+        } catch (e2) {
+            console.error("Failed to load Services:", e, e2);
+        }
+    }
+}
+var sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
 var appversion = parseInt(Services.appinfo.version);
 
 function createAddToBookmarks() {
@@ -31,7 +46,7 @@ try {
     });
 }
 catch (e) {
-    Components.utils.reportError(e);
+    console.error(e);
 };
 
 };
@@ -52,8 +67,16 @@ function createFavoritesSidebarButton() {
             label: buttonText,
             tooltiptext: buttonText,
             onCommand: function() {
-                SidebarUI.toggle('viewBookmarksSidebar');
-				SidebarUI.reversePosition();
+                try {
+                    if (typeof SidebarUI !== 'undefined' && SidebarUI.toggle) {
+                        SidebarUI.toggle('viewBookmarksSidebar');
+                        if (typeof SidebarUI.reversePosition === 'function') {
+                            SidebarUI.reversePosition();
+                        }
+                    }
+                } catch (e) {
+                    console.error("SidebarUI error:", e);
+                }
             },
             onCreated: function(button) {
                 return button;
@@ -61,6 +84,6 @@ function createFavoritesSidebarButton() {
         });
     }
     catch (e) {
-        Components.utils.reportError(e);
+        console.error(e);
     }
 };
