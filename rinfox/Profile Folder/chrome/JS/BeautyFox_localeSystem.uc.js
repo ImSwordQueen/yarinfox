@@ -11,6 +11,8 @@ if (typeof Services === "undefined") {
         ChromeUtils.defineESModuleGetters(this, {
             Services: "resource://gre/modules/Services.sys.mjs",
         });
+    } catch (e) {
+        try {
             var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
         } catch (e2) {
             console.error("Failed to load Services:", e, e2);
