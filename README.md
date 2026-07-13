@@ -5,7 +5,7 @@
 
 ## THIS THEME IS MADE ONLY FOR NOCTURNE AND WON'T WORK ON ANY OTHER FORK THAT DOES NOT IMPLEMENT MOZ-WIN-GLASS.
 
-<img width="1476" height="898" alt="image" src="https://github.com/user-attachments/assets/c006b3e1-4cf5-46f0-a7e2-4e0a2c9e5c96" />
+<img width="1477" height="899" alt="image" src="https://github.com/user-attachments/assets/e44366b0-0a57-4edd-99a6-dd79af85a8a2" />
 
 <br>Yarinfox is a semi-continuation/porting/whatever of features that RinFox never got but Beautyfox 1 did. Almost everything new was taken from Beautyfox.
 
