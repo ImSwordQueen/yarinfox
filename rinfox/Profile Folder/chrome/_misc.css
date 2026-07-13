@@ -160,7 +160,8 @@ toolbarseparator {
 }
 
 #unified-extensions-area toolbarbutton {
-  appearance: toolbarbutton !important;
+  appearance: auto !important;
+  -moz-default-appearance: toolbarbutton !important;
   background-color: transparent !important;
   padding: 4px 5px !important;
 }
@@ -271,14 +272,12 @@ toolbarbutton menupopup[placespopup] {
   margin-bottom: 6px !important;
 }
 
-@media (-moz-platform: windows-win7), (-moz-platform: windows-win8), (-moz-windows-glass), (-moz-windows-default-theme) {
-  @media not (-moz-windows-classic: 1) {
+@media (-moz-platform: windows) {
     #sidebar-switcher-arrow {
       width: 7px !important;
       height: 4px !important;
       list-style-image: url('images/chevron-vista.png') !important;
     }
-  }
 }
 
 /* Popup Blocker */
@@ -286,33 +285,55 @@ toolbarbutton menupopup[placespopup] {
   margin-inline: 2px !important;
 }
 
-notification-message {
-  transition: none !important;
-}
 
 notification-message[message-bar-type="infobar"] {
-  margin: 0 !important;
+  --message-bar-background-color: #FFFFE1;
+  --message-bar-border-color: transparent;
+  --message-bar-border-radius: 0;
+  --message-bar-container-min-height: 17px;
+  --message-bar-icon-close-url: url("images/close-mask.svg");
+  --icon-size-default: 8px;
+  --button-size-icon-small: 16px;
+  --button-min-height-small: 16px;
+  --button-padding-icon: 0;
+  --button-outer-padding-inline: 0;
+  --button-outer-padding-block: 0;
+  --button-border: 0;
+  --button-background-color-ghost: transparent;
+  --button-background-color-ghost-hover: transparent;
+  --button-background-color-ghost-active: transparent;
+  --button-border-color-ghost: transparent;
+  --button-border-color-ghost-hover: transparent;
+  --button-border-color-ghost-active: transparent;
+  --space-medium: 4px;
+  --space-small: 4px;
+
+  margin-top: 0 !important;
+  margin-inline: 0 !important;
+  margin-bottom: 0 !important;
+  box-sizing: border-box !important;
+  height: 23px !important;
+  min-height: 23px !important;
+  max-height: 23px !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background-color: #FFFFE1 !important;
 }
 
-notification-message[style="margin-top: -23px; opacity: 0;"] {
+notification-message[message-bar-type="infobar"][style*="opacity: 0"] {
   margin-top: -23px !important;
 }
 
-.container.infobar {
-  min-height: 23px !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  padding-inline: 4px !important;
-  background-color: #FFFFE1 !important;
-  align-items: center !important;
-}
-
-.container.infobar:hover {
+notification-message[message-bar-type="infobar"]:hover {
+  --message-bar-background-color: Highlight;
+  --message-bar-text-color: HighlightText;
   background-color: Highlight !important;
   color: HighlightText !important;
 }
 
-.container.infobar::before {
+notification-message[message-bar-type="infobar"]::before {
   display: none !important;
 }
 

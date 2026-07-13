@@ -5,15 +5,17 @@
 // @include			main
 // ==/UserScript==
 
+const RinFoxWizardServices = Services;
+
 function openRinFoxWizardWindow(verifyFirstRun) {
     if (verifyFirstRun) {
         let isRinFoxFirstRunFinished = false;
         try {
-            isRinFoxFirstRunFinished = Services.prefs.getBoolPref("RinFox.parameter.isFirstRunFinished");
+            isRinFoxFirstRunFinished = RinFoxWizardServices.prefs.getBoolPref("RinFox.parameter.isFirstRunFinished");
         } catch (error) {}
         
         if (!isRinFoxFirstRunFinished) {
-            Services.prefs.setBoolPref('RinFox.parameter.isFirstRunFinished', false)
+            RinFoxWizardServices.prefs.setBoolPref('RinFox.parameter.isFirstRunFinished', false)
 
             launchRinFoxWizard();
         }

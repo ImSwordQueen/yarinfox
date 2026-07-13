@@ -34,17 +34,122 @@
     
 		  }
 
+
+#browser {
+	position: relative !important;
+	padding-bottom: 22px !important;
+	box-sizing: border-box !important;
+}
+
 #addonbar {
 	border-top: 1px solid #9f9e9f !important;
-                  margin-inline: 2px !important;
-                  transform: translateY(-2px);
-                  background-color: #f1edec !important;
+	transform: translateZ(0) !important;
+	position: absolute !important;
+	inset: auto 0 0 0 !important;
+	background-color: #f1edec !important;
+	box-sizing: border-box !important;
+	height: 22px !important;
+	min-height: 22px !important;
+	max-height: 22px !important;
+	padding-block: 0 !important;
+	box-shadow:
+		inset 0 1px 0 #fff,
+		inset 0 -1px 0 #b8dff4,
+		0 1px 0 rgb(0 0 0 / 45%) !important;
 	-moz-window-dragging: no-drag !important;
-   display: flex; 
-   /* justify-content: flex-end; */
-   justify-content: flex-start !important;
-   z-index: 0
+	display: flex;
+	/* justify-content: flex-end; */
+	justify-content: flex-start !important;
+	align-items: center !important;
+	z-index: 1;
 }
+
+/* Keep customizable widgets before the fixed status indicators, regardless of
+   where CustomizableUI inserts their DOM nodes. */
+#addonbar > .separator-1,
+#addonbar > .separator-2,
+#addonbar > .separator-3,
+#addonbar > .separator-4,
+#addonbar > .separator-5,
+#addonbar > .separator-6,
+#addonbar > .separator-7,
+#addonbar > .internet-options,
+#addonbar > .security-button,
+#addonbar > .security-separator,
+#addonbar > .zoom-button,
+#addonbar > .corner-icon {
+	order: 1;
+}
+
+/* Status-bar widgets use compact icon sizing instead of inheriting the
+   dimensions of the navigation and tabs toolbars. */
+#addonbar toolbarbutton.toolbarbutton-1.chromeclass-toolbar-additional {
+	box-sizing: border-box !important;
+	min-width: 20px !important;
+	min-height: 20px !important;
+	max-height: 20px !important;
+	margin: 0 !important;
+	padding: 2px !important;
+}
+
+#addonbar toolbarbutton.toolbarbutton-1.chromeclass-toolbar-additional
+	> .toolbarbutton-badge-stack,
+#addonbar toolbarbutton.toolbarbutton-1.chromeclass-toolbar-additional
+	> .toolbarbutton-icon {
+	box-sizing: border-box !important;
+	width: 16px !important;
+	min-width: 16px !important;
+	height: 16px !important;
+	min-height: 16px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+#addonbar .toolbarbutton-badge-stack {
+	overflow: visible !important;
+}
+
+#addonbar toolbarbutton.toolbarbutton-1.chromeclass-toolbar-additional
+	.toolbarbutton-badge-stack > .toolbarbutton-icon {
+	width: 16px !important;
+	height: 16px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+/* The movable PanelUI "Tools" control hides its text on the status bar while
+   retaining the dropdown indicator. */
+#addonbar #PanelUI-menu-button > .toolbarbutton-text {
+	display: none !important;
+}
+
+#addonbar #PanelUI-menu-button {
+	min-width: 24px !important;
+	width: auto !important;
+	padding-inline: 2px !important;
+}
+
+#addonbar #PanelUI-menu-button > .toolbarbutton-badge-stack {
+	width: 16px !important;
+	min-width: 16px !important;
+	margin: 0 !important;
+}
+
+#addonbar #PanelUI-menu-button::after {
+	margin-left: 2px !important;
+}
+
+/* Firefox animates the drop gap only when a widget enters from another area.
+   Disable that transition so incoming and existing status-bar widgets behave
+   the same while they are being arranged. */
+:root[customizing] #addonbar > toolbarpaletteitem[place="toolbar"] {
+	transition: none !important;
+}
+
+:root[customizing] #customization-container {
+	margin-bottom: 22px !important;
+}
+
 
 .internet-options {
     padding-right: 20px;
@@ -71,6 +176,18 @@
     vertical-align: middle;
 }
 
+.zoom-button {
+    box-sizing: border-box !important;
+    height: 21px !important;
+    min-height: 21px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+    padding: 0 4px 0 5px !important;
+    margin: 0 !important;
+    transform: translateY(-2px) !important;
+    font: menu !important;
+}
 
 .zoom-button::before {
     content: "";
@@ -78,28 +195,18 @@
     width: 16px;
     height: 16px;
     display: inline-block;
-    vertical-align: middle;
-    padding-left: 4px !important;
-	
+    flex: 0 0 16px;
 }
 
-.zoom-button:after
-{
-  content: '\75';
-  color: transparent !important;
-  font-family: 'Marlett' !important;
-  background-image: url('images/chevron-vista.png') !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  transform: translateY(-22px) translateX(-1px);
-  padding-left: 15px !important;
-  padding-bottom: 6px !important;
-  #position: relative;
-  top: 20px;
-}
-
-.zoom-button {  
-    padding-left: 5px !important;
+.zoom-button::after {
+    content: "";
+    width: 7px;
+    height: 16px;
+    display: inline-block;
+    flex: 0 0 7px;
+    background-image: url('images/chevron-vista.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
 }
 
 .corner-icon::before {
@@ -121,22 +228,18 @@
 .separator-7{
     content: "";
     background: url('images/blank.png') no-repeat center center;
-    width: 24px;
-    height: 26px;
+    width: 25px;
+    height: 27px;
+    box-sizing: border-box;
     display: inline-block;
-    vertical-align: middle;
     border-left: 1px solid #dadada !important;
    
 }
 
 
 
-#statuspanel,
-#statuspanel[inactive]
-{
-    position: fixed !important;
-    bottom: 3px !important;
-    left: 5px !important;
+#statuspanel {
+    display: none !important;
 }
 
 #statuspanel-label
@@ -144,15 +247,12 @@
     -moz-appearance: statusbarpanel !important;
     background-color: transparent !important;
     border: 0 !important;
-    padding: 3px 0 !important;
-    margin-inline: 0 !important;
-    height: 25px !important;
+    padding: 2px 0 !important;
+    height: 21px !important;
     width: 525px !important;
     margin-right: 10px !important;
     color: #000 !important;
-    position: fixed !important;
-    bottom: 3px !important;
-    left: 5px !important;
+    position: static !important;
 }
 
 #statuspanel[inactive] #statuspanel-label
@@ -162,17 +262,18 @@
 
 .doneText {
     -moz-appearance: statusbarpanel !important;
-    width: 100%;
-    line-height: 9px;
-    position: fixed !important;
-    bottom: 10px !important;
-    left: 5px !important;
+    width: auto;
+    line-height: normal;
+    position: absolute !important;
+    inset: 0 auto 0 5px !important;
+    display: flex;
+    align-items: center;
 
 }
 
 
 /* When in IE8 mode, add InPrivate Filtering button, hide it in IE7 mode */
-@supports (-moz-bool-pref("rinfox.tweak.ie8")) {
+@supports (-moz-bool-pref("RinFox.Appearance.IE8")) {
 .security-button::before {
     content: "";
     background: url('images/smartscreen.png') no-repeat center center;
@@ -203,7 +304,7 @@
 
 }
 
-@supports not (-moz-bool-pref("rinfox.tweak.ie8")) {
+@supports not (-moz-bool-pref("RinFox.Appearance.IE8")) {
 
 .security-separator {
         display: none !important;

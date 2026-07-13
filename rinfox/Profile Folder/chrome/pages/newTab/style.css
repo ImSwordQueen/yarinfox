@@ -1,0 +1,27 @@
+html { min-height: 100%; background: #fefefe url("chrome://userchrome/content/pages/shared/top.jpg") repeat-x; }
+body { box-sizing: border-box; width: 64em; margin: 0; padding: 0; color: #505050; font: 80% "Segoe UI", sans-serif; }
+h1 { position: relative; left: 4px; margin: 0; padding-bottom: .2em; color: #d8e2f4; font-size: 445%; font-weight: normal; }
+main { display: grid; grid-template-columns: 29em 30em; gap: 1em; padding-left: 38px; }
+section { padding-bottom: 10px; }
+p { margin: .15em 0 0; }
+a { color: #4f81bd; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.task { display: inline-flex; align-items: center; border: 0; padding: 0; background: none; color: #549c00; font: 130%/160% "Segoe UI", sans-serif; cursor: pointer; text-decoration: none; }
+.task:hover { text-decoration: underline; }
+.expando { width: 16px; height: 16px; margin-left: 3px; border: 0; }
+.expandsection { padding: 10px 0 0; }
+.recent-tab { display: flex; align-items: center; width: 27em; min-width: 0; padding: 0; line-height: 160%; white-space: nowrap; }
+.recent-tab img, #acceleratorLinks img { width: 16px; height: 16px; margin-right: 5px; border: 0; }
+.recent-tab a { overflow: hidden; text-overflow: ellipsis; }
+.empty { font-style: italic; }
+#accelerators { padding-top: 24px; }
+#acceleratorLinks > a { display: block; line-height: 1.6em; }
+#showClipboard { margin-bottom: 8px; }
+#clipboardText { width: 40em; margin: 4px 0 8px; color: #505050; }
+.clipboard-line { display: flex; align-items: center; min-width: 0; white-space: nowrap; }
+#clipboardValue { display: inline-block; max-width: 27em; overflow: hidden; font-style: italic; text-overflow: ellipsis; white-space: nowrap; }
+#removeClipboardText { width: 16px; height: 16px; margin-left: 5px; border: 0; padding: 0; background: none; cursor: pointer; }
+#removeClipboardText img { width: 16px; height: 16px; margin: 0; }
+#clipboardStats { color: #505050; font-size: x-small; }
+footer { width: 60em; padding-top: 5em; padding-left: 38px; }
+hr { height: 1px; margin: 0 1.5em 1em 0; border: 0; border-top: 1px solid #c0c0c0; }

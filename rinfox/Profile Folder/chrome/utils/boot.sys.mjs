@@ -132,7 +132,7 @@ class ScriptData {
         aScript.#preCompiledESM = script;
         resolve(script);
       })
-      .catch( (ex) => resolve(ScriptData.onCompileRejection(ex,aScript.filename)) )
+      .catch( (ex) => resolve(ScriptData.onCompileRejection(ex,aScript)) )
       .finally(()=>{aScript.#preCompiling = null})
     });
     return aScript.#preCompiling
@@ -217,7 +217,7 @@ class ScriptData {
         aScript.chromeURI.spec,
         {
           target: aGlobal,
-          ignoreCache: aScript.ignoreCache
+          ignoreCache: true
         }
       )
       ScriptData.markScriptRunning(aScript,aGlobal)
@@ -395,11 +395,10 @@ class UserChrome_js{
           }
           if(script.inbackground){
             try{
-              if(script.isESM){
-                ChromeUtils.importESModule( script.chromeURI.spec );
-              }else{
-                ChromeUtils.import( script.chromeURI.spec );
+              if (!script.isESM) {
+                throw new TypeError(`Background script '${script.filename}' must use an ES module format`);
               }
+              ChromeUtils.importESModule(script.chromeURI.spec);
               ScriptData.markScriptRunning(script,null);
             }catch(ex){
               console.error(new Error(`@ ${script.filename}`,{cause:ex}));
@@ -527,12 +526,18 @@ class UserChrome_js{
       <menu id="userScriptsMenu" label="userScripts">
         <menupopup id="menuUserScriptsPopup">
           <menuseparator></menuseparator>
-          <menuitem id="userScriptsMenu-OpenFolder" label="Open folder" oncommand="_ucUtils.openScriptDir()"></menuitem>
-          <menuitem id="userScriptsMenu-Restart" label="Restart" oncommand="_ucUtils.restart(false)" tooltiptext="Toggling scripts requires restart"></menuitem>
-          <menuitem id="userScriptsMenu-ClearCache" label="Restart and clear startup cache" oncommand="_ucUtils.restart(true)" tooltiptext="Toggling scripts requires restart"></menuitem>
+          <menuitem id="userScriptsMenu-OpenFolder" label="Open folder"></menuitem>
+          <menuitem id="userScriptsMenu-Restart" label="Restart" tooltiptext="Toggling scripts requires restart"></menuitem>
+          <menuitem id="userScriptsMenu-ClearCache" label="Restart and clear startup cache" tooltiptext="Toggling scripts requires restart"></menuitem>
         </menupopup>
       </menu>
     `);
+    menuFragment.getElementById("userScriptsMenu-OpenFolder")
+      .addEventListener("command", () => utils.openScriptDir());
+    menuFragment.getElementById("userScriptsMenu-Restart")
+      .addEventListener("command", () => utils.restart(false));
+    menuFragment.getElementById("userScriptsMenu-ClearCache")
+      .addEventListener("command", () => utils.restart(true));
     const itemsFragment = window.MozXULElement.parseXULToFragment("");
     for(let script of this.scripts){
       UserChrome_js.appendScriptMenuitemToFragment(window,itemsFragment,script);
@@ -556,16 +561,16 @@ class UserChrome_js{
     return popup.querySelector("#userScriptsMenu");
   }
   static appendScriptMenuitemToFragment(aWindow,aFragment,aScript){
-    aFragment.append(
-      aWindow.MozXULElement.parseXULToFragment(`
+    const menuitemFragment = aWindow.MozXULElement.parseXULToFragment(`
         <menuitem type="checkbox"
                   label="${escapeXUL(aScript.name || aScript.filename)}"
                   filename="${escapeXUL(aScript.filename)}"
-                  checked="true"
-                  oncommand="_ucUtils.toggleScript(this)">
+                  checked="true">
         </menuitem>
-    `)
-    );
+    `);
+    menuitemFragment.firstElementChild
+      .addEventListener("command", (ev) => utils.toggleScript(ev.currentTarget));
+    aFragment.append(menuitemFragment);
     return
   }
   observe(aSubject, aTopic, aData) {

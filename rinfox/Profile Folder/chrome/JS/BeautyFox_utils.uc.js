@@ -4,7 +4,12 @@
 // @loadorder   1
 // ==/UserScript==
 
-function setAttributes(element, attributes) { for (var key in attributes) { element.setAttribute(key, attributes[key]); } }
+function setAttributes(element, attributes) {
+    for (var key in attributes) {
+        if (/^on/i.test(key)) { continue; }
+        element.setAttribute(key, attributes[key]);
+    }
+}
 
 function insertAfter(newNode, existingNode) {
     existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);

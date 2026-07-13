@@ -1,3 +1,4 @@
+
 window.addEventListener("load", function() {
   var statusBar = document.getElementById('addonbar');
 
@@ -10,7 +11,7 @@ window.addEventListener("load", function() {
   newElementButton.setAttribute('tooltiptext', 'Change zoom level');
 
   newElementDiv.addEventListener('dblclick', function() {
-    BrowserPageInfo();
+    BrowserCommands.pageInfo();
   });
 
   const securityButton = document.createElement('customtoolbarbutton');
@@ -29,28 +30,26 @@ window.addEventListener("load", function() {
   const securitySeparator = document.createElement('div');
   securitySeparator.classList.add('security-separator');
 
-  let currentZoomLevel = 100;
-
   function updateButtonText() {
+    const currentZoomLevel = Math.round(ZoomManager.zoom * 100);
     newElementButton.textContent = `${currentZoomLevel}%`;
   }
 
-  FullZoom.reduce();
   updateButtonText();
+  window.addEventListener('FullZoomChange', updateButtonText);
+  window.addEventListener('TabAttrModified', updateButtonText);
+  window.addEventListener('TabSelect', updateButtonText);
 
   newElementButton.addEventListener('click', function() {
+    const currentZoomLevel = Math.round(ZoomManager.zoom * 100);
+
     if (currentZoomLevel === 100) {
-      FullZoom.enlarge();
-      currentZoomLevel = 125;
+      FullZoom.setZoom(1.25);
     } else if (currentZoomLevel === 125) {
-      FullZoom.enlarge();
-      currentZoomLevel = 150;
+      FullZoom.setZoom(1.5);
     } else {
-      FullZoom.reduce();
-      FullZoom.reduce();
-      currentZoomLevel = 100;
+      FullZoom.setZoom(1);
     }
-    updateButtonText();
   });
 
   statusBar.appendChild(newElementDiv);
@@ -72,6 +71,74 @@ window.addEventListener("load", function() {
   statusText.classList.add('status-text');
   statusText.textContent = '';
   statusBar.insertBefore(statusText, statusBar.firstChild);
+
+  const statusProgress = document.createElement('progress');
+  statusProgress.classList.add('status-progress');
+  statusProgress.max = 100;
+  statusProgress.value = 0;
+  const progressSeparator = statusBar.querySelector('.separator-1');
+  progressSeparator.hidden = true;
+  progressSeparator.appendChild(statusProgress);
+
+  const progressListener = {
+    QueryInterface: ChromeUtils.generateQI([
+      'nsIWebProgressListener',
+      'nsISupportsWeakReference'
+    ]),
+
+    progressTimer: null,
+    hideTimer: null,
+
+    onProgressChange(webProgress, request, currentSelf, maximumSelf, currentTotal, maximumTotal) {
+      if (!webProgress.isTopLevel || maximumTotal <= 0) {
+        return;
+      }
+
+      const percentage = Math.min(95, Math.round(currentTotal / maximumTotal * 100));
+      if (percentage > statusProgress.value) {
+        statusProgress.value = percentage;
+      }
+    },
+
+    onStateChange(webProgress, request, stateFlags) {
+      if (!webProgress.isTopLevel || !(stateFlags & Ci.nsIWebProgressListener.STATE_IS_NETWORK)) {
+        return;
+      }
+
+      const progressState = Ci.nsIWebProgressListener;
+      if (stateFlags & progressState.STATE_START) {
+        clearTimeout(this.hideTimer);
+        clearInterval(this.progressTimer);
+        statusProgress.value = 2;
+        progressSeparator.hidden = false;
+        this.progressTimer = setInterval(() => {
+          if (statusProgress.value < 90) {
+            statusProgress.value += 1;
+          }
+        }, 200);
+      } else if (stateFlags & progressState.STATE_STOP) {
+        clearInterval(this.progressTimer);
+        this.progressTimer = null;
+        statusProgress.value = 100;
+        this.hideTimer = setTimeout(() => {
+          progressSeparator.hidden = true;
+          statusProgress.value = 0;
+          this.hideTimer = null;
+        }, 150);
+      }
+    },
+
+    onLocationChange() {},
+    onStatusChange() {},
+    onSecurityChange() {}
+  };
+
+  gBrowser.addProgressListener(progressListener);
+  window.addEventListener('unload', function() {
+    clearInterval(progressListener.progressTimer);
+    clearTimeout(progressListener.hideTimer);
+    gBrowser.removeProgressListener(progressListener);
+  }, { once: true });
 
   const originalStatusPanel = document.getElementById('statuspanel-label');
   if (originalStatusPanel) {
@@ -108,7 +175,6 @@ window.addEventListener("load", function() {
 
   statusBar.appendChild(doneText);
 
-  // Existing doneText logic, modified
   function updateDoneTextVisibility() {
     const statusPanel = document.querySelector('#statuspanel[type="defaultStatus"][previoustype="status"]');
 
@@ -120,32 +186,45 @@ window.addEventListener("load", function() {
   }
 
   updateDoneTextVisibility();
-  document.body.addEventListener('DOMSubtreeModified', updateDoneTextVisibility);
-  
-  var addonElements = Array.from(document.querySelectorAll('[id*="BAP"]'));
-  
-  addonElements.forEach(function(addonElement) {
-    if (addonElement.parentElement === statusBar) {
-      // Check if the element's extension ID is pinned to the addon bar
-      var extensionID = addonElement.id.replace(/-[^-]*$/, '');
-      if (isExtensionPinned(extensionID)) {
-        statusBar.insertBefore(addonElement, newElementDiv);
-      }
-    }
+  new MutationObserver(updateDoneTextVisibility).observe(document.body, {
+    attributes: true,
+    childList: true,
+    subtree: true
   });
 
-  function isExtensionPinned(extensionID) {
-    var { AddonManager } = Components.utils.import("resource://gre/modules/AddonManager.jsm", {});
-    return new Promise((resolve) => {
-      AddonManager.getAllAddons(addons => {
-        for (let addon of addons) {
-          if (addon.id === extensionID && addon.userDisabled === false) {
-            resolve(true);
-            return;
-          }
-        }
-        resolve(false);
-      });
-    });
-  }
+  window.addEventListener('click', function(event) {
+    const unifiedExtensionsButton = event.composedPath().find(
+      node => node.id === 'unified-extensions-button'
+    );
+
+    if (
+      event.button !== 0 ||
+      !unifiedExtensionsButton ||
+      !document.getElementById('addonbar')?.contains(unifiedExtensionsButton)
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    gUnifiedExtensions.togglePanel(event);
+  }, true);
+
+  window.addEventListener('popupshown', function(event) {
+    if (event.target.id !== 'unified-extensions-panel') {
+      return;
+    }
+
+    const unifiedExtensionsButton = document.getElementById('unified-extensions-button');
+    if (document.getElementById('addonbar')?.contains(unifiedExtensionsButton)) {
+      event.target.moveToAnchor(
+        unifiedExtensionsButton,
+        'topright bottomright',
+        0,
+        0,
+        false
+      );
+    }
+  }, true);
 });

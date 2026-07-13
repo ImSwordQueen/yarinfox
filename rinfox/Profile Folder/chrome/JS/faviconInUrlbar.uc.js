@@ -11,10 +11,14 @@ var FaviconInUrlbar = {
  init: function() {
    try {
 	   
+	const urlbarInputContainer = document.querySelector('.urlbar-input-container');
+	const identityBox = document.getElementById('identity-box');
+	if (!urlbarInputContainer || !identityBox || document.getElementById('favimginurlbar')) {
+		return;
+	}
 	var favimginurlbar = document.createElement("img");
 	favimginurlbar.setAttribute("id","favimginurlbar");  
-	
-	document.getElementById('urlbar-input-container').insertBefore(favimginurlbar, document.getElementById('identity-box'));
+	urlbarInputContainer.insertBefore(favimginurlbar, identityBox);
 
 	document.addEventListener("TabAttrModified", updateIcon, false);
 	document.addEventListener('TabSelect', updateIcon, false);
@@ -46,4 +50,8 @@ var FaviconInUrlbar = {
 };
 
 // initiate script after DOM/browser content is loaded
-document.addEventListener("DOMContentLoaded", FaviconInUrlbar.init(), false);
+if (document.readyState === 'loading') {
+	document.addEventListener("DOMContentLoaded", () => FaviconInUrlbar.init(), { once: true });
+} else {
+	FaviconInUrlbar.init();
+}

@@ -14,13 +14,36 @@ function moveExtensionsBtn() {
         let endToolbar = document.getElementById("endToolbar");
         let IEMenuButton = document.getElementById("IEMenuButton");
 		
-		unifiedExtensionsButton.style.cssText = null;
-		PanelUImenubutton.style.cssText = null;
+		var extensionsButtonHiddenStyles = [
+			'appearance',
+			'max-width',
+			'margin',
+			'padding',
+			'overflow',
+			'position',
+			'opacity',
+			'pointer-events'
+		];
+		var clearExtensionsButtonStyles = (button) => {
+			extensionsButtonHiddenStyles.forEach((property) => button.style.removeProperty(property));
+		};
+		var hideExtensionsButton = (button) => {
+			button.style.setProperty('appearance', 'none', 'important');
+			button.style.setProperty('max-width', '0', 'important');
+			button.style.setProperty('margin', '0', 'important');
+			button.style.setProperty('padding', '0', 'important');
+			button.style.setProperty('overflow', 'hidden', 'important');
+			button.style.position = 'absolute';
+			button.style.opacity = '0';
+			button.style.pointerEvents = 'none';
+		};
+		clearExtensionsButtonStyles(unifiedExtensionsButton);
+		clearExtensionsButtonStyles(PanelUImenubutton);
 		
 		switch (pref("BeautyFox.option.storedExtensionsButtonChoice").tryGet.int()) {
 			case 0:
-				unifiedExtensionsButton.style.cssText = 'appearance: none !important; max-width: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important; position: absolute; opacity: 0; pointer-events: none;';
-				PanelUImenubutton.style.cssText = 'appearance: none !important; max-width: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important; position: absolute; opacity: 0; pointer-events: none;';
+				hideExtensionsButton(unifiedExtensionsButton);
+				hideExtensionsButton(PanelUImenubutton);
 		
 				break;
 			case 1:

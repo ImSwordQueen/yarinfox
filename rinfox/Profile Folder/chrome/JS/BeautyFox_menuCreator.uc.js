@@ -14,7 +14,6 @@ function createMenu(menuData) {
 		externalBtn.style.listStyleImage = menuData.image;
 		setAttributes(externalBtn, {
 			'label': menuData.name,
-			'onclick':'event.preventDefault();event.stopPropagation();',
 			'type':'menu',
 			'removable':true
 		})
@@ -22,6 +21,10 @@ function createMenu(menuData) {
 			if (Array.isArray(menuData.classes)) { externalBtn.classList.add(...menuData.classes); }
 			else { externalBtn.classList.add(menuData.classes); }
 		}
+		externalBtn.addEventListener('click', (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+		});
 		externalBtn.addEventListener('click', (event) => {
 			if (event.target === externalBtn) {
 				if (event.shiftKey) {
@@ -108,8 +111,10 @@ function createMenuItem(parent, item) {
 			'id':			item.id,
 			'label':		item.name,
 			'image':		item.image,
-			'oncommand':	item.command
 		})
+		if (typeof item.command === 'function') {
+			appsItems.addEventListener('command', item.command);
+		}
 		if (item.special) {
 			appsItems.setAttribute('special', item.special);
 			appsItems.style.display = 'none';

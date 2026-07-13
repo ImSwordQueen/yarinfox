@@ -24,18 +24,18 @@
 
 #urlbar-background,
 .searchbar-search-button:hover:not([addengines="true"]) > .searchbar-search-icon-overlay,
-#urlbar[breakout][breakout-extend] #urlbar-go-button,
+#urlbar[breakout][breakout-extend] .urlbar-go-button,
 .search-panel-header,
 #page-action-buttons,
-#tracking-protection-icon-container,
+/* #tracking-protection-icon-container, */
 /* #identity-permission-box, */
-#urlbar-go-button,
+.urlbar-go-button,
 .urlbarView-row:is([type="switchtab"], [type="remotetab"]) > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action
 {
   display: none !important;
 }
 
-#urlbar-input-container {
+#urlbar > .urlbar-input-container {
   padding: 0 !important;
   border-right: 0 !important;
 }
@@ -63,7 +63,7 @@
   margin-inline-end: 3px !important;
 }
 
-#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+#urlbar[breakout][breakout-extend] > .urlbar-input-container {
   height: 100% !important;
 }
 
@@ -90,7 +90,7 @@
   top: -1px !important;
 }
 
-#urlbar[breakout][breakout-extend] #urlbar-input-container {
+#urlbar[breakout][breakout-extend] > .urlbar-input-container {
   padding: 2px !important;
 }
 

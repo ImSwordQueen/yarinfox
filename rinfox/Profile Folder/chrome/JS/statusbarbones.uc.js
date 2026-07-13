@@ -68,7 +68,6 @@ var AddAddonbar = {
         tb_addonbar.setAttribute('id', 'addonbar');
         tb_addonbar.setAttribute('collapsed', 'false');
         tb_addonbar.setAttribute('toolbarname', addonbar_label);
-        tb_addonbar.setAttribute('defaultset', 'spring,spring');
         tb_addonbar.setAttribute('customizable', 'true');
         tb_addonbar.setAttribute('mode', 'icons');
         tb_addonbar.setAttribute('iconsize', 'small');
@@ -76,10 +75,69 @@ var AddAddonbar = {
         tb_addonbar.setAttribute('lockiconsize', 'true');
         tb_addonbar.setAttribute('class', 'toolbar-primary chromeclass-toolbar browser-toolbar customization-target');
 
-        document.getElementById('browser').parentNode.appendChild(tb_addonbar);
+        document.getElementById('browser').appendChild(tb_addonbar);
 
-        CustomizableUI.registerArea('addonbar', { legacy: true });
+        CustomizableUI.registerArea('addonbar', {
+          type: CustomizableUI.TYPE_TOOLBAR,
+          defaultPlacements: []
+        });
         CustomizableUI.registerToolbarNode(tb_addonbar);
+
+        const placementsPref = 'browser.addonbar.placements';
+
+        let savedPlacements;
+        try {
+          savedPlacements = JSON.parse(Services.prefs.getStringPref(placementsPref, '[]'));
+        } catch (e) {
+          savedPlacements = [];
+        }
+
+        savedPlacements.forEach((widgetId, position) => {
+          CustomizableUI.addWidgetToArea(widgetId, 'addonbar', position);
+        });
+
+        function updateSavedPlacement(widgetId, position) {
+          savedPlacements = savedPlacements.filter(id => id !== widgetId);
+          savedPlacements.splice(position, 0, widgetId);
+          Services.prefs.setStringPref(placementsPref, JSON.stringify(savedPlacements));
+        }
+
+        CustomizableUI.addListener({
+          onWidgetAdded(widgetId, area, position) {
+            if (area === 'addonbar') {
+              updateSavedPlacement(widgetId, position);
+            }
+          },
+          onWidgetMoved(widgetId, area, oldPosition, newPosition) {
+            if (area === 'addonbar') {
+              updateSavedPlacement(widgetId, newPosition);
+            }
+          },
+          onWidgetRemoved(widgetId, area) {
+            if (area === 'addonbar') {
+              savedPlacements = savedPlacements.filter(id => id !== widgetId);
+              Services.prefs.setStringPref(placementsPref, JSON.stringify(savedPlacements));
+            }
+          }
+        });
+
+
+        gNavToolbox.addEventListener('beforecustomization', function() {
+          var browser = document.getElementById('browser');
+          browser.parentNode.insertBefore(tb_addonbar, browser.nextSibling);
+          tb_addonbar.style.setProperty('position', 'relative', 'important');
+          tb_addonbar.style.setProperty('inset', 'auto', 'important');
+          tb_addonbar.style.setProperty('z-index', 'auto', 'important');
+          tb_addonbar.style.setProperty('transform', 'none', 'important');
+        });
+
+        gNavToolbox.addEventListener('aftercustomization', function() {
+          document.getElementById('browser').appendChild(tb_addonbar);
+          tb_addonbar.style.removeProperty('position');
+          tb_addonbar.style.removeProperty('inset');
+          tb_addonbar.style.removeProperty('z-index');
+          tb_addonbar.style.removeProperty('transform');
+        });
 
         try {
           setToolbarVisibility(document.getElementById('addonbar'), Services.prefs.getBranch('browser.addonbar.').getBoolPref('enabled'));

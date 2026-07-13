@@ -2,22 +2,19 @@
     --rinfox_tweak_ie8: 0;
 }
 
-@supports -moz-bool-pref("rinfox.tweak.ie8") {
+@supports -moz-bool-pref("RinFox.Appearance.IE8") {
     :root {
         --rinfox_tweak_ie8: 1;
     }
 }
 
-:root:is([privatebrowsingmode=temporary]) #urlbar-input-container::before {
+:root:is([privatebrowsingmode=temporary]) .urlbar-input-container::before {
   content: "";
-  height: 100%;
-  width: 75px;
-  margin-left: 2px;
-  background: url(images/InPrivate.svg);
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  position: relative !important;
-  z-index: 1 !important;
+  display: block;
+  flex: 0 0 77px;
+  align-self: stretch;
+  background: url(images/InPrivate.svg) no-repeat left 2px center;
+  background-size: 75px 20px;
 }
 
 #private-browsing-indicator-with-label {

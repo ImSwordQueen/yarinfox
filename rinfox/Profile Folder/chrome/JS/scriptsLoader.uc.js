@@ -3,9 +3,11 @@
 // @description 	Loads resources required for RinFox
 // @author			Travis
 // @include			main
+// @loadorder		1000
 // ==/UserScript==
 
-const { ctypes } = ChromeUtils.import("resource://gre/modules/ctypes.jsm");
+const { ctypes } = ChromeUtils.importESModule("resource://gre/modules/ctypes.sys.mjs");
+
 
 function executeFunctions() {
 	getAndSetTitleBarHeight();
@@ -15,19 +17,18 @@ function executeFunctions() {
 	changeLibraryButtonText();
 	changeFirefoxButtonText();
 	changeUnifiedExtensionsText();
+	moveOverflowButtonToTabsToolbar();
 	changeSearchBarPlaceholder();
 	createFavoritesSidebarButton();
 	createAddToBookmarks();
 	disableHistoryButton();
-	createCBHomeButton();
-	moveExtensionsBtn();
-	createCBReadMailButton();
-	loadLocale();
 	convertCheckboxesToNativeLook()
 	openRinFoxWizardWindow(true);
     console.info("Functions executed.");
 }
 
-window.addEventListener("load", function () {
-    executeFunctions();  
-})
+if (document.readyState === "complete") {
+	executeFunctions();
+} else {
+	window.addEventListener("load", executeFunctions, { once: true });
+}

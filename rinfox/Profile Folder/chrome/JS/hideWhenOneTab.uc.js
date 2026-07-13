@@ -17,18 +17,10 @@ if (tabsToolbar) {
 
 function hideTabBarItems() {
 	const tabCount = gBrowser.tabs.length;
-	
-	try {
-		tabBarItems.forEach((item) => {
-			const element = document.querySelector(item);
-			if (tabCount <= 1) {
-				element.style.display = "none";
-			}
-			else {
-				element.style.display = "";
-			}
-		});
-    } catch (error) {
-        console.log("Failed to hide DOM Elements.");
-    }
+
+	tabBarItems.forEach((item) => {
+		const element = document.querySelector(item);
+		if (!element) return;
+		element.style.display = tabCount <= 1 ? "none" : "";
+	});
 }

@@ -9,7 +9,8 @@
   content: '';
   display: inline-block;
   position: absolute !important;
-  appearance: toolbar !important;
+  appearance: auto !important;
+  -moz-default-appearance: toolbar !important;
   width: 100%;
   height: 2px !important;
   top: -2px !important;

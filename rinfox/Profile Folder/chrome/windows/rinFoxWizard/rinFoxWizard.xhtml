@@ -12,7 +12,7 @@
 		role="dialog"
 		resizable="false"
 		title="Set up RinFox">
-		<button style="margin-top: -20px; margin-right: -10px; position: absolute; right: 0; top: 0; padding: 0; appearance: none;" oncommand="window.close();">Close</button>
+		<button id="wizardCloseButton" style="margin-top: -20px; margin-right: -10px; position: absolute; right: 0; top: 0; padding: 0; appearance: none;">Close</button>
 
 		<vbox id="contentArea">
 		
@@ -27,7 +27,7 @@
 					</vbox>
 				</vbox>
 				<hbox class="dialogFooter">
-					<button onclick="showPage(1)">
+					<button id="wizardWelcomeNextButton">
 						<hbox class="box-inherit button-box" align="center" pack="center" flex="1" anonid="button-box">
 							<image class="button-icon"/>
 							<label class="button-text">Next</label>
@@ -45,7 +45,7 @@
 						<h2 class="wizardSecondaryHeader">Choose between the look of Internet Explorer 7 or Internet Explorer 8.</h2>
 					</hbox>
 					<hbox class="appearanceOptionContent">
-						<commandlinkbutton onclick="chosenIEAppearance = 0; showPage(2)">
+						<commandlinkbutton id="wizardThemeIE7">
 							<image class="commandLinkButtonThumbnail" src="chrome://userchrome/content/windows/rinFoxWizard/ie7.png" alt="Internet Explorer 7"/>
 							<hbox class="commandLinkLabel">
 								<image class="commandlinkbutton-glyph"/>
@@ -54,7 +54,7 @@
 								</vbox>
 							</hbox>
 						</commandlinkbutton>
-						<commandlinkbutton onclick="chosenIEAppearance = 1; showPage(2)">
+						<commandlinkbutton id="wizardThemeIE8">
 							<image class="commandLinkButtonThumbnail" src="chrome://userchrome/content/windows/rinFoxWizard/ie8.png" alt="Internet Explorer 8"/>
 							<hbox class="commandLinkLabel">
 								<image class="commandlinkbutton-glyph"/>
@@ -103,13 +103,13 @@
 						</hbox>
 					</vbox>
 					<hbox class="dialogFooter">
-						<button onclick="showPage(1)">
+						<button id="wizardSettingsBackButton">
 							<hbox class="box-inherit button-box" align="center" pack="center" flex="1" anonid="button-box">
 								<image class="button-icon"/>
 								<label class="button-text">Back</label>
 							</hbox>
 						</button>
-						<button onclick="checkForExpress()">
+						<button id="wizardSettingsNextButton">
 							<hbox class="box-inherit button-box" align="center" pack="center" flex="1" anonid="button-box">
 								<image class="button-icon"/>
 								<label class="button-text">Next</label>
@@ -128,7 +128,7 @@
 						<h2 class="wizardSecondaryHeader">Show the fake Aero Inner Borders, which causes the window borders to have more padding.</h2>
 					</hbox>
 					<hbox class="appearanceOptionContent">
-						<commandlinkbutton onclick="hideInnerBorders = 0; showPage(4)">
+						<commandlinkbutton id="wizardShowInnerBordersButton">
 							<image class="commandLinkButtonThumbnail" src="chrome://userchrome/content/windows/rinFoxWizard/ie8.png" alt="Show Inner Borders"/>
 							<hbox class="commandLinkLabel">
 								<image class="commandlinkbutton-glyph"/>
@@ -137,7 +137,7 @@
 								</vbox>
 							</hbox>
 						</commandlinkbutton>
-						<commandlinkbutton onclick="hideInnerBorders = 1; showPage(4)">
+						<commandlinkbutton id="wizardHideInnerBordersButton">
 							<image class="commandLinkButtonThumbnail" src="chrome://userchrome/content/windows/rinFoxWizard/noinnerborder.png" alt="Hide Inner Borders"/>
 							<hbox class="commandLinkLabel">
 								<image class="commandlinkbutton-glyph"/>
@@ -159,13 +159,13 @@
 						<h2 class="wizardSecondaryHeader">A hack to have smaller window borders when Inner Borders are enabled, which causes bugs.</h2>
 					</hbox>
 					<vbox class="restartContainer">
-						<commandlinkbutton onclick="smallerInnerBordersHack = 0; showPage(5)">
+						<commandlinkbutton id="wizardEnableSmallerInnerBordersButton">
 							<hbox>
 								<image class="commandlinkbutton-glyph"/>
 								<label class="title">Enable Smaller Inner Borders</label>
 							</hbox>
 						</commandlinkbutton>
-						<commandlinkbutton onclick="smallerInnerBordersHack = 1; showPage(5)">
+						<commandlinkbutton id="wizardDisableSmallerInnerBordersButton">
 							<hbox>
 								<image class="commandlinkbutton-glyph"/>
 								<label class="title">Disable Smaller Inner Borders</label>
@@ -199,7 +199,7 @@
 					</vbox>
 				</vbox>
 				<hbox class="dialogFooter">
-					<button onclick="showPage(2)">
+					<button id="wizardFinishBackButton">
 						<hbox class="box-inherit button-box" align="center" pack="center" flex="1" anonid="button-box">
 							<image class="button-icon"/>
 							<label class="button-text">Back</label>

@@ -34,7 +34,8 @@ radio {
 commandlinkbutton {
 	display: flex;
 	flex-direction: column;
-	appearance: toolbarbutton;
+	appearance: auto;
+	-moz-default-appearance: toolbarbutton;
 	padding: 10px 15px;
 	color: rgb(21, 28, 85);
 	font-size: 11pt;

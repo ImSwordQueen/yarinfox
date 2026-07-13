@@ -2,15 +2,15 @@
   Toolbar Buttons
 */
 
-#PanelUI-button,
-#wrapper-PanelUI-button {
-  order: 2 !important;
+#help-button,
+#wrapper-help-button {
+  order: 3 !important;
 }
 
-#unified-extensions-button,
-#wrapper-unified-extensions-button {
-  order: 1 !important;
+#TabsToolbar #nav-bar-overflow-button {
+  order: 10000 !important;
 }
+
 
 #PanelUI-menu-button .toolbarbutton-icon,
 #unified-extensions-button .toolbarbutton-icon
@@ -20,6 +20,7 @@
 
 #PanelUI-menu-button::after,
 #unified-extensions-button::after,
+#help-button::after,
 #suggestedsites_bruni_com-BAP::after,
 #home-button::after,
 #print-button::after,
@@ -50,9 +51,25 @@
   padding: 0 4px !important;
 }
 
-#TabsToolbar toolbarbutton:not(#alltabs-button) .toolbarbutton-icon {
+:is(#commandBar, #TabsToolbar > .toolbar-items)[commandbaritem="icons"] #PanelUI-menu-button > .toolbarbutton-text {
+  display: none !important;
+}
+
+:is(#commandBar, #TabsToolbar > .toolbar-items)[commandbaritem="icons"] #PanelUI-menu-button::after {
+  margin-inline-start: 2px !important;
+}
+
+#TabsToolbar toolbarbutton:not(#alltabs-button, #unified-extensions-button) .toolbarbutton-icon {
   width: 16px !important;
   height: 16px !important;
+}
+
+#help-button .toolbarbutton-icon {
+  transform: translateX(2px) !important;
+}
+
+#help-button::after {
+  transform: translateX(1px) !important;
 }
 
 /*
@@ -62,6 +79,7 @@
 
 :root {
   --inline-tab-padding: 4px !important;
+  --tab-inline-padding: 4px !important;
   --tab-min-height: 28px !important;
 }
 
@@ -97,16 +115,27 @@
   margin-left: -1px !important;
 }
 
+#tabbrowser-tabs[orient="horizontal"] {
+  min-height: var(--tab-min-height) !important;
+}
+
+
 .tabbrowser-tab { 
-  min-height: calc(var(--tab-min-height) - 4px) !important;
   margin-top: 4px !important;
   margin-right: -1px !important;
   padding: 0 !important;
 }
 
-.tabbrowser-tab[visuallyselected=true] {
-  min-height: calc(var(--tab-min-height) + 2px) !important;
+.tab-background {
+  min-height: calc(var(--tab-min-height) - 4px) !important;
+}
+
+.tabbrowser-tab:is([visuallyselected], [selected]) {
   margin-top: 2px !important;
+}
+
+.tabbrowser-tab:is([visuallyselected], [selected]) .tab-background {
+  min-height: calc(var(--tab-min-height) + 2px) !important;
 }
 
 .tab-background,
@@ -127,7 +156,7 @@
   margin-bottom: 2px !important;
 }
 
-.tabbrowser-tab:not([visuallyselected=true]):hover .tab-background,
+.tabbrowser-tab:not([visuallyselected]):not([selected]):hover .tab-background,
 #tabs-newtab-button:hover,
 #alltabs-button:hover,
 #TabsToolbar #tiptab_william_wong-BAP:hover,
@@ -137,14 +166,14 @@
   background-image: linear-gradient(to bottom, #EDF3FC 0%, #C6DDF7 25%, #99C6EE 25%, #B0D3F0 75%, #D9E9F9 100%) !important;
 }
 
-.tabbrowser-tab[visuallyselected=true] .tab-background { /*Active Tab Background */
+.tabbrowser-tab:is([visuallyselected], [selected]) .tab-background { /*Active Tab Background */
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   background-image: linear-gradient(to bottom, #FCFDFD 0%, #E8F5FC 25%, #CFE7FA 25%, #B9D1FA 100%) !important;
 }
 
-.tabbrowser-tab[visuallyselected=true] .tab-background::before, /* Bottom Round Corners */
-.tabbrowser-tab[visuallyselected=true] .tab-background::after {
+.tabbrowser-tab:is([visuallyselected], [selected]) .tab-background::before, /* Bottom Round Corners */
+.tabbrowser-tab:is([visuallyselected], [selected]) .tab-background::after {
   content: '' !important;
   display: inline-block !important;
   width: 4px !important;
@@ -155,19 +184,20 @@
   left: -2px !important;
 }
 
-.tabbrowser-tab[visuallyselected=true] .tab-background::after {
+.tabbrowser-tab:is([visuallyselected], [selected]) .tab-background::after {
   left: unset !important;
   right: -2px !important;
   background-position-x: -4px !important;
 }
 
-.tabbrowser-tab[visuallyselected=true] {
+.tabbrowser-tab:is([visuallyselected], [selected]) {
   z-index: 1 !important;
 }
 
 .tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"]) {
   transition: min-width 0ms linear, max-width 1ms linear !important; /* Disable animations while not breaking bookmarks bar (max-width animation) */
 }
+
 
 .tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"]):only-of-type {
   max-width: 299px !important
@@ -180,7 +210,7 @@
 }
 
 :root:not([uidensity="compact"]) .tab-content[pinned] {
-  padding: 0 calc(var(--inline-tab-padding) + 2px) !important;
+  padding: 0 calc(var(--tab-inline-padding) + 2px) !important;
 }
 
 .tab-throbber:not([pinned]), .tab-icon-pending:not([pinned]), .tab-icon-image:not([pinned]), .tab-sharing-icon-overlay:not([pinned]), .tab-icon-overlay:not([pinned]) {
@@ -188,7 +218,7 @@
 }
 
 .tab-content {
-  padding: 0 var(--inline-tab-padding) 2px var(--inline-tab-padding) !important;
+  padding: 0 var(--tab-inline-padding) 2px var(--tab-inline-padding) !important;
 }
 
 .tab-icon-image[src="chrome://branding/content/icon32.png"],
@@ -216,6 +246,7 @@
   display: none !important;
 }
 
+
 #TabsToolbar-customization-target 
 {
   align-items: center !important;
@@ -224,7 +255,8 @@
 
 /* Tip Tab Extension */
 #tiptab_william_wong-browser-action {
-  order: -1 !important;
+	/* BUGBUG: this hardcodes the order. why do this??? */
+  /* order: -1 !important; */
   padding-block: 4px 2px !important;
   margin-inline: -1px !important;
   margin-left: 8px !important;
@@ -245,6 +277,7 @@
   margin-top: 4px !important;
   list-style-image: none !important;
 }
+
 
 #tabs-newtab-button:hover, #new-tab-button:hover {
   list-style-image: url('images/newtab.png') !important;
@@ -270,14 +303,15 @@
   background-position-x: -34px !important;
 }
 
-.tabbrowser-tab:not([visuallyselected=true], :hover) .tab-close-button {
+.tabbrowser-tab:not([visuallyselected]):not([selected]):not(:hover) .tab-close-button {
   display: none !important;
 }
 
 /* All Tabs Button */
 #alltabs-button {
   min-width: 16px !important;
-  order: -1 !important;
+  /* BUGBUG: this hardcodes the order. why do this??? */
+  /* order: -1 !important; */
   margin-top: 4px !important;
   list-style-image: url('images/chevron.png') !important;
   align-self: stretch !important;
@@ -295,10 +329,6 @@
   outline-offset: -4px !important;
 }
 
-/* Favorite Buttons */
-#TabsToolbar #library-button {
-  order: -2 !important;
-}
 
 #TabsToolbar #bookmarks-menu-button {
   order: -1 !important;

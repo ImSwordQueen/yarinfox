@@ -1,26 +1,21 @@
 var currentPage = 0; // Default to the first page
 
+function addActivationListener(elementId, eventType, callback) {
+    var element = document.getElementById(elementId);
+
+    if (element) {
+        element.addEventListener(eventType, callback);
+    } else {
+        console.log('The wizard control was not found: ' + elementId);
+    }
+}
+
 function updateNavBackButton() {
     var navBackButton = document.getElementById('backButton');
 
     if (navBackButton) {
         // Disable the button if currentPage is 0, enable otherwise
         navBackButton.disabled = (currentPage === 0);
-
-        // Assign a function to the onclick property
-        navBackButton.onclick = function() {
-            // Check if currentPage is IE10+ feature specific page
-            if (currentPage == 3) {
-                showPage(1);
-            }
-            // Check if currentPage is greater than 0
-            else if (currentPage > 0) {
-                // Call showPage with the previous page number
-                showPage(currentPage - 1);
-            }
-        };
-    } else {
-        console.log('The wizard back navigation button was not found.');
     }
 }
 
@@ -45,14 +40,13 @@ function showPage(pageNumber) {
     updateNavBackButton()
 }
 
+var rinFoxIE8AppearancePref = 'RinFox.Appearance.IE8';
 var chosenIEAppearance = 0;
+var hideInnerBorders = 0;
 var smallerInnerBordersHack = 1;
 
 function setOptions() {
-    let isRinFoxFirstRunFinished = false;
-    try {
-        isRinFoxFirstRunFinished = Services.prefs.getBoolPref("RinFox.parameter.isFirstRunFinished");
-    } catch (error) {}
+    let isRinFoxFirstRunFinished = Services.prefs.getBoolPref("RinFox.parameter.isFirstRunFinished", false);
 
     if (!isRinFoxFirstRunFinished) {
         Services.prefs.setBoolPref('toolkit.legacyUserProfileCustomizations.stylesheets', true);        // Enables chrome themes;
@@ -66,20 +60,13 @@ function setOptions() {
         Services.prefs.setBoolPref('browser.download.always_ask_before_handling_new_types', true);      // Enables legacy download dialog;
         Services.prefs.setIntPref('security.dialog_enable_delay', 0);                                   // Disables OK button delay in the legacy download dialog;
 		Services.prefs.setIntPref('browser.tabs.inTitlebar', 0);										// Disable Tabs in Titlebar;
+        Services.prefs.setBoolPref('nocturne.ui.oldurlbar', true);
+        Services.prefs.setBoolPref('sidebar.revamp', false);
 
         Services.prefs.setBoolPref('RinFox.parameter.isFirstRunFinished', true)
     }
 	
-	switch (chosenIEAppearance) {
-	case 0:
-		// IE7
-		Services.prefs.setBoolPref('RinFox.Appearance.IE8', false)
-		break;
-	case 1:
-		// IE8
-		Services.prefs.setBoolPref('RinFox.Appearance.IE8', true)
-		break;
-    }
+    Services.prefs.setBoolPref(rinFoxIE8AppearancePref, chosenIEAppearance === 1);
 	
 	switch (hideInnerBorders) {
 	case 0:
@@ -121,19 +108,58 @@ function checkForExpress() {
 	}
 }
 
+function bindWizardButtons() {
+    addActivationListener('wizardCloseButton', 'command', function() {
+        window.close();
+    });
+    addActivationListener('wizardWelcomeNextButton', 'click', function() {
+        showPage(1);
+    });
+    addActivationListener('wizardThemeIE7', 'click', function() {
+        chosenIEAppearance = 0;
+        showPage(2);
+    });
+    addActivationListener('wizardThemeIE8', 'click', function() {
+        chosenIEAppearance = 1;
+        showPage(2);
+    });
+    addActivationListener('wizardSettingsBackButton', 'click', function() {
+        showPage(1);
+    });
+    addActivationListener('wizardSettingsNextButton', 'click', function() {
+        checkForExpress();
+    });
+    addActivationListener('wizardShowInnerBordersButton', 'click', function() {
+        hideInnerBorders = 0;
+        showPage(4);
+    });
+    addActivationListener('wizardHideInnerBordersButton', 'click', function() {
+        hideInnerBorders = 1;
+        showPage(4);
+    });
+    addActivationListener('wizardEnableSmallerInnerBordersButton', 'click', function() {
+        smallerInnerBordersHack = 0;
+        showPage(5);
+    });
+    addActivationListener('wizardDisableSmallerInnerBordersButton', 'click', function() {
+        smallerInnerBordersHack = 1;
+        showPage(5);
+    });
+    addActivationListener('wizardFinishBackButton', 'click', function() {
+        showPage(2);
+    });
+    addActivationListener('restartNow', 'click', function() {
+        setOptions();
+        
+        _ucUtils.restart(true);
+    });
+    addActivationListener('restartLater', 'click', function() {
+        setOptions();
+        
+        window.close();
+    });
+}
+
+bindWizardButtons();
 showPage(currentPage);
 updateNavBackButton();
-
-var restartNow = document.getElementById('restartNow');
-restartNow.addEventListener("click", function() {
-	setOptions();
-	
-    _ucUtils.restart(true);
-}); 
-
-var restartLater = document.getElementById('restartLater');
-restartLater.addEventListener("click", function() {
-	setOptions();
-	
-    window.close();
-}); 

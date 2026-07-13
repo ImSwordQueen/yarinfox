@@ -4,36 +4,15 @@
 // @loadorder   1
 // ==/UserScript==
 
-function runFile(filePath, commandLineArgs) {
-    const HWND = ctypes.voidptr_t;
-    const LPCWSTR = ctypes.jschar.ptr;
-    const HINSTANCE = ctypes.voidptr_t;
-    const UINT = ctypes.uint32_t;
-    const SW = { SHOWNORMAL: 1 };
+function runFile(filePath, commandLineArgs = "") {
+    const executable = Services.dirsvc.get("SysD", Ci.nsIFile);
+    executable.append(filePath);
 
-    const shell32 = ctypes.open("shell32.dll");
+    const process = Cc["@mozilla.org/process/util;1"].createInstance(Ci.nsIProcess);
+    process.init(executable);
 
-    const ShellExecuteW = shell32.declare(
-        "ShellExecuteW",
-        ctypes.winapi_abi,
-        HINSTANCE,
-        HWND, LPCWSTR, LPCWSTR, LPCWSTR, LPCWSTR, UINT
-    );
-
-    const filePathWide = ctypes.jschar.array()(filePath);
-    const commandLineArgsWide = ctypes.jschar.array()(commandLineArgs);
-
-    const hInstance = ShellExecuteW(
-        null,
-        "open",
-        filePathWide,
-        commandLineArgsWide,
-        null,
-        SW.SHOWNORMAL
-    );
-
-    if (hInstance <= 32) 
-		console.error("Error starting "+ filePath +". "+ hInstance.toString())
-
-    shell32.close();
+    const args = commandLineArgs.match(/(?:[^\s"]+|"[^"]*")+/g)?.map(arg =>
+        arg.startsWith('"') && arg.endsWith('"') ? arg.slice(1, -1) : arg
+    ) ?? [];
+    process.run(false, args, args.length);
 }

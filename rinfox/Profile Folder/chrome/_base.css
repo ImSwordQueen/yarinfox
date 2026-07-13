@@ -44,6 +44,7 @@
 	--uei-icon-size: 16px !important;
 }
 
+
 /*
   Make things appear "native"
 */
@@ -75,6 +76,7 @@ toolbarbutton.toolbarbutton-1:not(
 .toolbarbutton-badge-stack
 {
 	border-radius: 0 !important;
+	background: none !important; 
 	padding: 0 !important;
 }
 

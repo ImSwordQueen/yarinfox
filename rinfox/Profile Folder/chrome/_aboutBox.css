@@ -29,6 +29,7 @@ textarea {
 	height: 345px !important;
 	padding: 13px 21px !important;
 	background-color: #FFFFFF !important;
+	background-image: none !important;
 	color: #616161 !important;
 	color-scheme: unset !important;
 }
@@ -67,36 +68,46 @@ textarea {
 	margin-left: -19px !important;
 }
 	
-@supports -moz-bool-pref("RinFox.Appearance.IE8") {
+/* IE8 Mode Styles */
+html[data-rinfox-ie8] #aboutDialog,
+html[data-rinfox-ie8] #aboutDialogContainer,
+#aboutDialog[data-rinfox-ie8],
+#aboutDialog[data-rinfox-ie8] #aboutDialogContainer {
+	width: 368px !important;
+	height: 296px !important;
+}
 
-	#aboutDialog,
-	#aboutDialogContainer
-	{
-		width: 368px !important;
-		height: 296px !important;
-	}
-	textarea {
-		background-color: transparent !important;
-		box-shadow: none !important;
-		padding: 0 !important;
-		user-select: none !important;
-	}
-	.legalNotice {
-		padding-right: 0 !important;
-	}
-	.windowsFlag {
-		display: none !important;
-	}
-	.copyrightLink {
-		margin-left: 0 !important;
-	}
-	.aboutBoxInfoList {
-		margin-bottom: 13px !important;
-	}
-	.footerContainer {
-		margin-top: 0 !important;
-	}
+html[data-rinfox-ie8] textarea,
+#aboutDialog[data-rinfox-ie8] textarea {
+	background-color: transparent !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+	user-select: none !important;
+}
 
+html[data-rinfox-ie8] .legalNotice,
+#aboutDialog[data-rinfox-ie8] .legalNotice {
+	padding-right: 0 !important;
+}
+
+html[data-rinfox-ie8] .windowsFlag,
+#aboutDialog[data-rinfox-ie8] .windowsFlag {
+	display: none !important;
+}
+
+html[data-rinfox-ie8] .copyrightLink,
+#aboutDialog[data-rinfox-ie8] .copyrightLink {
+	margin-left: 0 !important;
+}
+
+html[data-rinfox-ie8] .aboutBoxInfoList,
+#aboutDialog[data-rinfox-ie8] .aboutBoxInfoList {
+	margin-bottom: 13px !important;
+}
+
+html[data-rinfox-ie8] .footerContainer,
+#aboutDialog[data-rinfox-ie8] .footerContainer {
+	margin-top: 0 !important;
 }
 
 }

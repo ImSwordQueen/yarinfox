@@ -18,19 +18,22 @@ if (document.getElementById('main-window')) {
 }
 
 
-var IsIE8 = pref("RinFox.Appearance.IE8").tryGet.bool();
+var IsIE8 = Services.prefs.getBoolPref("RinFox.Appearance.IE8", false);
 
 var translations = {}; // Object to store translations
 
 // Load translations asynchronously based on user's language
-function loadTranslations(lang, region) {
-    return fetch(`chrome://userchrome/content/jsonLocale/${lang}/${region}.json`)
-        .then(response => response.json())
-        .then(data => {
-            if (!translations[lang]) { translations[lang] = {}; }
-            translations[lang][region] = data;
-        })
-        .catch(error => { console.error(`Error loading translations for chrome://userscripts/contentonLocale/${lang}/${region}.json:`, error); });
+async function loadTranslations(lang, region) {
+    try {
+        const response = await fetch(`chrome://userchrome/content/jsonLocale/${lang}/${region}.json`);
+        if (!response.ok) return;
+
+        const data = await response.json();
+        if (!translations[lang]) { translations[lang] = {}; }
+        translations[lang][region] = data;
+    } catch {
+        // Region-specific locale files are optional; en/fallback.json supplies missing strings.
+    }
 }
 
 // Load translations for user's language and fallback to 'en' for missing keys

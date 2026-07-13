@@ -17,20 +17,20 @@ function setAttributes(element, attributes) {
 	});
 }
 
+
 // Title of About Window
 var aboutDialogTitle = "About Internet Explorer";
 
-// Properly check if the user chose Internet Explorer 7 or Internet Explorer 8 appearance
-//
-// We need to put these "getBool/Int/StringPref" in a try and catch block or
-// Firefox will throw an error if the bool was not yet created by the user (meaning
-// the bool is nonexistent in about:config) causing the code to stop, it's the reason why on
-// fresh installs the aboutDialog would look "half-themed", displaying Firefox icon and
-// information but with a white background. Only userContent was working.
-// - Bruno
 function checkIE8Status() {
     try {
-        return Services.prefs.getBoolPref("RinFox.Appearance.IE8");
+        if (window.opener?.Services?.prefs) {
+            return window.opener.Services.prefs.getBoolPref(
+                "RinFox.Appearance.IE8",
+                false
+            );
+        }
+
+        return Services.prefs.getBoolPref("RinFox.Appearance.IE8", false);
     } catch (error) {
         return false;
     }
@@ -38,7 +38,58 @@ function checkIE8Status() {
 
 const isIE8Bool = checkIE8Status();
 
+if (isIE8Bool) {
+    aboutDialog.setAttribute("data-rinfox-ie8", "true");
+}
+
 aboutDialog.setAttribute("title", ""+aboutDialogTitle+"");
+
+const ImgTools = Cc["@mozilla.org/image/tools;1"].getService(Ci.imgITools);
+const WindowsUIUtils = Cc["@mozilla.org/windows-ui-utils;1"].getService(Ci.nsIWindowsUIUtils);
+
+async function loadWindowIcon(url) {
+	const uri = Services.io.newURI(url);
+	const { NetUtil } = ChromeUtils.importESModule("resource://gre/modules/NetUtil.sys.mjs");
+	const channel = NetUtil.newChannel({
+		uri,
+		loadUsingSystemPrincipal: true,
+	});
+
+	return new Promise((resolve, reject) => {
+		ImgTools.decodeImageFromChannelAsync(
+			uri,
+			channel,
+			(container, status) => {
+				if (Components.isSuccessCode(status)) {
+					resolve(container);
+				} else {
+					reject(Components.Exception("Failed to load About dialog icon", status));
+				}
+			},
+			null
+		);
+	});
+}
+
+async function setDialogIcon(iconUrl) {
+	const icon = await loadWindowIcon(iconUrl);
+
+	try {
+		WindowsUIUtils.setWindowIcon(window, icon, icon);
+	} catch (error) {
+		if (error.result === Cr.NS_ERROR_NOT_AVAILABLE) {
+			window.addEventListener(
+				"load",
+				() => WindowsUIUtils.setWindowIcon(window, icon, icon),
+				{ once: true }
+			);
+		} else {
+			throw error;
+		}
+	}
+}
+
+setDialogIcon("chrome://userchrome/content/images/IconGroup110-16.png");
 
 // createElement because xhtml is dogshit 
 
@@ -64,7 +115,7 @@ let aboutboxinfostregnth;
 let aboutboxinfoid;
 let aboutboxinfoupdate;
 if (isIE8Bool) {
-	aboutboxinfoversion = "Version: 8.0.6001.18702";
+	aboutboxinfoversion = "Version: 8.0.7601.17514";
 	aboutboxinfostregnth = "Cipher Strength: 256-bit";
 	aboutboxinfoid = "Product ID: 01404-014-0000025-714000";
 	aboutboxinfoupdate = "Update Versions: 0";

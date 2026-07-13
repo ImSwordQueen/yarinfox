@@ -1,7 +1,7 @@
 #PanelUI-menu-button
 {
   padding-inline-end: 0 !important;
-  list-style-image: url('images/settings.png') !important;
+  list-style-image: url('chrome://userchrome/content/resources/ieframe.dll/Bitmap/697-699_30.ico') !important;
 }
 
 #unified-extensions-button {
@@ -24,6 +24,10 @@
   list-style-image: url('images/email.png') !important;
 }
 
+#help-button {
+  list-style-image: url('images/help.png') !important;
+}
+
 #bookmarksSidebarButton {
   list-style-image: url('images/favorites.png') !important;
 }
@@ -37,9 +41,9 @@
 }
 
 .geo-icon {
-  list-style-image: url('images/map.png') !important;
+  list-style-image: url('images/location.png') !important;
 }
 
 menupopup {
-  appearance: unset !important;
+  /* appearance: unset !important; */
 }

@@ -100,7 +100,7 @@ const cBPageMenu = createMenu({
             locale: 'NewWindow',
             image: 'chrome://browser/skin/window.svg',
             accelText: 'Ctrl+N',
-            command: 'OpenBrowserWindow();',
+            command: () => OpenBrowserWindow(),
         },
         //{
         //    type: 'app',
@@ -116,7 +116,7 @@ const cBPageMenu = createMenu({
             locale: 'Cut',
             image: 'chrome://browser/skin/edit-cut.svg',
             accelText: 'Ctrl+X',
-            command: "goDoCommand('cmd_cut')"
+            command: () => goDoCommand('cmd_cut')
         },
         {
             type: 'app',
@@ -125,7 +125,7 @@ const cBPageMenu = createMenu({
             locale: 'Copy',
             image: 'chrome://devtools/skin/images/copy.svg',
             accelText: 'Ctrl+C',
-            command: "goDoCommand('cmd_copy')"
+            command: () => goDoCommand('cmd_copy')
         },
         {
             type: 'app',
@@ -134,7 +134,7 @@ const cBPageMenu = createMenu({
             locale: 'Paste',
             image: 'chrome://browser/skin/edit-paste.svg',
             accelText: 'Ctrl+V',
-            command: "goDoCommand('cmd_paste')"
+            command: () => goDoCommand('cmd_paste')
         },
         {
             type: 'separator',
@@ -144,7 +144,7 @@ const cBPageMenu = createMenu({
             id: 'cBPage_eMailWindowsLive',
             name: 'E-mail with Windows Live',
             locale: 'EMailWithindowsLive',
-            command: 'mailWithWindowsLive()',
+            command: () => mailWithWindowsLive(),
         },
         //{
         //    type: 'app',
@@ -155,7 +155,7 @@ const cBPageMenu = createMenu({
             id: 'cBPage_googleTranslate',
             name: 'Translate with Google',
             locale: 'TranslateWithGoogle',
-            command: 'translatePage()',
+            command: () => translatePage(),
         },
         {
             type: 'separator',
@@ -171,14 +171,14 @@ const cBPageMenu = createMenu({
                     id: 'cBPage_findMoreAccelerators',
                     name: 'Find more Accelerators',
                     locale: 'FindMoreAccelerators',
-                    command: 'findMoreAccelerators();',
+                    command: () => findMoreAccelerators(),
                 },
                 {
                     type: 'app',
                     id: 'cBPage_manageAccelerators',
                     name: 'Manage Accelerators...',
                     locale: 'ManageAccelerators',
-                    command: 'BrowserOpenAddonsMgr();',
+                    command: () => _ucUtils.loadURI(window, { url: 'about:addons', where: 'tab' }),
                 }
             ],
         },
@@ -192,7 +192,7 @@ const cBPageMenu = createMenu({
             locale: 'SaveAs',
             image: 'chrome://browser/skin/save.svg',
             accelText: 'Ctrl+S',
-            command: 'saveBrowser(gBrowser.selectedBrowser);',
+            command: () => saveBrowser(gBrowser.selectedBrowser),
         },
         //{
         //    type: 'app',
@@ -204,7 +204,7 @@ const cBPageMenu = createMenu({
             name: 'Send link by e-mail...',
             locale: 'SendLinkByEMail',
             image: 'chrome://browser/skin/mail.svg',
-            command: 'MailIntegration.sendLinkForBrowser(gBrowser.selectedBrowser);',
+            command: () => MailIntegration.sendLinkForBrowser(gBrowser.selectedBrowser),
         },
         //{
         //    type: 'app',
@@ -237,7 +237,7 @@ const cBPageMenu = createMenu({
                     name: 'Zoom in',
                     locale: 'ZoomIn',
                     accelText: 'Ctrl +',
-                    command: 'FullZoom.enlarge()',
+                    command: () => FullZoom.enlarge(),
                 },
                 {
                     type: 'app',
@@ -245,7 +245,7 @@ const cBPageMenu = createMenu({
                     name: 'Zoom out',
                     locale: 'ZoomOut',
                     accelText: 'Ctrl -',
-                    command: 'FullZoom.reduce()',
+                    command: () => FullZoom.reduce(),
                 },
                 {
                     type: 'separator',
@@ -254,44 +254,44 @@ const cBPageMenu = createMenu({
                     type: 'app',
                     id: 'cBPage_setZoom400',
                     name: '400%',
-                    command: 'FullZoom.setZoom(4)',
+                    command: () => FullZoom.setZoom(4),
                 },
                 {
                     type: 'app',
                     id: 'cBPage_setZoom200',
                     name: '200%',
-                    command: 'FullZoom.setZoom(2)',
+                    command: () => FullZoom.setZoom(2),
                 },
                 {
                     type: 'app',
                     id: 'cBPage_setZoom150',
                     name: '150%',
-                    command: 'FullZoom.setZoom(1.5)',
+                    command: () => FullZoom.setZoom(1.5),
                 },
                 {
                     type: 'app',
                     id: 'cBPage_setZoom125',
                     name: '125%',
-                    command: 'FullZoom.setZoom(1.25)',
+                    command: () => FullZoom.setZoom(1.25),
                 },
                 {
                     type: 'app',
                     id: 'cBPage_setZoom100',
                     name: '100%',
                     accelText: 'Ctrl+0',
-                    command: 'FullZoom.setZoom(1)',
+                    command: () => FullZoom.setZoom(1),
                 },
                 {
                     type: 'app',
                     id: 'cBPage_setZoom075',
                     name: '75%',
-                    command: 'FullZoom.setZoom(.75)',
+                    command: () => FullZoom.setZoom(.75),
                 },
                 {
                     type: 'app',
                     id: 'cBPage_setZoom050',
                     name: '50%',
-                    command: 'FullZoom.setZoom(.5)',
+                    command: () => FullZoom.setZoom(.5),
                 },
                 //{
                 //    type: 'separator',
@@ -318,14 +318,14 @@ const cBPageMenu = createMenu({
                     id: 'cBPage_noStyle',
                     name: 'No style',
                     locale: 'NoStyle',
-                    command: 'gPageStyleMenu.disableStyle();',
+                    command: () => gPageStyleMenu.disableStyle(),
                 },
                 {
                     type: 'app',
                     id: 'cBPage_defaultStyle',
                     name: 'Default style',
                     locale: 'DefaultStyle',
-                    command: 'gPageStyleMenu.switchStyleSheet(null);',
+                    command: () => gPageStyleMenu.switchStyleSheet(null),
                 },
             ],
         },
@@ -340,7 +340,7 @@ const cBPageMenu = createMenu({
             name: 'Caret browsing',
             locale: 'CaretBrowsing',
             accelText: 'F7',
-            command: 'gBrowser.toggleCaretBrowsing()',
+            command: () => gBrowser.toggleCaretBrowsing(),
         },
         {
             type: 'separator',
@@ -350,14 +350,14 @@ const cBPageMenu = createMenu({
             id: 'cBPage_properties',
             name: 'Properties',
             locale: 'Properties',
-            command: 'BrowserPageInfo();',
+            command: () => BrowserCommands.pageInfo(),
         },
         {
             type: 'app',
             id: 'cBPage_viewSource',
             name: 'View source',
             locale: 'ViewSource',
-            command: 'BrowserViewSource(window.gBrowser.selectedBrowser)',
+            command: () => BrowserCommands.viewSource(window.gBrowser.selectedBrowser),
         },
     ],
 });
@@ -375,7 +375,7 @@ const cBSafetyMenu = createMenu({
             locale: 'DeleteBrowsingHistory',
             image: 'chrome://devtools/skin/images/clear.svg',
             accelText: 'Ctrl+Shift+Del',
-            command: 'Sanitizer.showUI(window);',
+            command: () => Sanitizer.showUI(window),
         },
         {
             type: 'app',
@@ -384,14 +384,14 @@ const cBSafetyMenu = createMenu({
             locale: 'InPrivateBrowsing',
             image: 'chrome://browser/skin/privateBrowsing.svg',
             accelText: 'Ctrl+Shift+P',
-            command: 'OpenBrowserWindow({private: true});',
+            command: () => OpenBrowserWindow({private: true}),
         },
         {
             type: 'app',
             id: 'cBSafety_trackingProtection',
             name: 'Tracking Protection...',
             locale: 'TrackingProtection',
-            command: 'gProtectionsHandler.openPreferences()',
+            command: () => gProtectionsHandler.openPreferences(),
         },
         //{
         //    type: 'app',
@@ -437,7 +437,7 @@ const cBSafetyMenu = createMenu({
                     id: 'cBSafety_reportUnsafeWebsite',
                     name: 'Report unsafe website',
                     locale: 'ReportUnsafeWebsite',
-                    command: 'reportUnsafeWebsite();',
+                    command: () => reportUnsafeWebsite(),
                 },
             ]
         },
@@ -448,7 +448,7 @@ const cBSafetyMenu = createMenu({
             type: 'app',
             id: 'cBSafety_windowsUpdate',
             name: 'Windows Update',
-            command: 'openWindowsUpdate()'
+            command: () => openWindowsUpdate()
         },
     ],
 });
@@ -466,14 +466,14 @@ const cBToolsMenu = createMenu({
             id: 'cBTools_diagnoseConnectionProblems',
             name: 'Diagnose connection problems...',
             locale: 'DiagnoseConnectionProblems',
-            command: 'runFile("msdt.exe", "-skip TRUE -path C:\\Windows\\diagnostics\\system\\networking -ep NetworkDiagnosticsConnectivity")',
+            command: () => runFile("msdt.exe", "-skip TRUE -path C:\\Windows\\diagnostics\\system\\networking -ep NetworkDiagnosticsConnectivity"),
         },
         {
             type: 'app',
             id: 'cBTools_reopenLastBrowsingSession',
             name: 'Reopen last browsing session',
             locale: 'ReopenLastBrowsingSession',
-            command: 'SessionStore.restoreLastSession();',
+            command: () => SessionStore.restoreLastSession(),
         },
         {
             type: 'separator',
@@ -502,7 +502,7 @@ const cBToolsMenu = createMenu({
             name: 'View downloads',
             locale: 'ViewDownloads',
             accelText: 'Ctrl+J',
-            command: 'BrowserDownloadsUI();',
+            command: () => PlacesCommandHook.showPlacesOrganizer('Downloads'),
         },
         {
             type: 'app',
@@ -510,7 +510,7 @@ const cBToolsMenu = createMenu({
             name: 'Manage add-ons',
             locale: 'ManageAddOns',
             image: 'chrome://devtools/skin/images/debugging-addons.svg',
-            command: 'BrowserOpenAddonsMgr();',
+            command: () => _ucUtils.loadURI(window, { url: 'about:addons', where: 'tab' }),
         },
         {
             type: 'separator',
@@ -520,7 +520,7 @@ const cBToolsMenu = createMenu({
             id: 'cBTools_workOffline',
             name: 'Work offline',
             locale: 'WorkOffline',
-            command: 'BrowserOffline.toggleOfflineStatus();',
+            command: () => BrowserOffline.toggleOfflineStatus(),
         },
         //{
         //    type: 'app',
@@ -539,7 +539,7 @@ const cBToolsMenu = createMenu({
             locale: 'FullScreen',
             image: 'chrome://browser/skin/fullscreen.svg',
             accelText: 'F11',
-            command: 'BrowserFullScreen();',
+            command: () => BrowserFullScreen(),
         },
         {
             type: 'subdir',
@@ -552,21 +552,21 @@ const cBToolsMenu = createMenu({
                     id: 'cBTools_menuBar',
                     name: 'Menu bar',
                     locale: 'MenuBar',
-                    command: "toggleToolbar('toolbar-menubar');"
+                    command: () => toggleToolbar('toolbar-menubar')
                 },
                 {
                     type: 'app',
                     id: 'cBTools_favoritesBar',
                     name: 'Favourites bar',
                     locale: 'FavouritesBar',
-                    command: "BookmarkingUI.toggleBookmarksToolbar('shortcut');",
+                    command: () => BookmarkingUI.toggleBookmarksToolbar('shortcut'),
                 },
 				{
                     type: 'app',
                     id: 'cBTools_commandBar',
                     name: 'Command bar',
                     locale: 'CommandBar',
-                    command: "toggleToolbar('commandBar');",
+                    command: () => toggleToolbar('commandBar'),
                 },
                 {
                     type: 'separator',
@@ -576,7 +576,7 @@ const cBToolsMenu = createMenu({
                     id: 'cBTools_manageAddOns2',
                     name: 'Manage add-ons',
                     locale: 'ManageAddOns',
-                    command: 'BrowserOpenAddonsMgr();',
+                    command: () => _ucUtils.loadURI(window, { url: 'about:addons', where: 'tab' }),
                 },
                 {
                     type: 'separator',
@@ -586,7 +586,7 @@ const cBToolsMenu = createMenu({
                     id: 'cBTools_customize',
                     name: 'Customize...',
                     locale: 'Customise',
-                    command: 'gCustomizeMode.enter();',
+                    command: () => gCustomizeMode.enter(),
                 },
             ]
         },
@@ -601,14 +601,14 @@ const cBToolsMenu = createMenu({
                     id: 'cBTools_favorites',
                     name: 'Favourites',
                     locale: 'Favourites',
-                    command: "SidebarUI.toggle('viewBookmarksSidebar');",
+                    command: () => SidebarController.toggle('viewBookmarksSidebar'),
                 },
                 {
                     type: 'app',
                     id: 'cBTools_history',
                     name: 'History',
                     locale: 'History',
-                    command: "SidebarUI.toggle('viewHistorySidebar')",
+                    command: () => SidebarController.toggle('viewHistorySidebar'),
                 },
                 /*{
                     type: 'app',
@@ -644,11 +644,36 @@ const cBToolsMenu = createMenu({
             name: 'Internet options',
             locale: 'InternetOptions',
             image: 'chrome://devtools/skin/images/settings.svg',
-            command: 'openInternetOptions();',
+            command: () => openInternetOptions(),
         },
     ],
 });
 cBToolsMenu.init();
+
+const cBToolbarMenuItems = [
+    ['cBTools_menuBar', 'toolbar-menubar', 'inactive'],
+    ['cBTools_favoritesBar', 'PersonalToolbar', 'collapsed'],
+    ['cBTools_commandBar', 'commandBar', 'collapsed'],
+];
+
+function updateCBToolbarMenuChecks() {
+    for (const [menuItemId, toolbarId, hiddenAttribute] of cBToolbarMenuItems) {
+        const menuItem = document.getElementById(menuItemId);
+        const toolbar = document.getElementById(toolbarId);
+        menuItem.setAttribute('type', 'checkbox');
+        menuItem.setAttribute('autocheck', 'false');
+        if (toolbar?.getAttribute(hiddenAttribute) !== 'true') {
+            menuItem.setAttribute('checked', 'true');
+        } else {
+            menuItem.removeAttribute('checked');
+        }
+    }
+}
+
+cBToolsMenu._externalAppPopup.addEventListener('popupshowing', updateCBToolbarMenuChecks);
+updateCBToolbarMenuChecks();
+
+function openInternetOptions() { runFile("control.exe", "inetcpl.cpl") };
 
 const cBHelpMenu = createMenu({
     id: 'cBHelpMenu',
@@ -662,7 +687,7 @@ const cBHelpMenu = createMenu({
             name: 'Internet Explorer Help',
             locale: 'InternetExplorerHelp',
             accelText: 'F1',
-            command: "openHelpLink('firefox-help');",
+            command: () => openHelpLink('firefox-help'),
         },
         {
             type: 'separator',
@@ -673,7 +698,7 @@ const cBHelpMenu = createMenu({
             name: "What's new in BeautyFox",
             locale: "NewBeautyFox",
             special: true,
-            command: "_ucUtils.loadURI(window,{url: 'chrome://userchrome/content/temppages/changelogs/ob-1.0.2.html', where: 'tab'});"
+            command: () => _ucUtils.loadURI(window,{url: 'chrome://userchrome/content/temppages/changelogs/ob-1.0.2.html', where: 'tab'}),
         },
         {
             type: 'separator',
@@ -684,14 +709,14 @@ const cBHelpMenu = createMenu({
             id: 'cBHelp_whatsNewInIE',
             name: "What's new in Internet Explorer",
             locale: "NewIE",
-            command: "openWhatsNewIE();"
+            command: () => openWhatsNewIE()
         },
         {
             type: 'app',
             id: 'cBHelp_onlineSupport',
             name: 'Online support',
             locale: 'OnlineSupport',
-            command: "sendFeedbackLink();"
+            command: () => sendFeedbackLink()
         },
         {
             type: 'separator',
@@ -701,15 +726,19 @@ const cBHelpMenu = createMenu({
             id: 'cBHelp_aboutInternetExplorer',
             name: 'About Internet Explorer',
             locale: 'aboutIE',
-            command: 'openAboutDialog();',
+            command: () => openAboutDialog(),
         },
     ],
 });
 cBHelpMenu.init();
 
+function isIE8Appearance() {
+    return Services.prefs.getBoolPref('RinFox.Appearance.IE8', false);
+}
+
 function openWhatsNewIE() {
     var whatsNewURL;
-    if (pref('RinFox.Appearance.IE8').tryGet.bool()) { whatsNewURL = 'https://web.archive.org/web/20110322221930id_/http://windows.microsoft.com/en-US/internet-explorer/products/ie-8/welcome'; }
+    if (isIE8Appearance()) { whatsNewURL = 'https://web.archive.org/web/20110322221930id_/http://windows.microsoft.com/en-US/internet-explorer/products/ie-8/welcome'; }
     else { whatsNewURL = 'https://web.archive.org/web/20090101033733id_/http://www.microsoft.com/windows/ie/ie7/tour/fre/default.mspx'; }
     _ucUtils.loadURI(window, {
         url: whatsNewURL, 
@@ -719,7 +748,7 @@ function openWhatsNewIE() {
 
 function sendFeedbackLink() {
     var SecondFeedBackURL;
-    if (pref('RinFox.Appearance.IE8').tryGet.bool()) { SecondFeedBackURL = 'https://web.archive.org/web/20100901073034id_/http://support.microsoft.com/default.aspx'; }
+    if (isIE8Appearance()) { SecondFeedBackURL = 'https://web.archive.org/web/20100901073034id_/http://support.microsoft.com/default.aspx'; }
     else { SecondFeedBackURL = 'https://web.archive.org/web/20080229025247id_/http://www.microsoft.com/windows/products/winfamily/ie/iefaq.mspx'; }
     _ucUtils.loadURI(window, {
         url: SecondFeedBackURL, 
@@ -727,3 +756,62 @@ function sendFeedbackLink() {
     })
 }
 // #endregion
+
+const RINFOX_COMMANDBAR_LABEL_MODE_PREF = 'RinFox.CommandBar.LabelMode';
+
+function updateCommandbarAppearance() {
+    const commandbarContainers = [
+        document.getElementById('commandBar'),
+        document.querySelector('#TabsToolbar > .toolbar-items')
+    ].filter(Boolean);
+    const mode = Services.prefs.getIntPref(RINFOX_COMMANDBAR_LABEL_MODE_PREF, 0);
+
+    for (const container of commandbarContainers) {
+        switch (mode) {
+            case 1:
+                container.setAttribute('commandbaritem', 'text');
+                break;
+            case 2:
+                container.setAttribute('commandbaritem', 'selective');
+                break;
+            case 3:
+                container.setAttribute('commandbaritem', 'icons');
+                break;
+            case 4:
+                container.setAttribute('commandbaritem', 'texticon');
+                break;
+            default:
+                container.removeAttribute('commandbaritem');
+                break;
+        }
+    }
+}
+
+const commandbarLabelModeObserver = {
+    observe() {
+        updateCommandbarAppearance();
+    }
+};
+
+Services.prefs.addObserver(RINFOX_COMMANDBAR_LABEL_MODE_PREF, commandbarLabelModeObserver);
+window.addEventListener('unload', function () {
+    Services.prefs.removeObserver(RINFOX_COMMANDBAR_LABEL_MODE_PREF, commandbarLabelModeObserver);
+}, { once: true });
+updateCommandbarAppearance();
+
+function openRinFoxAboutDialog() {
+    for (const aboutWindow of Services.wm.getEnumerator('Browser:About')) {
+        if (!aboutWindow.closed) {
+            aboutWindow.focus();
+            return;
+        }
+    }
+
+    window.openDialog(
+        'chrome://browser/content/aboutDialog.xhtml',
+        '',
+        'chrome,centerscreen,resizable=no,dependent,modal'
+    );
+}
+
+window.openAboutDialog = openRinFoxAboutDialog;

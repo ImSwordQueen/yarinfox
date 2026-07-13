@@ -1,0 +1,12 @@
+html { min-height: 100%; background: #fefefe url("chrome://userchrome/content/pages/shared/top.jpg") repeat-x; }
+body { box-sizing: border-box; width: 70em; margin: 0; padding: 1em; color: #505050; font: 80% "Segoe UI", sans-serif; }
+h1 { position: relative; left: 4px; margin: 0 5px 0 0; padding-bottom: .2em; color: #d8e2f4; font-size: 445%; font-weight: normal; }
+main, footer { padding-left: 35px; }
+section { width: 35em; min-width: 500px; padding-bottom: 10px; }
+h2 { margin: 0; color: #549c00; font-size: 130%; line-height: 160%; font-weight: normal; }
+.indicator { max-width: 100%; }
+.description { color: #505050; }
+a { color: #4f81bd; text-decoration: none; }
+a:hover { text-decoration: underline; }
+footer { float: left; width: 65em; padding-top: 1em; }
+hr { height: 1px; margin: 0 1.5em 1em 0; border: 0; border-top: 1px solid #c0c0c0; }

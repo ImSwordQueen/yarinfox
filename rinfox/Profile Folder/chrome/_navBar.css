@@ -19,6 +19,7 @@
   padding: 0 !important;
   background-image: url('images/navigation_frame.png') !important;
   opacity: 1 !important;
+  transform: translateX(2px) translateY(-1px) !important;
 }
 
 #back-button
@@ -61,7 +62,7 @@
 #back-button:not([disabled="true"]):hover > .toolbarbutton-icon,
 #forward-button:not([disabled="true"]):hover > .toolbarbutton-icon
 {
-  background-position-y: -29px !important;
+  /* background-position-y: -29px !important; */
 }
 
 #back-button:not([disabled="true"]):active > .toolbarbutton-icon,
@@ -75,7 +76,7 @@
 #history-panelmenu,
 #history-panelmenu > .toolbarbutton-icon
 {
-  width: 23px !important;
+  width: 24px !important;
   height: 29px !important;
   padding: 0 !important;
   opacity: 1 !important;
@@ -101,5 +102,6 @@
 }
 
 #forward-button + #history-panelmenu {
-  transform: translateX(-7px) !important;
+  /* transform: translateX(-7px) !important; */
+  transform: translateX(-4px) translateY(-1px) !important;
 }

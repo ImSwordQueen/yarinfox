@@ -6,10 +6,9 @@
 // ==/UserScript==
 // 2025 Note: WHY IS IT NAMED HELP BUTTON BUT HAS MORE STUFF INSIDE BRUH???
 
-Components.utils.import("resource:///modules/CustomizableUI.jsm");
-var {Services} = Components.utils.import("resource://gre/modules/Services.jsm", {});
-var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"].getService(Components.interfaces.nsIStyleSheetService);
-var appversion = parseInt(Services.appinfo.version);
+var { CustomizableUI } = ChromeUtils.importESModule("resource:///modules/CustomizableUI.sys.mjs");
+var { PlacesUtils } = ChromeUtils.importESModule("resource://gre/modules/PlacesUtils.sys.mjs");
+var addToBookmarksModePref = "rinfox.favorites.useFirefoxDialog";
 
 function createAddToBookmarks() {
 
@@ -23,12 +22,17 @@ try {
         label: buttonText,
         tooltiptext: buttonText,
         onCommand: function() {
-            addToBookmarksBar();
+            addBookmark();
         },
         onCreated: function(button) {
+            createAddToBookmarksContextMenu(button.ownerDocument);
+            button.setAttribute("context", "addToBookmarksBarContextMenu");
             return button;
         },
     });
+    if (!CustomizableUI.getPlacementOfWidget("addToBookmarksBarButton")) {
+        CustomizableUI.addWidgetToArea("addToBookmarksBarButton", CustomizableUI.AREA_BOOKMARKS);
+    }
 }
 catch (e) {
     Components.utils.reportError(e);
@@ -36,9 +40,67 @@ catch (e) {
 
 };
 
-function addToBookmarksBar() {
-    var bookmarksSvc = Cc["@mozilla.org/browser/nav-bookmarks-service;1"].getService(Ci.nsINavBookmarksService);
-    bookmarksSvc.insertBookmark(3, gBrowser.currentURI, bookmarksSvc.DEFAULT_INDEX, window.document.title);
+function createAddToBookmarksContextMenu(document) {
+    if (document.getElementById("addToBookmarksBarContextMenu")) {
+        return;
+    }
+
+    var menu = document.createXULElement("menupopup");
+    menu.id = "addToBookmarksBarContextMenu";
+    menu.addEventListener("popupshowing", function() {
+        var useFirefoxDialog = Services.prefs.getBoolPref(addToBookmarksModePref, false);
+        automaticItem.setAttribute("checked", !useFirefoxDialog);
+        firefoxItem.setAttribute("checked", useFirefoxDialog);
+    });
+
+    var automaticItem = document.createXULElement("menuitem");
+    automaticItem.setAttribute("type", "radio");
+    automaticItem.setAttribute("name", "addToBookmarksMode");
+    automaticItem.setAttribute("label", "Add automatically to Favorites Bar");
+    automaticItem.addEventListener("command", function() {
+        Services.prefs.setBoolPref(addToBookmarksModePref, false);
+    });
+    menu.appendChild(automaticItem);
+
+    var firefoxItem = document.createXULElement("menuitem");
+    firefoxItem.setAttribute("type", "radio");
+    firefoxItem.setAttribute("name", "addToBookmarksMode");
+    firefoxItem.setAttribute("label", "Use Firefox bookmark dialog");
+    firefoxItem.addEventListener("command", function() {
+        Services.prefs.setBoolPref(addToBookmarksModePref, true);
+    });
+    menu.appendChild(firefoxItem);
+
+    document.getElementById("mainPopupSet").appendChild(menu);
+}
+
+function addBookmark() {
+    if (Services.prefs.getBoolPref(addToBookmarksModePref, false)) {
+        addBookmarkWithFirefox();
+        return;
+    }
+
+    addToBookmarksBar();
+}
+
+async function addBookmarkWithFirefox() {
+    var bookmarkAction = PageActions.actionForID(PageActions.ACTION_ID_BOOKMARK);
+    var previousAnchor = bookmarkAction._anchorIDOverride;
+    bookmarkAction._anchorIDOverride = "addToBookmarksBarButton";
+
+    try {
+        await PlacesCommandHook.bookmarkPage();
+    } finally {
+        bookmarkAction._anchorIDOverride = previousAnchor;
+    }
+}
+
+async function addToBookmarksBar() {
+    await PlacesUtils.bookmarks.insert({
+        parentGuid: PlacesUtils.bookmarks.toolbarGuid,
+        url: gBrowser.currentURI.spec,
+        title: window.document.title || gBrowser.currentURI.spec,
+    });
 }
 
 function createFavoritesSidebarButton() {
@@ -51,14 +113,18 @@ function createFavoritesSidebarButton() {
             removable: true,
             label: buttonText,
             tooltiptext: buttonText,
-            onCommand: function() {
-                SidebarUI.toggle('viewBookmarksSidebar');
-				SidebarUI.reversePosition();
+            onCommand: function(event) {
+                var browserWindow = event.target.ownerGlobal;
+                Services.prefs.setBoolPref("sidebar.position_start", true);
+                browserWindow.SidebarController.toggle("viewBookmarksSidebar");
             },
             onCreated: function(button) {
                 return button;
             },
         });
+        if (!CustomizableUI.getPlacementOfWidget("bookmarksSidebarButton")) {
+            CustomizableUI.addWidgetToArea("bookmarksSidebarButton", CustomizableUI.AREA_BOOKMARKS);
+        }
     }
     catch (e) {
         Components.utils.reportError(e);

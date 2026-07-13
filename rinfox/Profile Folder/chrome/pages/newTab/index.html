@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>New Tab</title>
+<link rel="stylesheet" href="chrome://userchrome/content/pages/newTab/style.css">
+<script src="chrome://userchrome/content/pages/newTab/script.js" defer></script>
+</head>
+<body>
+<h1>What do you want to do next?</h1>
+<main>
+<section>
+<button id="recentTabsToggle" class="task toggle" type="button" aria-expanded="true">Reopen closed tabs <img class="expando" alt="" src="chrome://userchrome/content/pages/shared/collapse_nor.png"></button>
+<p>View tabs that you've closed since starting Internet Explorer.</p>
+<div id="recentTabs" class="expandsection"></div>
+</section>
+<section>
+<a id="inPrivate" class="task" href="about:privatebrowsing">Browse with InPrivate</a>
+<p>Browse the web without storing data about your browsing session.</p>
+<a id="inPrivateWindow" href="#">Open an InPrivate Browsing window</a>
+<section id="accelerators">
+<button id="acceleratorsToggle" class="task toggle" type="button" aria-expanded="true">Use an Accelerator <img class="expando" alt="" src="chrome://userchrome/content/pages/shared/collapse_nor.png"></button>
+<p>Open a web service with text that you've copied from a webpage.</p>
+<div id="acceleratorLinks" class="expandsection">
+<a id="showClipboard" href="#">Show copied text</a>
+<div id="clipboardText" hidden>
+<div class="clipboard-line"><span id="clipboardLabel">Use this text:&nbsp; </span><span id="clipboardValue"></span><button id="removeClipboardText" type="button" title="Remove text"><img alt="Remove text" src="chrome://userchrome/content/pages/shared/close_nor.png"></button></div>
+<div id="clipboardStats" hidden></div>
+</div>
+<a href="https://windowslivewriter.net/"><img alt="" src="chrome://userchrome/content/pages/shared/windows-live.ico">Blog with Windows Live</a>
+<a href="https://www.bing.com/maps"><img alt="" src="chrome://userchrome/content/pages/shared/bing-maps.ico">Map with Bing</a>
+<a href="https://www.bing.com/search"><img alt="" src="chrome://userchrome/content/pages/shared/bing.ico">Search with Bing</a>
+<a href="https://www.bing.com/translator"><img alt="" src="chrome://userchrome/content/pages/shared/bing-translate.ico">Translate with Bing</a>
+</div>
+</section>
+</section>
+</main>
+<footer>
+<hr>
+<a href="https://support.mozilla.org/kb/tabs-organize-websites-single-window">Learn more about tabs and tab shortcuts, Accelerators, and InPrivate Browsing</a>
+</footer>
+</body>
+</html>

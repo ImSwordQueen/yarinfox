@@ -25,9 +25,25 @@
   flex: unset !important;
 }
 
-#nav-bar[customizing] > .overflow-button {
-  display: none !important;
+:root[customizing] #wrapper-nav-bar-overflow-button {
+  pointer-events: none !important;
 }
+
+/* Distinguish the command-bar group from ordinary toolbar items while the
+   user is arranging controls. */
+:root[customizing] :is(
+  #wrapper-cBHomeButton,
+  #wrapper-cBReadMailButton,
+  #wrapper-cBPageMenuButton,
+  #wrapper-cBSafetyMenuButton,
+  #wrapper-cBToolsMenuButton,
+  #wrapper-cBHelpMenuButton
+) {
+  background-color: rgba(255, 214, 102, 0.55) !important;
+  box-shadow: inset 0 0 0 1px rgba(176, 116, 0, 0.75) !important;
+}
+
+
 
 #customization-panelWrapper {
   --panel-arrow-offset: 0 !important;
@@ -68,7 +84,8 @@
 }
 
 #customization-panelWrapper > .panel-arrowcontent {
-  appearance: groupbox !important;
+  appearance: auto !important;
+  -moz-default-appearance: groupbox !important;
   box-shadow: none !important;
   margin-top: 20px !important;
 }
@@ -95,7 +112,9 @@
 
 #wrapper-alltabs-button,
 #wrapper-tiptab_william_wong-browser-action {
+/* BUGBUG: Why is this hardcoded.
   order: -1 !important;
+  */
   opacity: 1 !important;
   align-self: stretch;
 }
@@ -106,8 +125,4 @@
 
 #TabsToolbar #wrapper-bookmarks-menu-button {
   order: -3 !important;
-}
-
-#TabsToolbar #wrapper-library-button {
-  order: -4 !important;
 }

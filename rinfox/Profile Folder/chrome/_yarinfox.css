@@ -20,3 +20,15 @@ menubar > menu:-moz-window-inactive {
   background-color: rgba(0,0,0,0) !important;
   color: black !important;
   }
+
+#main-menubar > menu {
+  &[_moz-menuactive] {
+    background-color: -moz-menuhover !important;
+    border-radius: 0 !important;
+  }
+}
+
+toolbar .toolbarbutton-1 {
+/* This is a fallback if you disable the broken padding which makes it so stuff looks proper I guess! */
+  padding: 3px !important;
+}

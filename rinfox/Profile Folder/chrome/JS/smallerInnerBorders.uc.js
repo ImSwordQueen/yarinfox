@@ -9,7 +9,20 @@ function checkSmallBorderHackStatus() {
 const isSmallBorderBool = checkSmallBorderHackStatus();
 
 function applySmallBorderHack() {
-	if (isSmallBorderBool) {
-		document.documentElement.setAttribute('chromemargin', '2,2,2,2');
+	if (!isSmallBorderBool) {
+		return;
 	}
+
+	const root = document.documentElement;
+
+	function updateChromeMargin() {
+		if (root.getAttribute('sizemode') === 'maximized') {
+			root.removeAttribute('chromemargin');
+		} else {
+			root.setAttribute('chromemargin', '2,2,2,2');
+		}
+	}
+
+	updateChromeMargin();
+	window.addEventListener('sizemodechange', updateChromeMargin);
 }
