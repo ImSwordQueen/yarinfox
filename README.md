@@ -1,12 +1,13 @@
 ![rinFox Logo](images/logo_dark.png#gh-light-mode-only) ![rinFox Logo](images/logo_light.png#gh-dark-mode-only)
 # YarinFox - Yet Another RinFox fork
 
-## This is only meant for 115 ESR users.
+## This version of Rinfox is experimental and some stuff might not look right. (Internet Explorer 7 mode is super untested.)
+
+## THIS THEME IS MADE ONLY FOR NOCTURNE AND WON'T WORK ON ANY OTHER FORK THAT DOES NOT IMPLEMENT MOZ-WIN-GLASS.
 
 <img width="1452" height="902" alt="image" src="https://github.com/user-attachments/assets/6cbdc22a-0f22-4466-b41c-9be6a1dbdaa8" />
 
-
-<br>Yarinfox is a semi-continuation/porting/whatever of features that RinFox updated by florin had at some point but were never made into regular RinFox.
+<br>Yarinfox is a semi-continuation/porting/whatever of features that RinFox never got but Beautyfox 1 did. Almost everything new was taken from Beautyfox.
 
 This is only a stop gap for me personally until [BeautyFox](https://github.com/dominichayesferen/BeautyFox) gets rewritten with an [Internet Explorer 8 variant](https://github.com/dominichayesferen/BeautyFox/issues/13)
 
@@ -28,18 +29,6 @@ Rinfox is a Mozilla Firefox theme that mimicks the look and feel of Internet Exp
 
 (This will be reworked later to utilize the Native Controls Patch instead.)
 
-~~2.	Download and install [Resource Hacker](https://angusj.com/resourcehacker/) (if your OS is NOT Windows Vista/7) - this is to enable glass in navigation pane~~
-
-~~2.1.	Run as administrator~~
-
-~~2.2.	File > Open > find `firefox.exe` > Manifest > delete/comment these lines:~~
-```xml
-<supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
-<supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}"/>
-<supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"/>
-```
-~~2.3.	Restart your computer.~~
-
 3. Open Firefox and follow the instructions of the wizard that appears on-screen.
 
 4.	Extensions
@@ -53,7 +42,7 @@ Rinfox is a Mozilla Firefox theme that mimicks the look and feel of Internet Exp
 Enjoy!
 
 # Credits 
-* [AngelBruni](https://github.com/angelbruni) - Developer (Taken some stuff from [beautyfox](https://github.com/dominichayesferen/BeautyFox))
+* [AngelBruni](https://github.com/angelbruni) - Developer (Taken most stuff from [beautyfox](https://github.com/dominichayesferen/BeautyFox))
 * [Travis](https://github.com/travy-patty) - Original RinFox creator
 * [ivan-the-bio-lover-42](https://github.com/ivan-the-bio-lover-42)- [Rinfox Revived](https://github.com/ivan-the-bio-lover-42/Rinfox-Revived) (Credits to him for CSS and some of JS code)
 * ~~Florin - Some of the code for this.~~
