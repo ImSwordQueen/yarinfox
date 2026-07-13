@@ -637,6 +637,14 @@
         border-top: 0 !important;
       }
     }
+    #rinfox-native-browser-frame {
+      -moz-default-appearance: -moz-win-exclude-glass !important;
+      appearance: -moz-win-exclude-glass !important;
+      position: fixed !important;
+      inset-inline: 0 !important;
+      pointer-events: none !important;
+      z-index: -1 !important;
+    }
     :root {
       -moz-appearance: -moz-win-glass !important;
     }
