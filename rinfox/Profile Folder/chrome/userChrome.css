@@ -343,8 +343,8 @@ height: 26px !important;
 }
 
 .status-text {
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -396,7 +396,8 @@ container-type: inline-size !important;
 }
 
 #addonbar > div:not(.status-text),
-#addonbar > customtoolbarbutton {
+#addonbar > customtoolbarbutton,
+#addonbar > toolbarbutton {
   flex-grow: 0;
   flex-shrink: 0;
 }

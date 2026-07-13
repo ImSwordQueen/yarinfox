@@ -185,7 +185,6 @@
     gap: 3px !important;
     padding: 0 4px 0 5px !important;
     margin: 0 !important;
-    transform: translateY(-2px) !important;
     font: menu !important;
 }
 
@@ -261,7 +260,8 @@
 }
 
 .doneText {
-    -moz-appearance: statusbarpanel !important;
+    -moz-appearance: none !important;
+    border: 0 !important;
     width: auto;
     line-height: normal;
     position: absolute !important;

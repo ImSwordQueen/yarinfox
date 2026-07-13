@@ -179,7 +179,7 @@ window.addEventListener("load", function() {
     const statusPanel = document.querySelector('#statuspanel[type="defaultStatus"][previoustype="status"]');
 
     if (statusPanel && statusPanel.hasAttribute('inactive')) {
-      doneText.style.display = 'block';
+      doneText.style.display = 'flex';
     } else {
       doneText.style.display = 'none';
     }
