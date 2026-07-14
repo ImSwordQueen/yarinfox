@@ -58,6 +58,11 @@
   content: url('images/ie_page.png') !important; 
 }
 
+:root:not([data-rinfox-stock-favicons]) #favimginurlbar[src="chrome://branding/content/favicon.ico"]
+{
+  content: url('images/ie_page.png') !important;
+}
+
 #favimginurlbar
 {
   margin-inline-end: 3px !important;

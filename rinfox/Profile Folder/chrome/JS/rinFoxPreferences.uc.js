@@ -12,6 +12,7 @@ const rinFoxPreferenceAttributes = [
     ["RinFox.Option.HideUnifiedExtensions", "data-rinfox-hide-extensions"],
     ["RinFox.Option.HideFakeDropdownGlyphs", "data-rinfox-hide-glyphs"],
     ["RinFox.Option.HideInnerBorders", "data-rinfox-hide-inner-borders"],
+    ["RinFox.Option.StockFavicons", "data-rinfox-stock-favicons"],
     ["rinfox.statusbar.disabled", "data-rinfox-statusbar-disabled"],
 ];
 

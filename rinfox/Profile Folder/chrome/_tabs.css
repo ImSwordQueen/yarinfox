@@ -221,8 +221,14 @@
   padding: 0 var(--tab-inline-padding) 2px var(--tab-inline-padding) !important;
 }
 
-.tab-icon-image[src="chrome://branding/content/icon32.png"],
-.tab-icon-image:not([src], [pinned], [crashed], [sharing], [pictureinpicture])
+:root:not([data-rinfox-stock-favicons]) .tab-icon-image:is(
+  [src="chrome://branding/content/icon32.png"],
+  [src="chrome://branding/content/favicon.ico"],
+  [src="chrome://global/skin/icons/defaultFavicon.svg"],
+  [src="chrome://browser/skin/defaultFavicon.svg"],
+  [src="chrome://mozapps/skin/places/defaultFavicon.svg"]
+),
+:root:not([data-rinfox-stock-favicons]) .tab-icon-image:not([src], [pinned], [crashed], [sharing], [pictureinpicture])
 {
   display: flex !important;
   content: url('images/blank-page.png') !important;
