@@ -637,6 +637,9 @@
         border-top: 0 !important;
       }
     }
+	#titlebar, #browser{
+    -moz-default-appearance: -moz-win-exclude-glass;
+	}
     :root {
       -moz-appearance: -moz-win-glass !important;
     }
