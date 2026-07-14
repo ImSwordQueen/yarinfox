@@ -10,6 +10,7 @@ const RinFoxPreferenceServices = Services;
 const rinFoxPreferenceAttributes = [
     ["RinFox.Appearance.IE8", "data-rinfox-ie8"],
     ["RinFox.Option.HideUnifiedExtensions", "data-rinfox-hide-extensions"],
+    ["RinFox.Option.HidePanelUIMenuButton", "data-rinfox-hide-panelui-menu"],
     ["RinFox.Option.HideFakeDropdownGlyphs", "data-rinfox-hide-glyphs"],
     ["RinFox.Option.HideInnerBorders", "data-rinfox-hide-inner-borders"],
     ["RinFox.Option.StockFavicons", "data-rinfox-stock-favicons"],

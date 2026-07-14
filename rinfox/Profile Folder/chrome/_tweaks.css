@@ -5,6 +5,12 @@
   }
 }
 
+:root[data-rinfox-hide-panelui-menu] {
+  #PanelUI-menu-button {
+    display: none !important;
+  }
+}
+
 :root[data-rinfox-ie8] {
   /* Values and close-button resources from IE8 UIFILE 20481/20737. */
   #navigator-toolbox-background {
