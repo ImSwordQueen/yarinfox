@@ -13,7 +13,6 @@ function executeFunctions() {
 	getAndSetTitleBarHeight();
 	applySmallBorderHack();
 	moveBookmarksBar();
-	createNativeBrowserFrame();
 	hideTabBarItems();
 	changeLibraryButtonText();
 	changeFirefoxButtonText();
